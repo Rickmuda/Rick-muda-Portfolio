@@ -1,33 +1,66 @@
-<script setup>
-import { reactive, ref } from 'vue'
-
-const counter = reactive({ count: 0 })
-const message = ref('Hello World!')
-const title = ref('title')
-const count =  ref(0)
-const text = ref('')
-const verynice = ref(false)
-
-function toggle() {
-  verynice.value = !verynice.value
-}
-</script>
-
 <template>
-  <h1 :class="title">{{ message }}</h1>
-  <p>Count is: {{ counter.count }}</p>
-  <button @click="counter.count++">UP</button>
-  <button @click="counter.count--">DOWN</button>
-  <input v-model="text" placeholder="Type here">
-    <p>{{ text }}</p>
-  <button @click="toggle">Toggle</button>
-  <h1 v-if="verynice">69</h1>
-  <h1 v-else>68 or 70</h1>
+  <div id="app">
+    <!-- Background Image -->
+    <div class="background">
+      <!-- Main Content -->
+      <div class="content">
+        <!-- Add your content here -->
+      </div>
+    </div>
+
+    <!-- Footer Taskbar -->
+    <footer class="taskbar">
+      <div class="taskbar-item">Start</div>
+      <div class="taskbar-item">Time: {{ currentTime }}</div>
+    </footer>
+  </div>
 </template>
 
-<style>
-.title {
-  color: red;
-  font-family: 'Times New Roman', Times, serif;
+<script>
+export default {
+  data() {
+    return {
+      currentTime: new Date().toLocaleTimeString(),
+    };
+  },
+  mounted() {
+    // Update the time every second
+    setInterval(() => {
+      this.currentTime = new Date().toLocaleTimeString();
+    }, 1000);
+  },
+};
+</script>
+
+<style scoped>
+/* Fullscreen background */
+.background {
+  background-image: url('path-to-your-background-image.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Footer Taskbar */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.taskbar-item {
+  padding: 0 10px;
 }
 </style>
