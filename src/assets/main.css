@@ -1,0 +1,380 @@
+/* Ensure the screen fits on every screen without scrollbars */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+/* Import custom font */
+@font-face {
+    font-family: 'PortfolioFont';
+    src: url('../assets/fonts/portfoliofont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply the custom font globally */
+body {
+    font-family: 'PortfolioFont', sans-serif;
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition:
+        color 0.5s,
+        background-color 0.5s;
+    line-height: 1.6;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fullscreen background with overlay */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Ensure it fills the entire viewport */
+    background-image: url('../assets/img/bg.png'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 0; /* Set the background to the lowest layer */
+}
+
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(29, 119, 94, 0.9); /* Default color and opacity */
+    z-index: 1; /* Overlay is above the background image */
+}
+
+.background-logged-in::before {
+    background-color: rgba(76, 175, 79, 0); /* Transparent overlay when logged in */
+}
+
+.background > * {
+    position: relative;
+    z-index: 2; /* Ensure content inside the background is above the overlay */
+}
+
+/* Footer Taskbar */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #FFFFFF;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between left and right content */
+    padding: 0 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 3; /* Ensure the taskbar is above the background and overlay */
+}
+
+/* Taskbar Left Box */
+.taskbar-left-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #9B20B7; /* Same color as the center box */
+    border: 2px solid #8404a1; /* Optional: Add a border */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+    margin: 0 10px;
+}
+
+/* Taskbar Image */
+.taskbar-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensure the image fits within the box */
+    border-radius: 5px;
+}
+
+/* Taskbar Right */
+.taskbar-right {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-end; /* Align items to the right */
+}
+
+.taskbar-item {
+    padding: 0 20px;
+}
+
+/* Taskbar */
+.taskbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 1px black stroke */
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+  }
+  
+  .taskbar-icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .taskbar-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .taskbar-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .taskbar-icon.active {
+    background-color: #9b20b7; /* Highlight color for active app */
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+  }
+
+/* Centered Box */
+.center-box {
+    width: 250px;
+    height: 250px;
+    background-color: #9b20b7;
+    border: 5px solid #8404a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Centered Image */
+.center-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensure the image fits within the box */
+}
+
+/* Password Box */
+.password-box {
+    width: 250px;
+    height: 50px;
+    background-color: #9b20b7;
+    border: 5px solid #8404a1;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: calc(40% + 180px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Password Input Field */
+.password-input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+}
+
+.password-input::placeholder {
+    color: #e0e0e0; /* Placeholder text color */
+    opacity: 0.8;
+}
+
+/* Desktop Apps */
+.desktop {
+    display: flex;
+    flex-direction: column; /* Arrange icons vertically */
+    gap: 20px; /* Space between icons */
+    position: absolute;
+    top: 10%; /* Position near the top */
+    left: 5%; /* Position near the left */
+}
+
+/* App Icon */
+.app-icon {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.app-icon:hover {
+    transform: scale(1.1);
+}
+
+/* App Icon Image */
+.app-icon-image {
+    width: 60px; /* Slightly smaller image */
+    height: 60px; /* Slightly smaller image */
+    background-color: #9B20B7; /* Box background color */
+    border-radius: 10px;
+}
+
+/* App Icon Text */
+.app-icon-text {
+    margin-top: 5px; /* Space between the box and the text */
+    font-size: 12px;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 1px black stroke */
+    text-align: center;
+}
+
+/* Projects Window */
+.projects-window {
+  display: flex;
+  flex-direction: column; /* Stack sorting bar and grid vertically */
+  height: 100%;
+}
+
+/* Sorting Bar */
+.sorting-bar {
+  display: flex;
+  gap: 10px;
+  padding: 10px 20px; /* Match the padding of the top bar */
+  height: 56px; /* Match the height of the top bar */
+  background-color: #ddd;
+  border-bottom: 1px solid #ccc;
+  justify-content: flex-start; /* Align buttons to the left */
+  align-items: center; /* Center buttons vertically */
+  position: relative;
+  z-index: 2; /* Ensure it stays above other content */
+}
+
+/* Sorting Bar Buttons */
+.sorting-bar button {
+  padding: 5px 15px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+}
+
+.sorting-bar button:hover {
+  background-color: #ccc;
+}
+
+/* Projects Content */
+.projects-content {
+  display: flex;
+  flex-direction: row; /* Arrange grid and details side by side */
+  flex: 1; /* Take up remaining space below the sorting bar */
+  overflow: hidden;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns by default */
+  gap: 10px;
+  padding: 10px;
+  width: 70%; /* Take up 70% of the width */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Project Card */
+.projects-grid .project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.projects-grid .project-card:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.projects-grid .project-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.projects-grid .project-card.selected {
+  grid-column: span 2; /* Expand to 2 columns when selected */
+  background-color: #d0d0d0;
+}
+
+/* Project Details */
+.project-details {
+  width: 30%; /* Take up 30% of the width */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.project-details img {
+  width: 80%;
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.project-details h3 {
+  margin-bottom: 10px;
+}
+
+.project-details p {
+  margin-bottom: 20px;
+}
+
+.project-details .project-link {
+  padding: 10px 20px;
+  background-color: #9b20b7;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.project-details .project-link:hover {
+  background-color: #7a1793;
+}
