@@ -81,7 +81,7 @@
     </div>
 
     <!-- Taskbar -->
-    <footer class="taskbar">
+    <footer class="taskbar" v-if="loggedIn">
       <div class="taskbar-left-box">
         <img src="/src/assets/img/pfp.png" alt="Taskbar Icon" class="taskbar-image" />
       </div>
