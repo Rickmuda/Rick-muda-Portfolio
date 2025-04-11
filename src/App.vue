@@ -128,7 +128,20 @@
         <p>Welcome to the Projects app!</p>
       </div>
       <div v-if="activeApp === 'aboutMe'">
-        <p>Welcome to the About Me app!</p>
+        <div class="about-me">
+          <video
+            ref="aboutMeVideo"
+            class="about-me-video"
+            :src="aboutMeVideoSrc"
+            @timeupdate="updateVideoTime"
+            @ended="handleVideoEnd"
+          ></video>
+          <div class="video-controls">
+            <button @click="togglePlayPause">{{ isPlaying ? 'Pause' : 'Play' }}</button>
+            <input type="range" min="0" :max="videoDuration" step="0.1" v-model="videoCurrentTime" @input="seekVideo" />
+            <input type="range" min="0" max="1" step="0.1" v-model="volume" @input="adjustVolume" />
+          </div>
+        </div>
       </div>
       <div v-if="activeApp === 'artGallery'">
         <p>Welcome to the Art Gallery app!</p>
@@ -166,10 +179,15 @@ export default {
       loggedIn: false,
       passwordInput: "",
       currentDate: new Date().toLocaleDateString(),
-      currentTime: new Date().toLocaleTimeString(),
-      activeApp: null, // Tracks the currently open app
-      startMenuOpen: false, // Tracks whether the Start Menu is open
-      showHelpPopup: false, // Tracks the visibility of the help popup
+      currentTime: new Date().toLocaleTimeString(), // For the taskbar clock
+      activeApp: null,
+      startMenuOpen: false,
+      showHelpPopup: false,
+      aboutMeVideoSrc: "/src/assets/videos/templatevideo.mp4",
+      isPlaying: false,
+      videoDuration: 0,
+      videoCurrentTime: 0, // Renamed for the video
+      volume: 1,
     };
   },
   computed: {
@@ -214,10 +232,43 @@ export default {
     toggleHelpPopup() {
       this.showHelpPopup = !this.showHelpPopup;
     },
+    togglePlayPause() {
+      const video = this.$refs.aboutMeVideo;
+      if (video.paused) {
+        video.play();
+        this.isPlaying = true;
+      } else {
+        video.pause();
+        this.isPlaying = false;
+      }
+    },
+    updateVideoTime() {
+      const video = this.$refs.aboutMeVideo;
+      this.videoCurrentTime = video.currentTime; // Updated to use videoCurrentTime
+      this.videoDuration = video.duration;
+    },
+    seekVideo() {
+      const video = this.$refs.aboutMeVideo;
+      video.currentTime = this.videoCurrentTime; // Updated to use videoCurrentTime
+    },
+    adjustVolume() {
+      const video = this.$refs.aboutMeVideo;
+      video.volume = this.volume;
+    },
+    handleVideoEnd() {
+      const video = this.$refs.aboutMeVideo;
+      video.pause(); // Ensure the video stops
+      this.isPlaying = false; // Update the play state
+    },
+    formatTime(time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    },
   },
   mounted() {
     setInterval(() => {
-      this.currentTime = new Date().toLocaleTimeString();
+      this.currentTime = new Date().toLocaleTimeString(); // Taskbar clock
     }, 1000);
   },
 };

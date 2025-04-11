@@ -94,7 +94,7 @@
   .app-content {
     flex: 1;
     padding: 20px;
-    overflow-y: auto;
+    overflow: hidden;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }

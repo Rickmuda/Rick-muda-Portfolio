@@ -1,9 +1,9 @@
 /* Ensure the screen fits on every screen without scrollbars */
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden; /* Prevent scrollbars */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevent scrollbars */
 }
 
 /* Import custom font */
@@ -521,4 +521,85 @@ body {
 
 .help-popup-content button:hover {
   background-color: #7a1793;
+}
+
+/* About Me Window Styles */
+.about-me {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevent scrollbars */
+  height: 100%; /* Full height of the parent */
+  width: 100%; /* Full width of the parent */
+  position: relative; /* For positioning the control bar */
+}
+
+.about-me-video {
+  width: 100%; /* Full width of the parent */
+  height: 100%; /* Full height of the parent */
+  object-fit: cover; /* Ensure the video covers the entire container */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.app-content {
+  display: flex;
+  flex: 1; /* Take up all available space */
+  height: 100%; /* Full height of the app window */
+  width: 100%; /* Full width of the app window */
+  position: relative; /* For positioning child elements */
+}
+
+.video-controls {
+  position: absolute;
+  bottom: 0; /* Stick to the bottom of the window */
+  left: 0;
+  width: 100%; /* Full width of the window */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth fade-in/out */
+}
+
+.about-me:hover .video-controls {
+  opacity: 1; /* Show controls on hover */
+}
+
+.video-controls button {
+  font-family: 'PortfolioFont', sans-serif; /* Use the website's font */
+  font-size: 16px; /* Adjust the font size */
+  padding: 8px 16px; /* Add padding for better appearance */
+  background-color: rgb(110, 22, 129); /* Match the website's color scheme */
+  color: white; /* Text color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.video-controls button:hover {
+  background-color: #7a1793; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.video-controls input[type="range"] {
+  width: 150px; /* Adjust the width of the slider */
+}
+
+/* Ensure no scrollbars in the AppWindow */
+.AppWindow {
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+/* App Window */
+.app-window {
+  width: 90%;
+  height: 75%;
+  overflow: hidden; /* Prevent scrollbars inside the app window */
+  display: flex;
+  flex-direction: column;
 }
