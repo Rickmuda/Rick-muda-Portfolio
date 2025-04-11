@@ -39,7 +39,7 @@
     top: 47%;
     left: 50%;
     transform: translate(-50%, -50%);
-    overflow: hidden;
+    overflow: hidden; /* Prevent scrollbars for the entire window */
     display: flex;
     flex-direction: column;
     border: #000 solid 1px;
@@ -92,10 +92,37 @@
   
   /* App Content */
   .app-content {
-    flex: 1;
+    flex: 1; /* Take up the remaining space below the top bar */
     padding: 20px;
-    overflow: hidden;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #9b20b7 #f0f0f0; /* Thumb and track colors */
   }
+
+  /* Custom Scrollbar for WebKit Browsers */
+  .app-content::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+  }
+
+  .app-content::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+    border-radius: 5px; /* Rounded corners for the track */
+  }
+
+  .app-content::-webkit-scrollbar-thumb {
+    background: #9b20b7; /* Thumb color */
+    border-radius: 5px; /* Rounded corners for the thumb */
+    border: 2px solid #f0f0f0; /* Add padding around the thumb */
+  }
+
+  .app-content::-webkit-scrollbar-thumb:hover {
+    background: #7a1793; /* Darker shade on hover */
+  }
+  
+  .scrollable-app {
+    overflow: auto; /* Allow scrollbars for the art gallery */
+  }
+  
   </style>

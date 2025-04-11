@@ -123,6 +123,7 @@
       v-if="activeApp"
       :title="activeAppTitle"
       @close="closeApp"
+      :class="{ 'scrollable-app': activeApp === 'artGallery' }"
     >
       <div v-if="activeApp === 'projects'">
         <p>Welcome to the Projects app!</p>
@@ -209,7 +210,6 @@ export default {
         "/src/assets/imggallery/panels.jpg",
         "/src/assets/imggallery/pepe.png",
         "/src/assets/imggallery/room.jpg",
-        "/src/assets/imggallery/roomdark.png",
         "/src/assets/imggallery/vtuber.png",
       ],
       selectedImage: null, // For the modal
