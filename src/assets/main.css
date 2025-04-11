@@ -256,8 +256,8 @@ body {
 }
 
 .app-icon-image {
-  width: 60px; /* Icon size */
-  height: 60px; /* Icon size */
+  width: 50px;
+  height: 50px;
   background-color: #9B20B7; /* Match taskbar icon background color */
   background-size: 70px 70px;
   border-radius: 10px;
