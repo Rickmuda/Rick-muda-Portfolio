@@ -146,7 +146,21 @@
         </div>
       </div>
       <div v-if="activeApp === 'artGallery'">
-        <p>Welcome to the Art Gallery app!</p>
+        <div class="art-gallery">
+          <div class="gallery-grid">
+            <div
+              v-for="(image, index) in artGalleryImages"
+              :key="index"
+              class="gallery-item"
+              @click="openImage(image)"
+            >
+              <img :src="image" alt="Art" class="gallery-image" />
+            </div>
+          </div>
+          <div v-if="selectedImage" class="image-modal" @click="closeImage">
+            <img :src="selectedImage" alt="Selected Art" class="modal-image" />
+          </div>
+        </div>
       </div>
       <div v-if="activeApp === 'contact'">
         <p>Welcome to the Contact app!</p>
@@ -190,6 +204,15 @@ export default {
       videoDuration: 0,
       videoCurrentTime: 0, // Renamed for the video
       volume: 1,
+      artGalleryImages: [
+        "/src/assets/imggallery/fnf.png",
+        "/src/assets/imggallery/panels.jpg",
+        "/src/assets/imggallery/pepe.png",
+        "/src/assets/imggallery/room.jpg",
+        "/src/assets/imggallery/roomdark.png",
+        "/src/assets/imggallery/vtuber.png",
+      ],
+      selectedImage: null, // For the modal
     };
   },
   computed: {
@@ -266,6 +289,12 @@ export default {
       const minutes = Math.floor(time / 60);
       const seconds = Math.floor(time % 60);
       return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    },
+    openImage(image) {
+      this.selectedImage = image; // Open the modal with the selected image
+    },
+    closeImage() {
+      this.selectedImage = null; // Close the modal
     },
   },
   mounted() {
