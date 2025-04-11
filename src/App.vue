@@ -174,8 +174,13 @@
         <p>Welcome to the Mini Game app!</p>
       </div>
       <div v-if="activeApp === 'settings'">
-        <p>Welcome to the Settings menu!</p>
-        <p>Here you can configure your preferences.</p>
+        <div class="settings">
+          <label class="dark-mode-toggle">
+            <input type="checkbox" v-model="darkMode" @change="toggleDarkMode" />
+            <span class="slider"></span>
+            <span class="label-text">Dark Mode</span>
+          </label>
+        </div>
       </div>
     </AppWindow>
   </div>
@@ -219,6 +224,7 @@ export default {
         "/src/assets/imggallery/vtuber.png",
       ],
       selectedImage: null, // For the modal
+      darkMode: false, // Track the dark mode state
     };
   },
   computed: {
@@ -302,8 +308,26 @@ export default {
     closeImage() {
       this.selectedImage = null; // Close the modal
     },
+    toggleDarkMode() {
+      // Update the background image based on the dark mode state
+      const background = document.querySelector(".background");
+      if (this.darkMode) {
+        background.style.backgroundImage = "url('/src/assets/imggallery/roomdark.png')";
+      } else {
+        background.style.backgroundImage = "url('/src/assets/imggallery/room.jpg')";
+      }
+    },
+    applyDarkModeBasedOnTime() {
+      const currentHour = new Date().getHours();
+      this.darkMode = currentHour >= 18; // Enable dark mode if it's 6 PM or later
+      this.toggleDarkMode(); // Apply the background change
+    },
   },
   mounted() {
+    // Automatically apply dark mode based on the time
+    this.applyDarkModeBasedOnTime();
+
+    // Update the taskbar clock every second
     setInterval(() => {
       this.currentTime = new Date().toLocaleTimeString(); // Taskbar clock
     }, 1000);
@@ -312,17 +336,5 @@ export default {
 </script>
 
 <style>
-/* Commit Hash Message */
-.commit-hash-message {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 12px;
-  font-family: 'PortfolioFont', sans-serif;
-  z-index: 10;
-}
+
 </style>

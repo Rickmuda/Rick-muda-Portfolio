@@ -670,3 +670,65 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
+
+/* Commit Hash Message */
+.commit-hash-message {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: 'PortfolioFont', sans-serif;
+  z-index: 10;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'PortfolioFont', sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+.dark-mode-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.dark-mode-toggle .slider {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode-toggle .slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked + .slider {
+  background-color:rgb(73, 14, 86);
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.dark-mode-toggle .label-text {
+  color: white;
+}
