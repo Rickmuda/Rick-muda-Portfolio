@@ -473,7 +473,7 @@ body {
   left: 5%; /* 5% margin from the left */
   width: 40px;
   height: 40px;
-  background-color: #9b20b7;
+  background-color:rgba(155, 32, 183, 0.3);
   color: white;
   border: none;
   border-radius: 50%;
