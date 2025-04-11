@@ -27,3 +27,6 @@ npm run dev
 ```sh
 npm run build
 ```
+#### Open 2 terminals; 
+- "node server.js" to run the back-end.
+- "npm run dev" to run the front-end.

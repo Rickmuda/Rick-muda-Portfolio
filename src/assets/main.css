@@ -828,3 +828,84 @@ sorting-bar button:hover {
   transform: scale(1.2);
   color: #2d0a35;
 }
+
+/* Contact Window */
+.contact-window {
+  display: flex;
+  height: 100%;
+}
+
+/* Left Side: Contact Form */
+.contact-left {
+  width: 75%; /* 75% of the window width */
+  height: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Right Side: Send Button */
+.contact-right {
+  width: 25%; /* 25% of the window width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9b20b7; /* Match the site's color scheme */
+}
+
+/* Send Button */
+.send-button {
+  padding: 15px 30px;
+  background-color: #7a1793;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'PortfolioFont', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.send-button:hover {
+  background-color: #551164;
+  transform: scale(1.05);
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'PortfolioFont', sans-serif;
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #9b20b7;
+  box-shadow: 0 0 5px rgba(155, 32, 183, 0.5);
+}
