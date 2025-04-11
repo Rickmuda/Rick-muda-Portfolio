@@ -48,7 +48,7 @@
           </div>
           <div class="app-icon-text">Socials</div>
         </div>
-        
+
         <div class="app-icon" @click="openApp('artGallery')">
           <div class="app-icon-image">
             <font-awesome-icon icon="palette" class="app-icon-inner" />
@@ -124,8 +124,8 @@
     >
       <div class="start-menu-topbar">Start Menu</div>
       <div class="start-menu-content">
-        <p>Welcome to the Start Menu!</p>
-        <p>Here you can access various features.</p>
+        <p>Instert text here</p>
+        <p>Commit Hash: {{ commitSummary }}</p>
       </div>
     </div>
 
