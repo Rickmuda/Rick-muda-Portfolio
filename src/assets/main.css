@@ -532,7 +532,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 100%; /* Full height of the parent */
+  height: 90%; /* Full height of the parent */
   width: 100%; /* Full width of the parent */
   position: relative;
 }
@@ -552,6 +552,7 @@ body {
   max-width: 1050px; /* Ensure the video fits within the container */
   max-height: 100%; /* Ensure the video fits within the container */
   object-fit: contain; /* Maintain aspect ratio while fitting */
+  margin: -20px;
 }
 
 /* Video Controls */
