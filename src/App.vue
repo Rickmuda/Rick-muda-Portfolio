@@ -129,13 +129,15 @@
       </div>
       <div v-if="activeApp === 'aboutMe'">
         <div class="about-me">
-          <video
-            ref="aboutMeVideo"
-            class="about-me-video"
-            :src="aboutMeVideoSrc"
-            @timeupdate="updateVideoTime"
-            @ended="handleVideoEnd"
-          ></video>
+          <div class="video-container">
+            <video
+              ref="aboutMeVideo"
+              class="about-me-video"
+              :src="aboutMeVideoSrc"
+              @timeupdate="updateVideoTime"
+              @ended="handleVideoEnd"
+            ></video>
+          </div>
           <div class="video-controls">
             <button @click="togglePlayPause">{{ isPlaying ? 'Pause' : 'Play' }}</button>
             <input type="range" min="0" :max="videoDuration" step="0.1" v-model="videoCurrentTime" @input="seekVideo" />
