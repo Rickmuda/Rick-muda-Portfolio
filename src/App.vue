@@ -15,23 +15,10 @@
             v-model="passwordInput"
           />
         </div>
-        <button class="help-button" @click="toggleHelpPopup">?</button>
-        <!-- Commit Hash and Summary Message -->
-        <div class="commit-hash-message">
-          Version : {{ commitSummary }}
-        </div>
-      </div>
-
-      <!-- Help Popup -->
-      <div v-if="showHelpPopup" class="help-popup">
-        <div class="help-popup-content">
-          <p>Fun fact, this is my first vue.js project and I made this in a week.</p>
-          <button @click="toggleHelpPopup">Close</button>
-        </div>
       </div>
 
       <!-- Desktop -->
-      <div v-if="loggedIn" class="desktop">
+      <div v-else class="desktop">
         <!-- App Icons -->
         <div class="app-icon" @click="openApp('projects')">
           <div class="app-icon-image">
@@ -69,6 +56,12 @@
           </div>
           <div class="app-icon-text">Settings</div>
         </div>
+        <div class="app-icon" @click="openApp('socials')">
+          <div class="app-icon-image">
+            <font-awesome-icon icon="share-nodes" class="app-icon-inner" />
+          </div>
+          <div class="app-icon-text">Socials</div>
+        </div>
       </div>
     </div>
 
@@ -100,6 +93,9 @@
         </div>
         <div class="taskbar-icon" @click="openApp('settings')">
           <font-awesome-icon icon="cog" />
+        </div>
+        <div class="taskbar-icon" @click="openApp('socials')">
+          <font-awesome-icon icon="share-nodes" />
         </div>
       </div>
       <div class="taskbar-right">
@@ -211,6 +207,37 @@
           </label>
         </div>
       </div>
+      <div v-if="activeApp === 'socials'" class="socials-window">
+        <div class="socials-icons">
+          <a href="https://twitter.com/Rick_rickerd" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-twitter" />
+          </a>
+          <a href="https://www.instagram.com/rick_muda/" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-instagram" />
+          </a>
+          <a href="https://www.linkedin.com/in/rick-ambergen-30b73a29a/" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-linkedin" />
+          </a>
+          <a href="https://github.com/MudaIsCarry" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-github" />
+          </a>
+          <a href="https://www.youtube.com/channel/UCHSimkVEkXs0Xp1U4nInA0w" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-youtube" />
+          </a>
+          <a href="https://www.tiktok.com/@rick_muda" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-tiktok" />
+          </a>
+          <a href="https://open.spotify.com/user/rick_rickerd_rickman" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-spotify" />
+          </a>
+          <a href="https://steamcommunity.com/id/Mudaiscarry/" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-steam" />
+          </a>
+          <a href="https://codepen.io/mudaiscarry" target="_blank" class="social-icon">
+            <font-awesome-icon icon="fa-brands fa-codepen" />
+          </a>
+        </div>
+      </div>
     </AppWindow>
   </div>
 </template>
@@ -218,11 +245,12 @@
 <script>
 import AppWindow from "./components/AppWindow.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog, faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faTwitter, faInstagram, faLinkedin, faGithub, faYoutube, faTiktok, faSpotify, faSteam, faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // Add icons to the library
-library.add(faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog);
+library.add(faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog, faShareNodes, faFacebook, faTwitter, faInstagram, faLinkedin, faGithub, faYoutube, faTiktok, faSpotify, faSteam, faCodepen);
 
 export default {
   components: {
@@ -298,6 +326,7 @@ export default {
         contact: "Contact",
         miniGame: "Mini Game",
         settings: "Settings",
+        socials: "Socials",
       };
       return titles[this.activeApp] || "No App Selected";
     },

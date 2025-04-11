@@ -321,7 +321,7 @@ body {
   border-radius: 5px;
 }
 
-.sorting-bar button:hover {
+sorting-bar button:hover {
   background-color: #ccc;
 }
 
@@ -553,10 +553,15 @@ body {
 
 /* About Me Video */
 .about-me-video {
-  max-width: 1050px; /* Ensure the video fits within the container */
-  max-height: 100%; /* Ensure the video fits within the container */
+  width: 100%; /* Full width of the container */
+  max-width: 800px; /* Limit the maximum width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 90%; /* Ensure it doesn't exceed the container height */
   object-fit: contain; /* Maintain aspect ratio while fitting */
-  margin: -20px;
+  border: 5px solid #9b20b7; /* Add a border matching the site's color scheme */
+  border-radius: 10px; /* Rounded corners for a polished look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+  margin: 0 auto; /* Center the video horizontally */
 }
 
 /* Video Controls */
@@ -565,19 +570,81 @@ body {
   bottom: 10px; /* Slightly above the bottom of the window */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for centering */
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background-color: rgba(155, 32, 183, 0.8); /* Match site color scheme */
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 5px; /* Rounded corners for the controls bar */
+  gap: 15px; /* Space between controls */
+  padding: 10px 15px; /* Add padding for a cleaner look */
+  border-radius: 10px; /* Rounded corners for the controls bar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
   opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s ease; /* Smooth fade-in/out */
+  transition: opacity 0.3s ease, transform 0.2s ease; /* Smooth fade-in/out and hover effect */
 }
 
 .about-me:hover .video-controls {
   opacity: 1; /* Show controls on hover */
+  transform: translateX(-50%) scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Video Control Buttons */
+.video-controls button {
+  background-color: #7a1793; /* Match hover color of other elements */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: 'PortfolioFont', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.video-controls button:hover {
+  background-color: #9b20b7; /* Slightly lighter shade on hover */
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Video Control Sliders */
+.video-controls input[type="range"] {
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none;
+  width: 100px; /* Adjust slider width */
+  height: 6px;
+  background: #e0e0e0; /* Track color */
+  border-radius: 5px;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.video-controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #9b20b7; /* Thumb color */
+  border-radius: 50%; /* Circular thumb */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.video-controls input[type="range"]::-webkit-slider-thumb:hover {
+  background: #7a1793; /* Darker shade on hover */
+  transform: scale(1.2); /* Slight zoom on hover */
+}
+
+.video-controls input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #9b20b7; /* Thumb color */
+  border-radius: 50%; /* Circular thumb */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.video-controls input[type="range"]::-moz-range-thumb:hover {
+  background: #7a1793; /* Darker shade on hover */
+  transform: scale(1.2); /* Slight zoom on hover */
 }
 
 /* Ensure no scrollbars in the AppWindow */
@@ -735,4 +802,29 @@ body {
 
 .dark-mode-toggle .label-text {
   color: white;
+}
+
+/* Socials Window */
+.socials-window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.socials-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icon {
+  font-size: 150px;
+  margin: 20px;
+  color: white;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: #2d0a35;
 }
