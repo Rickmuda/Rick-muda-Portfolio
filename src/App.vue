@@ -173,7 +173,8 @@ export default {
   },
   methods: {
     openApp(appName) {
-      this.activeApp = appName; // Set the active app
+      // Toggle the app window: close if already active, open otherwise
+      this.activeApp = this.activeApp === appName ? null : appName;
     },
     closeApp() {
       this.activeApp = null; // Close the active app
