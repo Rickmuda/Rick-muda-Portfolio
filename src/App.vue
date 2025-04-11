@@ -231,7 +231,7 @@ export default {
   },
   data() {
     return {
-      loggedIn: false,
+      loggedIn: false, // Track login state
       passwordInput: "",
       currentDate: new Date().toLocaleDateString(),
       currentTime: new Date().toLocaleTimeString(), // For the taskbar clock
@@ -257,34 +257,34 @@ export default {
       selectedProject: null, // Track the selected project
       projects: [
         {
-          title: "Project 1",
-          image: "/src/assets/imggallery/fnf.png",
-          description: "This is a description of Project 1.",
-          link: "https://example.com/project1",
+          title: "Unnamed weather app",
+          image: "/src/assets/img/unnamed-weather-app.png",
+          description: "A small project I had to do for school where we had to make use of an API.",
+          link: "/404", // Link to the 404 page
         },
         {
-          title: "Project 2",
-          image: "/src/assets/imggallery/panels.jpg",
-          description: "This is a description of Project 2.",
-          link: "https://example.com/project2",
+          title: "Annoying webpage",
+          image: "/src/assets/img/irritante-webpagina.png",
+          description: "This was the second project of my first year where I had to work in pairs and make a webpage as annoying as possible.",
+          link: "/404", // Link to the 404 page
         },
         {
-          title: "Project 3",
-          image: "/src/assets/imggallery/pepe.png",
-          description: "This is a description of Project 3.",
-          link: "https://example.com/project3",
+          title: "Whack A Mom",
+          image: "/src/assets/img/whack-a-mom.png",
+          description: "For the third project of my first year I had to make a game using HTML, CSS and JS.",
+          link: "/404", // Link to the 404 page
         },
         {
-          title: "Project 4",
-          image: "/src/assets/imggallery/room.jpg",
-          description: "This is a description of Project 4.",
-          link: "https://example.com/project4",
+          title: "Gym list",
+          image: "/src/assets/img/gym-list.png",
+          description: "This project I made was for myself to keep track of my gym progress.",
+          link: "/404", // Link to the 404 page
         },
         {
-          title: "Project 5",
-          image: "/src/assets/imggallery/vtuber.png",
-          description: "This is a description of Project 5.",
-          link: "https://example.com/project5",
+          title: "One page website",
+          image: "/src/assets/img/one-pager.png",
+          description: "For the first of my first year I had to recreate a one-page website using HTML and CSS.",
+          link: "/404", // Link to the 404 page
         },
       ],
     };
@@ -307,6 +307,7 @@ export default {
       // Check if the password input has 6 or more characters
       if (newValue.length >= 6) {
         this.loggedIn = true; // Log the user in
+        localStorage.setItem("loggedIn", "true"); // Save login state
         this.passwordInput = ""; // Clear the input field
       }
     },
@@ -387,8 +388,19 @@ export default {
     selectProject(project) {
       this.selectedProject = this.selectedProject === project ? null : project;
     },
+    checkLoginState() {
+      // Retrieve login state from localStorage
+      const savedLoginState = localStorage.getItem("loggedIn");
+      this.loggedIn = savedLoginState === "true";
+    },
+    goToProject(link) {
+      this.$router.push(link); // Navigate to the specified route
+    },
   },
   mounted() {
+    // Check login state on app load
+    this.checkLoginState();
+
     // Automatically apply dark mode based on the time
     this.applyDarkModeBasedOnTime();
 
