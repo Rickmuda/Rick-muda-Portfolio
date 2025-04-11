@@ -129,8 +129,37 @@
       @close="closeApp"
       :class="{ 'scrollable-app': activeApp === 'artGallery' }"
     >
-      <div v-if="activeApp === 'projects'">
-        <p>Welcome to the Projects app!</p>
+      <div v-if="activeApp === 'projects'" class="projects-window">
+        <!-- Projects Grid -->
+        <div
+          class="projects-grid"
+          :class="{ 'grid-expanded': selectedProject }"
+        >
+          <div
+            v-for="(project, index) in projects"
+            :key="index"
+            class="project-card"
+            :class="{ selected: selectedProject === project }"
+            @click="selectProject(project)"
+          >
+            <img :src="project.image" alt="Project Image" />
+            <p>{{ project.title }}</p>
+          </div>
+        </div>
+
+        <!-- Project Details -->
+        <div v-if="selectedProject" class="project-details">
+          <img :src="selectedProject.image" alt="Selected Project Image" />
+          <h3>{{ selectedProject.title }}</h3>
+          <p>{{ selectedProject.description }}</p>
+          <a
+            :href="selectedProject.link"
+            target="_blank"
+            class="project-link"
+          >
+            Go to Project
+          </a>
+        </div>
       </div>
       <div v-if="activeApp === 'aboutMe'">
         <div class="about-me">
@@ -225,6 +254,39 @@ export default {
       ],
       selectedImage: null, // For the modal
       darkMode: false, // Track the dark mode state
+      selectedProject: null, // Track the selected project
+      projects: [
+        {
+          title: "Project 1",
+          image: "/src/assets/imggallery/fnf.png",
+          description: "This is a description of Project 1.",
+          link: "https://example.com/project1",
+        },
+        {
+          title: "Project 2",
+          image: "/src/assets/imggallery/panels.jpg",
+          description: "This is a description of Project 2.",
+          link: "https://example.com/project2",
+        },
+        {
+          title: "Project 3",
+          image: "/src/assets/imggallery/pepe.png",
+          description: "This is a description of Project 3.",
+          link: "https://example.com/project3",
+        },
+        {
+          title: "Project 4",
+          image: "/src/assets/imggallery/room.jpg",
+          description: "This is a description of Project 4.",
+          link: "https://example.com/project4",
+        },
+        {
+          title: "Project 5",
+          image: "/src/assets/imggallery/vtuber.png",
+          description: "This is a description of Project 5.",
+          link: "https://example.com/project5",
+        },
+      ],
     };
   },
   computed: {
@@ -321,6 +383,9 @@ export default {
       const currentHour = new Date().getHours();
       this.darkMode = currentHour >= 18; // Enable dark mode if it's 6 PM or later
       this.toggleDarkMode(); // Apply the background change
+    },
+    selectProject(project) {
+      this.selectedProject = this.selectedProject === project ? null : project;
     },
   },
   mounted() {

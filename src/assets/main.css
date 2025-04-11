@@ -293,7 +293,7 @@ body {
 /* Projects Window */
 .projects-window {
   display: flex;
-  flex-direction: column; /* Stack sorting bar and grid vertically */
+  flex-direction: row; /* Arrange grid and details side by side */
   height: 100%;
 }
 
@@ -336,17 +336,19 @@ body {
 /* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns by default */
-  gap: 10px;
-  padding: 10px;
-  width: 70%; /* Take up 70% of the width */
-  overflow-y: auto; /* Allow scrolling if content overflows */
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #9b20b7 #f0f0f0; /* Thumb and track colors */
+  grid-template-columns: repeat(4, 1fr); /* 4 columns by default */
+  gap: 15px;
+  padding: 20px;
+  width: 100%; /* Full width when no project is selected */
+  transition: width 0.3s ease;
+}
+
+.projects-grid.grid-expanded {
+  width: 70%; /* Shrink to 70% when a project is selected */
 }
 
 /* Project Card */
-.projects-grid .project-card {
+.project-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -359,19 +361,21 @@ body {
   transition: background-color 0.3s, transform 0.2s;
 }
 
-.projects-grid .project-card:hover {
+.project-card:hover {
   background-color: #e0e0e0;
   transform: scale(1.05);
 }
 
-.projects-grid .project-card img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 5px;
+.project-card img {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
-.projects-grid .project-card.selected {
-  grid-column: span 2; /* Expand to 2 columns when selected */
+.project-card.selected {
+  grid-column: span 1; /* Expand to 2 columns when selected */
   background-color: #d0d0d0;
 }
 
