@@ -59,12 +59,22 @@
           </div>
           <div class="app-icon-text">Mini Game</div>
         </div>
+        <div class="app-icon" @click="openApp('settings')">
+          <div class="app-icon-image">
+            <font-awesome-icon icon="cog" class="app-icon-inner" />
+          </div>
+          <div class="app-icon-text">Settings</div>
+        </div>
       </div>
     </div>
 
     <!-- Taskbar -->
     <div v-if="loggedIn" class="taskbar">
-      <div class="taskbar-left-box" @click="toggleStartMenu">
+      <div
+        class="taskbar-left-box"
+        @mouseover="openStartMenu"
+        @mouseleave="closeStartMenu"
+      >
         <img src="/src/assets/img/pfp.png" alt="Profile Picture" class="taskbar-image" />
       </div>
       <div class="taskbar-icons">
@@ -84,6 +94,9 @@
         <div class="taskbar-icon" @click="openApp('miniGame')">
           <font-awesome-icon icon="gamepad" />
         </div>
+        <div class="taskbar-icon" @click="openApp('settings')">
+          <font-awesome-icon icon="cog" />
+        </div>
       </div>
       <div class="taskbar-right">
         <div class="taskbar-item">{{ currentTime }}</div>
@@ -92,7 +105,12 @@
     </div>
 
     <!-- Start Menu -->
-    <div v-if="startMenuOpen" class="start-menu">
+    <div
+      v-if="startMenuOpen"
+      class="start-menu"
+      @mouseover="keepStartMenuOpen"
+      @mouseleave="closeStartMenu"
+    >
       <div class="start-menu-topbar">Start Menu</div>
       <div class="start-menu-content">
         <p>Welcome to the Start Menu!</p>
@@ -121,6 +139,10 @@
       <div v-if="activeApp === 'miniGame'">
         <p>Welcome to the Mini Game app!</p>
       </div>
+      <div v-if="activeApp === 'settings'">
+        <p>Welcome to the Settings menu!</p>
+        <p>Here you can configure your preferences.</p>
+      </div>
     </AppWindow>
   </div>
 </template>
@@ -128,11 +150,11 @@
 <script>
 import AppWindow from "./components/AppWindow.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // Add icons to the library
-library.add(faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars);
+library.add(faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog);
 
 export default {
   components: {
@@ -158,8 +180,9 @@ export default {
         artGallery: "Art Gallery",
         contact: "Contact",
         miniGame: "Mini Game",
+        settings: "Settings",
       };
-      return titles[this.activeApp] || "App";
+      return titles[this.activeApp] || "No App Selected";
     },
   },
   watch: {
@@ -179,8 +202,14 @@ export default {
     closeApp() {
       this.activeApp = null; // Close the active app
     },
-    toggleStartMenu() {
-      this.startMenuOpen = !this.startMenuOpen; // Toggle the Start Menu
+    openStartMenu() {
+      this.startMenuOpen = true; // Open the Start Menu
+    },
+    closeStartMenu() {
+      this.startMenuOpen = false; // Close the Start Menu
+    },
+    keepStartMenuOpen() {
+      this.startMenuOpen = true; // Keep the Start Menu open when hovering over it
     },
     toggleHelpPopup() {
       this.showHelpPopup = !this.showHelpPopup;
