@@ -79,13 +79,21 @@
         <p>Mini Game Content</p>
       </AppWindow>
 
-      <!-- Start Menu -->
-      <div
-        v-if="startMenuOpen"
-        class="start-menu"
-      >
-        <p>Start Menu Content</p>
-      </div>
+<!-- Start Menu -->
+<div
+  v-if="startMenuOpen"
+  :class="['start-menu', { active: startMenuOpen }]"
+>
+  <!-- Top Bar -->
+  <div class="start-menu-topbar">
+    Start Menu
+  </div>
+
+  <!-- Content -->
+  <div class="start-menu-content">
+    <p>Start Menu Content</p>
+  </div>
+</div>
     </div>
 
     <!-- Taskbar -->

@@ -74,13 +74,14 @@ body {
   bottom: 0;
   width: 100%;
   height: 70px;
-  background-color: #FFFFFF;
-  color: black;
+  background-color: #6c6c6c;
+  color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   justify-content: space-between; /* Space between left and right content */
   padding: 0 10px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 1px black stroke */
   z-index: 3; /* Ensure the taskbar is above the background and overlay */
 }
 
@@ -120,11 +121,13 @@ body {
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.3s ease;
+  background-color: #9B20B7; /* Highlight color for active app */
+  border-radius: 10px;
 }
 
 .taskbar-icon img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
 }
 
@@ -150,6 +153,7 @@ body {
   padding: 0 20px;
   font-size: 14px;
 }
+
 /* Centered Box */
 .center-box {
     width: 250px;
@@ -163,6 +167,7 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 15px;
 }
 
 /* Centered Image */
@@ -178,7 +183,7 @@ body {
     height: 50px;
     background-color: #9b20b7;
     border: 5px solid #8404a1;
-    border-radius: 5px;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,6 +203,8 @@ body {
     font-size: 16px;
     text-align: center;
     outline: none;
+    font-family: 'PortfolioFont', sans-serif;
+    font-size: 15px;
 }
 
 .password-input::placeholder {
@@ -234,7 +241,8 @@ body {
     width: 60px; /* Slightly smaller image */
     height: 60px; /* Slightly smaller image */
     background-color: #9B20B7; /* Box background color */
-    border-radius: 10px;
+    background-size: 70px 70px; /* Adjust size to fit the image */
+    border-radius: 15px;
 }
 
 /* App Icon Text */
@@ -375,11 +383,46 @@ body {
   position: absolute;
   bottom: 60px; /* Position above the taskbar */
   left: 10px; /* Align with the PFP in the taskbar */
-  width: 200px; /* Smaller width */
-  background-color: #ffffff;
-  border: 1px solid #ccc;
+  width: 250px; /* Keep the width the same */
+  height: 60%; /* Set the height to 60% of the viewport */
+  background-color: #9B20B7; /* Match the app icon background color */
+  border: 1px solid #000000; /* Match the border color */
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Add scrolling if content overflows */
+  display: flex;
+  flex-direction: column; /* Stack top bar and content vertically */
+  border: #000 solid 1px;
+}
+
+/* Start Menu Top Bar */
+.start-menu-topbar {
+  height: 40px; /* Height of the top bar */
+  background-color: rgba(217, 217, 217, 1); /* Darker shade for the top bar */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-top-left-radius: 5px; /* Match the rounded corners of the start menu */
+  border-top-right-radius: 5px;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; /* 1px black stroke */
+  border: #000 solid 1px;
+}
+
+/* Start Menu Content */
+.start-menu-content {
+  flex: 1; /* Take up the remaining space below the top bar */
   padding: 10px;
-  z-index: 10; /* Ensure it appears above other elements */
+  color: white; /* Match the text color */
+  font-size: 14px;
+  overflow-y: auto; /* Add scrolling if content overflows */
+}
+
+/* Start Menu Active State */
+.start-menu.active {
+  transform: scale(1.05); /* Slightly enlarge the start menu */
+  transition: transform 0.2s ease; /* Smooth transition */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Add a stronger shadow when active */
 }

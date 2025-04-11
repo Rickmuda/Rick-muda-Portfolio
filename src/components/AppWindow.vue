@@ -42,6 +42,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    border: #000 solid 1px;
   }
   
   /* Top Bar */
@@ -56,6 +57,7 @@
     box-sizing: border-box;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    border: #000 solid 2px;
   }
   
   /* Title Text */
