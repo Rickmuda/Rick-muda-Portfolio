@@ -16,6 +16,10 @@
           />
         </div>
         <button class="help-button" @click="toggleHelpPopup">?</button>
+        <!-- Commit Hash and Summary Message -->
+        <div class="commit-hash-message">
+          Version : {{ commitSummary }}
+        </div>
       </div>
 
       <!-- Help Popup -->
@@ -200,6 +204,8 @@ export default {
       activeApp: null,
       startMenuOpen: false,
       showHelpPopup: false,
+      commitHash: __COMMIT_HASH__, // Injected commit hash
+      commitSummary: __COMMIT_SUMMARY__, // Injected commit summary
       aboutMeVideoSrc: "/src/assets/videos/templatevideo.mp4",
       isPlaying: false,
       videoDuration: 0,
@@ -304,3 +310,19 @@ export default {
   },
 };
 </script>
+
+<style>
+/* Commit Hash Message */
+.commit-hash-message {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: 'PortfolioFont', sans-serif;
+  z-index: 10;
+}
+</style>
