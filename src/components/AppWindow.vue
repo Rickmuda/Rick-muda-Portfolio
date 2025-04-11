@@ -32,7 +32,7 @@
   /* Main App Window */
   .app-window {
     width: 90%;
-    height: 875px;
+    height: 75%;
     background: rgba(155, 32, 183, 1);
     border-radius: 15px;
     position: absolute;

@@ -15,10 +15,19 @@
             v-model="passwordInput"
           />
         </div>
+        <button class="help-button" @click="toggleHelpPopup">?</button>
+      </div>
+
+      <!-- Help Popup -->
+      <div v-if="showHelpPopup" class="help-popup">
+        <div class="help-popup-content">
+          <p>Fun fact, this is my first vue.js project and I made this in a week.</p>
+          <button @click="toggleHelpPopup">Close</button>
+        </div>
       </div>
 
       <!-- Desktop -->
-      <div v-else class="desktop">
+      <div v-if="loggedIn" class="desktop">
         <!-- App Icons -->
         <div class="app-icon" @click="openApp('projects')">
           <img src="/src/assets/img/prj.png" alt="Projects" class="app-icon-image" />
@@ -41,108 +50,36 @@
           <div class="app-icon-text">Mini Game</div>
         </div>
       </div>
-
-      <!-- App Windows -->
-      <AppWindow
-        v-if="activeApp === 'projects'"
-        title="Projects"
-        @close="closeApp"
-      >
-        <p>Projects Content</p>
-      </AppWindow>
-      <AppWindow
-        v-if="activeApp === 'aboutMe'"
-        title="About Me"
-        @close="closeApp"
-      >
-        <p>About Me Content</p>
-      </AppWindow>
-      <AppWindow
-        v-if="activeApp === 'artGallery'"
-        title="Art Gallery"
-        @close="closeApp"
-      >
-        <p>Art Gallery Content</p>
-      </AppWindow>
-      <AppWindow
-        v-if="activeApp === 'contact'"
-        title="Contact"
-        @close="closeApp"
-      >
-        <p>Contact Content</p>
-      </AppWindow>
-      <AppWindow
-        v-if="activeApp === 'miniGame'"
-        title="Mini Game"
-        @close="closeApp"
-      >
-        <p>Mini Game Content</p>
-      </AppWindow>
-
-<!-- Start Menu -->
-<div
-  v-if="startMenuOpen"
-  :class="['start-menu', { active: startMenuOpen }]"
->
-  <!-- Top Bar -->
-  <div class="start-menu-topbar">
-    Start Menu
-  </div>
-
-  <!-- Content -->
-  <div class="start-menu-content">
-    <p>Start Menu Content</p>
-  </div>
-</div>
     </div>
 
     <!-- Taskbar -->
-    <footer class="taskbar" v-if="loggedIn">
-      <div class="taskbar-left-box" @click="toggleStartMenu">
-        <img src="/src/assets/img/pfp.png" alt="Taskbar Icon" class="taskbar-image" />
+    <div v-if="loggedIn" class="taskbar">
+      <div class="taskbar-left-box">
+        <img src="/src/assets/img/pfp.png" alt="Profile Picture" class="taskbar-image" />
       </div>
       <div class="taskbar-icons">
-        <div
-          class="taskbar-icon"
-          :class="{ active: activeApp === 'projects' }"
-          @click="openApp('projects')"
-        >
+        <!-- Add desktop icons as taskbar icons -->
+        <div class="taskbar-icon" @click="openApp('projects')">
           <img src="/src/assets/img/prj.png" alt="Projects" />
         </div>
-        <div
-          class="taskbar-icon"
-          :class="{ active: activeApp === 'aboutMe' }"
-          @click="openApp('aboutMe')"
-        >
+        <div class="taskbar-icon" @click="openApp('aboutMe')">
           <img src="/src/assets/img/abt.png" alt="About Me" />
         </div>
-        <div
-          class="taskbar-icon"
-          :class="{ active: activeApp === 'artGallery' }"
-          @click="openApp('artGallery')"
-        >
+        <div class="taskbar-icon" @click="openApp('artGallery')">
           <img src="/src/assets/img/art.png" alt="Art Gallery" />
         </div>
-        <div
-          class="taskbar-icon"
-          :class="{ active: activeApp === 'contact' }"
-          @click="openApp('contact')"
-        >
+        <div class="taskbar-icon" @click="openApp('contact')">
           <img src="/src/assets/img/cnc.png" alt="Contact" />
         </div>
-        <div
-          class="taskbar-icon"
-          :class="{ active: activeApp === 'miniGame' }"
-          @click="openApp('miniGame')"
-        >
+        <div class="taskbar-icon" @click="openApp('miniGame')">
           <img src="/src/assets/img/game.png" alt="Mini Game" />
         </div>
       </div>
       <div class="taskbar-right">
-        <div class="taskbar-item">{{ currentDate }}</div>
         <div class="taskbar-item">{{ currentTime }}</div>
+        <div class="taskbar-item">{{ currentDate }}</div>
       </div>
-    </footer>
+    </div>
   </div>
 </template>
 
@@ -161,6 +98,7 @@ export default {
       currentTime: new Date().toLocaleTimeString(),
       activeApp: null, // Tracks the currently open app
       startMenuOpen: false, // Tracks whether the Start Menu is open
+      showHelpPopup: false, // Tracks the visibility of the help popup
     };
   },
   watch: {
@@ -181,6 +119,9 @@ export default {
     },
     toggleStartMenu() {
       this.startMenuOpen = !this.startMenuOpen; // Toggle the Start Menu
+    },
+    toggleHelpPopup() {
+      this.showHelpPopup = !this.showHelpPopup;
     },
   },
   mounted() {
