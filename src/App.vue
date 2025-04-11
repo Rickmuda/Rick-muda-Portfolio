@@ -54,7 +54,7 @@
 
     <!-- Taskbar -->
     <div v-if="loggedIn" class="taskbar">
-      <div class="taskbar-left-box">
+      <div class="taskbar-left-box" @click="toggleStartMenu">
         <img src="/src/assets/img/pfp.png" alt="Profile Picture" class="taskbar-image" />
       </div>
       <div class="taskbar-icons">
@@ -80,6 +80,38 @@
         <div class="taskbar-item">{{ currentDate }}</div>
       </div>
     </div>
+
+    <!-- Start Menu -->
+    <div v-if="startMenuOpen" class="start-menu">
+      <div class="start-menu-topbar">Start Menu</div>
+      <div class="start-menu-content">
+        <p>Welcome to the Start Menu!</p>
+        <p>Here you can access various features.</p>
+      </div>
+    </div>
+
+    <!-- App Window -->
+    <AppWindow
+      v-if="activeApp"
+      :title="activeAppTitle"
+      @close="closeApp"
+    >
+      <div v-if="activeApp === 'projects'">
+        <p>Welcome to the Projects app!</p>
+      </div>
+      <div v-if="activeApp === 'aboutMe'">
+        <p>Welcome to the About Me app!</p>
+      </div>
+      <div v-if="activeApp === 'artGallery'">
+        <p>Welcome to the Art Gallery app!</p>
+      </div>
+      <div v-if="activeApp === 'contact'">
+        <p>Welcome to the Contact app!</p>
+      </div>
+      <div v-if="activeApp === 'miniGame'">
+        <p>Welcome to the Mini Game app!</p>
+      </div>
+    </AppWindow>
   </div>
 </template>
 
@@ -100,6 +132,18 @@ export default {
       startMenuOpen: false, // Tracks whether the Start Menu is open
       showHelpPopup: false, // Tracks the visibility of the help popup
     };
+  },
+  computed: {
+    activeAppTitle() {
+      const titles = {
+        projects: "Projects",
+        aboutMe: "About Me",
+        artGallery: "Art Gallery",
+        contact: "Contact",
+        miniGame: "Mini Game",
+      };
+      return titles[this.activeApp] || "App";
+    },
   },
   watch: {
     passwordInput(newValue) {
