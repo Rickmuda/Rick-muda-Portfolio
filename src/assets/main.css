@@ -355,7 +355,7 @@ sorting-bar button:hover {
   justify-content: center;
   padding: 10px;
   background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  border: 2px solid #000000;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
@@ -376,20 +376,21 @@ sorting-bar button:hover {
 
 .project-card.selected {
   grid-column: span 1; /* Expand to 2 columns when selected */
-  background-color: #d0d0d0;
+  background-color: #000000;
 }
 
 /* Project Details */
 .project-details {
   width: 30%; /* Take up 30% of the width */
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #757575;
   border-left: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  border: 2px solid #000000;
 }
 
 .project-details img {
@@ -558,9 +559,8 @@ sorting-bar button:hover {
   height: auto; /* Maintain aspect ratio */
   max-height: 90%; /* Ensure it doesn't exceed the container height */
   object-fit: contain; /* Maintain aspect ratio while fitting */
-  border: 5px solid #9b20b7; /* Add a border matching the site's color scheme */
+  border: 5px solid #5b156b; /* Add a border matching the site's color scheme */
   border-radius: 10px; /* Rounded corners for a polished look */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
   margin: 0 auto; /* Center the video horizontally */
 }
 
@@ -818,7 +818,7 @@ sorting-bar button:hover {
 }
 
 .social-icon {
-  font-size: 150px;
+  font-size: 100px;
   margin: 20px;
   color: white;
   transition: transform 0.2s ease, color 0.3s ease;
@@ -859,7 +859,7 @@ sorting-bar button:hover {
   padding: 15px 30px;
   background-color: #7a1793;
   color: white;
-  border: none;
+  border: black solid 2px;
   border-radius: 5px;
   font-size: 16px;
   font-family: 'PortfolioFont', sans-serif;
@@ -896,11 +896,12 @@ sorting-bar button:hover {
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #000000;
   border-radius: 5px;
   font-size: 14px;
   font-family: 'PortfolioFont', sans-serif;
   resize: none;
+  
 }
 
 .form-group input:focus,

@@ -11,7 +11,7 @@
           <input
             type="password"
             class="password-input"
-            placeholder="Enter password to log in"
+            placeholder="Press 6 keys to login."
             v-model="passwordInput"
           />
         </div>
@@ -20,48 +20,58 @@
       <!-- Desktop -->
       <div v-else class="desktop">
         <!-- App Icons -->
-        <div class="app-icon" @click="openApp('projects')">
-          <div class="app-icon-image">
-            <font-awesome-icon icon="folder" class="app-icon-inner" />
-          </div>
-          <div class="app-icon-text">Projects</div>
-        </div>
+
         <div class="app-icon" @click="openApp('aboutMe')">
           <div class="app-icon-image">
             <font-awesome-icon icon="user" class="app-icon-inner" />
           </div>
           <div class="app-icon-text">About Me</div>
         </div>
-        <div class="app-icon" @click="openApp('artGallery')">
+
+        <div class="app-icon" @click="openApp('projects')">
           <div class="app-icon-image">
-            <font-awesome-icon icon="palette" class="app-icon-inner" />
+            <font-awesome-icon icon="folder" class="app-icon-inner" />
           </div>
-          <div class="app-icon-text">Art Gallery</div>
+          <div class="app-icon-text">Projects</div>
         </div>
+
         <div class="app-icon" @click="openApp('contact')">
           <div class="app-icon-image">
             <font-awesome-icon icon="envelope" class="app-icon-inner" />
           </div>
           <div class="app-icon-text">Contact</div>
         </div>
-        <div class="app-icon" @click="openApp('miniGame')">
-          <div class="app-icon-image">
-            <font-awesome-icon icon="gamepad" class="app-icon-inner" />
-          </div>
-          <div class="app-icon-text">Mini Game</div>
-        </div>
-        <div class="app-icon" @click="openApp('settings')">
-          <div class="app-icon-image">
-            <font-awesome-icon icon="cog" class="app-icon-inner" />
-          </div>
-          <div class="app-icon-text">Settings</div>
-        </div>
+
         <div class="app-icon" @click="openApp('socials')">
           <div class="app-icon-image">
             <font-awesome-icon icon="share-nodes" class="app-icon-inner" />
           </div>
           <div class="app-icon-text">Socials</div>
         </div>
+        
+        <div class="app-icon" @click="openApp('artGallery')">
+          <div class="app-icon-image">
+            <font-awesome-icon icon="palette" class="app-icon-inner" />
+          </div>
+          <div class="app-icon-text">Art Gallery</div>
+        </div>
+
+        <div class="app-icon" @click="openApp('miniGame')">
+          <div class="app-icon-image">
+            <font-awesome-icon icon="gamepad" class="app-icon-inner" />
+          </div>
+          <div class="app-icon-text">Mini Game</div>
+        </div>
+
+        <div class="app-icon" @click="openApp('settings')">
+          <div class="app-icon-image">
+            <font-awesome-icon icon="cog" class="app-icon-inner" />
+          </div>
+          <div class="app-icon-text">Settings</div>
+        </div>
+
+
+
       </div>
     </div>
 
@@ -76,26 +86,27 @@
       </div>
       <div class="taskbar-icons">
         <!-- Add desktop icons as taskbar icons -->
-        <div class="taskbar-icon" @click="openApp('projects')">
-          <font-awesome-icon icon="folder" />
-        </div>
+
         <div class="taskbar-icon" @click="openApp('aboutMe')">
           <font-awesome-icon icon="user" />
         </div>
-        <div class="taskbar-icon" @click="openApp('artGallery')">
-          <font-awesome-icon icon="palette" />
+        <div class="taskbar-icon" @click="openApp('projects')">
+          <font-awesome-icon icon="folder" />
         </div>
         <div class="taskbar-icon" @click="openApp('contact')">
           <font-awesome-icon icon="envelope" />
+        </div>
+        <div class="taskbar-icon" @click="openApp('socials')">
+          <font-awesome-icon icon="share-nodes" />
+        </div>
+        <div class="taskbar-icon" @click="openApp('artGallery')">
+          <font-awesome-icon icon="palette" />
         </div>
         <div class="taskbar-icon" @click="openApp('miniGame')">
           <font-awesome-icon icon="gamepad" />
         </div>
         <div class="taskbar-icon" @click="openApp('settings')">
           <font-awesome-icon icon="cog" />
-        </div>
-        <div class="taskbar-icon" @click="openApp('socials')">
-          <font-awesome-icon icon="share-nodes" />
         </div>
       </div>
       <div class="taskbar-right">

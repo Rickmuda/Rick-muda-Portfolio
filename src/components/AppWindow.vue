@@ -42,7 +42,7 @@
     overflow: hidden; /* Prevent scrollbars for the entire window */
     display: flex;
     flex-direction: column;
-    border: #000 solid 1px;
+    border: #000 solid 3px;
   }
   
   /* Top Bar */
@@ -57,7 +57,7 @@
     box-sizing: border-box;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    border: #000 solid 2px;
+    border-bottom: 3px solid #000; /* Bottom border for the top bar */
   }
   
   /* Title Text */
