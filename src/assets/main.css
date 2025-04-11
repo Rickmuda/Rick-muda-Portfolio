@@ -74,7 +74,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 60px;
-  background-color: #6c6c6c;
+  background-color: #6c6c6c3d;
   color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
@@ -99,6 +99,19 @@ body {
   margin: 0 10px;
 }
 
+.taskbar-left-box:hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color:rgb(52, 11, 62); /* Same color as the center box */
+  border: 2px solid rgb(255, 255, 255); /* Optional: Add a border */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+  margin: 0 10px;
+}
+
 /* Taskbar Image */
 .taskbar-image {
   max-width: 100%;
@@ -112,6 +125,13 @@ body {
   display: flex;
   gap: 15px;
 }
+
+.taskbar-icons img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure the image fits within the icon */
+  border-radius: 5px;
+} 
 
 .taskbar-icon {
   width: 40px;
@@ -214,44 +234,60 @@ body {
 
 /* Desktop Apps */
 .desktop {
-    display: flex;
-    flex-direction: column; /* Arrange icons vertically */
-    gap: 20px; /* Space between icons */
-    position: absolute;
-    top: 10%; /* Position near the top */
-    left: 5%; /* Position near the left */
+  display: flex;
+  flex-direction: column; /* Arrange icons vertically */
+  gap: 30px; /* Space between icons */
+  position: absolute;
+  top: 10%; /* Position near the top */
+  left: 5%; /* Position near the left */
 }
 
 /* App Icon */
 .app-icon {
-    display: flex;
-    flex-direction: column; /* Stack image and text vertically */
-    align-items: center;
-    cursor: pointer;
-    text-align: center;
-    transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column; /* Stack icon and text vertically */
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-.app-icon:hover {
-    transform: scale(1.1);
+.app-icon:hover .app-icon-image {
+  transform: scale(1.1); /* Add hover effect to the icon */
 }
 
-/* App Icon Image */
 .app-icon-image {
-    width: 60px; /* Slightly smaller image */
-    height: 60px; /* Slightly smaller image */
-    background-color: #9B20B7; /* Box background color */
-    background-size: 70px 70px; /* Adjust size to fit the image */
-    border-radius: 15px;
+  width: 60px; /* Icon size */
+  height: 60px; /* Icon size */
+  background-color: #9B20B7; /* Match taskbar icon background color */
+  background-size: 70px 70px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px; /* FontAwesome icon size */
+  color: white;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-/* App Icon Text */
+/* App Icon Inner (FontAwesome Icon) */
+.app-icon-inner {
+  font-size: 30px; /* Reduced size for the FontAwesome icon */
+  color: white; /* Keep the icon color consistent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-icon:hover .app-icon-image {
+  background-color: rgb(72, 14, 85); /* Darker shade on hover */
+}
+
 .app-icon-text {
-    margin-top: 5px; /* Space between the box and the text */
-    font-size: 12px;
-    color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 1px black stroke */
-    text-align: center;
+  margin-top: 10px; /* Space between the icon and the text */
+  font-size: 14px; /* Text size */
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 1px black stroke */
+  text-align: center;
 }
 
 /* Projects Window */
@@ -393,6 +429,7 @@ body {
   display: flex;
   flex-direction: column; /* Stack top bar and content vertically */
   border: #000 solid 1px;
+  z-index: 3; /* Ensure it appears above other elements */
 }
 
 /* Start Menu Top Bar */
@@ -445,6 +482,12 @@ body {
   align-items: center;
   z-index: 3; /* Ensure it appears above other elements */
   font-family: 'PortfolioFont', sans-serif;
+}
+
+.help-button:hover {
+  background-color: #7a1793; /* Darker shade on hover */
+  transform: scale(1.1); /* Slightly enlarge the button on hover */
+  transition: transform 0.2s ease, background-color 0.3s ease; /* Smooth transition */
 }
 
 /* Help Popup */

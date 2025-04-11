@@ -30,23 +30,33 @@
       <div v-if="loggedIn" class="desktop">
         <!-- App Icons -->
         <div class="app-icon" @click="openApp('projects')">
-          <img src="/src/assets/img/prj.png" alt="Projects" class="app-icon-image" />
+          <div class="app-icon-image">
+            <font-awesome-icon icon="folder" class="app-icon-inner" />
+          </div>
           <div class="app-icon-text">Projects</div>
         </div>
         <div class="app-icon" @click="openApp('aboutMe')">
-          <img src="/src/assets/img/abt.png" alt="About Me" class="app-icon-image" />
+          <div class="app-icon-image">
+            <font-awesome-icon icon="user" class="app-icon-inner" />
+          </div>
           <div class="app-icon-text">About Me</div>
         </div>
         <div class="app-icon" @click="openApp('artGallery')">
-          <img src="/src/assets/img/art.png" alt="Art Gallery" class="app-icon-image" />
+          <div class="app-icon-image">
+            <font-awesome-icon icon="palette" class="app-icon-inner" />
+          </div>
           <div class="app-icon-text">Art Gallery</div>
         </div>
         <div class="app-icon" @click="openApp('contact')">
-          <img src="/src/assets/img/cnc.png" alt="Contact" class="app-icon-image" />
+          <div class="app-icon-image">
+            <font-awesome-icon icon="envelope" class="app-icon-inner" />
+          </div>
           <div class="app-icon-text">Contact</div>
         </div>
         <div class="app-icon" @click="openApp('miniGame')">
-          <img src="/src/assets/img/game.png" alt="Mini Game" class="app-icon-image" />
+          <div class="app-icon-image">
+            <font-awesome-icon icon="gamepad" class="app-icon-inner" />
+          </div>
           <div class="app-icon-text">Mini Game</div>
         </div>
       </div>
@@ -60,19 +70,19 @@
       <div class="taskbar-icons">
         <!-- Add desktop icons as taskbar icons -->
         <div class="taskbar-icon" @click="openApp('projects')">
-          <img src="/src/assets/img/prj.png" alt="Projects" />
+          <font-awesome-icon icon="folder" />
         </div>
         <div class="taskbar-icon" @click="openApp('aboutMe')">
-          <img src="/src/assets/img/abt.png" alt="About Me" />
+          <font-awesome-icon icon="user" />
         </div>
         <div class="taskbar-icon" @click="openApp('artGallery')">
-          <img src="/src/assets/img/art.png" alt="Art Gallery" />
+          <font-awesome-icon icon="palette" />
         </div>
         <div class="taskbar-icon" @click="openApp('contact')">
-          <img src="/src/assets/img/cnc.png" alt="Contact" />
+          <font-awesome-icon icon="envelope" />
         </div>
         <div class="taskbar-icon" @click="openApp('miniGame')">
-          <img src="/src/assets/img/game.png" alt="Mini Game" />
+          <font-awesome-icon icon="gamepad" />
         </div>
       </div>
       <div class="taskbar-right">
@@ -117,10 +127,17 @@
 
 <script>
 import AppWindow from "./components/AppWindow.vue";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+// Add icons to the library
+library.add(faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars);
 
 export default {
   components: {
     AppWindow,
+    FontAwesomeIcon,
   },
   data() {
     return {
