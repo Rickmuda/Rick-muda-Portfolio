@@ -378,3 +378,17 @@ body {
 .project-details .project-link:hover {
   background-color: #7a1793;
 }
+
+/* Start Menu */
+.start-menu {
+  position: absolute;
+  bottom: 60px; /* Position above the taskbar */
+  left: 10px; /* Align with the PFP in the taskbar */
+  width: 200px; /* Smaller width */
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 10; /* Ensure it appears above other elements */
+}

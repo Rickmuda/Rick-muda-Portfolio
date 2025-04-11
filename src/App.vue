@@ -78,11 +78,19 @@
       >
         <p>Mini Game Content</p>
       </AppWindow>
+
+      <!-- Start Menu -->
+      <div
+        v-if="startMenuOpen"
+        class="start-menu"
+      >
+        <p>Start Menu Content</p>
+      </div>
     </div>
 
     <!-- Taskbar -->
     <footer class="taskbar" v-if="loggedIn">
-      <div class="taskbar-left-box">
+      <div class="taskbar-left-box" @click="toggleStartMenu">
         <img src="/src/assets/img/pfp.png" alt="Taskbar Icon" class="taskbar-image" />
       </div>
       <div class="taskbar-icons">
@@ -144,6 +152,7 @@ export default {
       currentDate: new Date().toLocaleDateString(),
       currentTime: new Date().toLocaleTimeString(),
       activeApp: null, // Tracks the currently open app
+      startMenuOpen: false, // Tracks whether the Start Menu is open
     };
   },
   watch: {
@@ -161,6 +170,9 @@ export default {
     },
     closeApp() {
       this.activeApp = null; // Close the active app
+    },
+    toggleStartMenu() {
+      this.startMenuOpen = !this.startMenuOpen; // Toggle the Start Menu
     },
   },
   mounted() {
