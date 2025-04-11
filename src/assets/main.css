@@ -68,97 +68,88 @@ body {
     z-index: 2; /* Ensure content inside the background is above the overlay */
 }
 
-/* Footer Taskbar */
+/* Taskbar */
 .taskbar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #FFFFFF;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Space between left and right content */
-    padding: 0 10px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 3; /* Ensure the taskbar is above the background and overlay */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #FFFFFF;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between left and right content */
+  padding: 0 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 3; /* Ensure the taskbar is above the background and overlay */
 }
 
 /* Taskbar Left Box */
 .taskbar-left-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #9B20B7; /* Same color as the center box */
-    border: 2px solid #8404a1; /* Optional: Add a border */
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
-    margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #9B20B7; /* Same color as the center box */
+  border: 2px solid #8404a1; /* Optional: Add a border */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+  margin: 0 10px;
 }
 
 /* Taskbar Image */
 .taskbar-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover; /* Ensure the image fits within the box */
-    border-radius: 5px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Ensure the image fits within the box */
+  border-radius: 5px;
+}
+
+/* Taskbar Icons */
+.taskbar-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.taskbar-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.taskbar-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.taskbar-icon:hover {
+  transform: scale(1.1); /* Add hover effect */
+}
+
+.taskbar-icon.active {
+  background-color: #9B20B7; /* Highlight color for active app */
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
 }
 
 /* Taskbar Right */
 .taskbar-right {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-end; /* Align items to the right */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-end; /* Align items to the right */
 }
 
 .taskbar-item {
-    padding: 0 20px;
+  padding: 0 20px;
+  font-size: 14px;
 }
-
-/* Taskbar */
-.taskbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #FFFFFF;
-    color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 1px black stroke */
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-  }
-  
-  .taskbar-icons {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .taskbar-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .taskbar-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  
-  .taskbar-icon.active {
-    background-color: #9b20b7; /* Highlight color for active app */
-    border-radius: 5px;
-    width: 50px;
-    height: 50px;
-  }
-
 /* Centered Box */
 .center-box {
     width: 250px;
