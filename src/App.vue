@@ -215,7 +215,32 @@
         <p>Welcome to the Contact app!</p>
       </div>
       <div v-if="activeApp === 'miniGame'">
-        <p>Welcome to the Mini Game app!</p>
+        <div class="clicker-game">
+          <h2>Click the Rick</h2>
+          <p>Score: {{ clickerScore }}</p>
+          <img
+            src="/src/assets/img/pfp.png"
+            alt="Click Me"
+            class="clicker-image"
+            @click="incrementScore"
+          />
+
+          <div class="upgrades">
+            <h3>Upgrades</h3>
+            <div class="upgrade" v-for="(upgrade, index) in upgrades" :key="index">
+              <p>{{ upgrade.name }}</p>
+              <p>Cost: {{ upgrade.cost }}</p>
+              <p v-if="upgrade.multiplier">Next Multiplier: x{{ upgrade.multiplier }}</p>
+              <p v-if="upgrade.autoClick">Auto Clicks: +{{ upgrade.autoClick }}/sec</p>
+              <button
+                :disabled="clickerScore < upgrade.cost"
+                @click="purchaseUpgrade(index)"
+              >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <div v-if="activeApp === 'settings'">
         <div class="settings">
@@ -263,6 +288,7 @@
           <p>Here you can manage your 3D printing projects.</p>
         </div>
       </div>
+
     </AppWindow>
 
     <!-- App Window -->
@@ -359,6 +385,8 @@ export default {
         "/src/assets/imggallery/pepe.png",
         "/src/assets/imggallery/room.jpg",
         "/src/assets/imggallery/vtuber.png",
+        "/src/assets/imggallery/pose.png",
+        "/src/assets/imggallery/dance.gif",
       ],
       selectedImage: null, // For the modal
       darkMode: false, // Track the dark mode state
@@ -400,6 +428,13 @@ export default {
         fullName: "",
         message: "",
       },
+      clickerScore: 0,
+      upgrades: [
+        { name: "Double Clicks", cost: 10, multiplier: 2 }, // Increases points per click
+        { name: "Auto Clicker", cost: 50, autoClick: 1 }, // Adds auto-click functionality
+      ],
+      pointsPerClick: 1, // Points earned per click
+      autoClickInterval: null, // Interval for auto-clicking
     };
   },
   computed: {
@@ -544,6 +579,39 @@ export default {
           alert("An error occurred. Please try again.");
         });
     },
+    incrementScore() {
+      this.clickerScore += this.pointsPerClick;
+    },
+    purchaseUpgrade(index) {
+      const upgrade = this.upgrades[index];
+      if (this.clickerScore >= upgrade.cost) {
+        this.clickerScore -= upgrade.cost;
+
+        // Apply the upgrade
+        if (upgrade.multiplier) {
+          this.pointsPerClick *= upgrade.multiplier;
+        }
+        if (upgrade.autoClick) {
+          this.startAutoClicker(upgrade.autoClick);
+        }
+
+        // Dynamically increase the cost for future purchases
+        upgrade.cost = Math.floor(upgrade.cost * 1.5);
+      }
+    },
+    startAutoClicker(points) {
+      if (!this.autoClickInterval) {
+        this.autoClickInterval = setInterval(() => {
+          this.clickerScore += points;
+        }, 1000); // Add points every second
+      }
+    },
+  },
+  beforeDestroy() {
+    // Clear the auto-clicker interval when the component is destroyed
+    if (this.autoClickInterval) {
+      clearInterval(this.autoClickInterval);
+    }
   },
   mounted() {
     // Check login state on app load

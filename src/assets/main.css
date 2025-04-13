@@ -378,14 +378,14 @@ sorting-bar button:hover {
 
 .project-card.selected {
   grid-column: span 1; /* Expand to 2 columns when selected */
-  background-color: #000000;
+  background-color: #6b0083;
 }
 
 /* Project Details */
 .project-details {
   width: 30%; /* Take up 30% of the width */
   padding: 20px;
-  background-color: #757575;
+  background-color: #6b0083;
   border-left: 1px solid #ccc;
   display: flex;
   flex-direction: column;
@@ -721,6 +721,7 @@ sorting-bar button:hover {
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #000000; /* Border around the image */
 }
 
 /* Image Modal */
@@ -741,7 +742,6 @@ sorting-bar button:hover {
   max-width: 90%;
   max-height: 90%;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Commit Hash Message */
@@ -911,4 +911,67 @@ sorting-bar button:hover {
   outline: none;
   border-color: #9b20b7;
   box-shadow: 0 0 5px rgba(155, 32, 183, 0.5);
+}
+
+/* Clicker Game */
+.clicker-game {
+  text-align: center;
+  padding: 20px;
+}
+
+.clicker-button {
+  padding: 20px 40px;
+  font-size: 24px;
+  background-color: #7a1793;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  font-family: 'PortfolioFont', sans-serif;
+}
+
+.clicker-button:hover {
+  background-color: #68157b;
+  transform: scale(1.1);
+}
+
+.upgrades {
+  margin-top: 20px;
+}
+
+.upgrade {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upgrade button {
+  padding: 10px 20px;
+  background-color: #7a1793;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'PortfolioFont', sans-serif;
+}
+
+.upgrade button:disabled {
+  background-color: #ff00009c;
+  cursor: not-allowed;
+}
+
+/* Clicker Image */
+.clicker-image {
+  width: 150px; /* Adjust the size of the image */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+.clicker-image:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  filter: brightness(1.2); /* Brighten the image on hover */
 }
