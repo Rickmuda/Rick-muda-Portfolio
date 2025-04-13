@@ -215,30 +215,29 @@
         <p>Welcome to the Contact app!</p>
       </div>
       <div v-if="activeApp === 'miniGame'">
-        <div class="clicker-game">
-          <h2>Click the Rick</h2>
-          <p>Score: {{ clickerScore }}</p>
-          <img
-            src="/src/assets/img/pfp.png"
-            alt="Click Me"
-            class="clicker-image"
-            @click="incrementScore"
-          />
+        <div v-if="activeApp === 'miniGame'" class="clicker-game">
+        <h2>Click the Rick</h2>
+        <p>Score: {{ clickerScore }}</p>
+        <img
+          src="/src/assets/img/pfp.png"
+          alt="Click Me"
+          class="clicker-image"
+          @click="incrementScore"
+        />
 
-          <div class="upgrades">
-            <h3>Upgrades</h3>
-            <div class="upgrade" v-for="(upgrade, index) in upgrades" :key="index">
-              <p>{{ upgrade.name }}</p>
-              <p>Cost: {{ upgrade.cost }}</p>
-              <p v-if="upgrade.multiplier">Next Multiplier: x{{ upgrade.multiplier }}</p>
-              <p v-if="upgrade.autoClick">Auto Clicks: +{{ upgrade.autoClick }}/sec</p>
-              <button
-                :disabled="clickerScore < upgrade.cost"
-                @click="purchaseUpgrade(index)"
-              >
-                Buy
-              </button>
-            </div>
+        <div class="upgrades">
+          <h3>Upgrades</h3>
+          <div class="upgrade" v-for="(upgrade, index) in upgrades" :key="index">
+            <p>{{ upgrade.name }}</p>
+            <p>Cost: {{ upgrade.cost }}</p>
+            <p v-if="upgrade.multiplier">Next Multiplier: x{{ upgrade.multiplier }}</p>
+            <p v-if="upgrade.autoClick">Auto Clicks: +{{ upgrade.autoClick }}/sec</p>
+            <button
+              :disabled="clickerScore < upgrade.cost"
+              @click="purchaseUpgrade(index)"
+            >
+              Buy
+            </button>
           </div>
         </div>
       </div>
@@ -614,6 +613,7 @@ export default {
     }
   },
   mounted() {
+
     // Check login state on app load
     this.checkLoginState();
 
