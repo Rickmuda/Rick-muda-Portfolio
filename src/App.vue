@@ -70,7 +70,12 @@
           <div class="app-icon-text">Settings</div>
         </div>
 
-
+        <div class="app-icon" @click="openApp('threeDPrinting')">
+          <div class="app-icon-image">
+            <font-awesome-icon icon="cube" class="app-icon-inner" />
+          </div>
+          <div class="app-icon-text">3D Printing</div>
+        </div>
 
       </div>
     </div>
@@ -108,6 +113,9 @@
         <div class="taskbar-icon" @click="openApp('settings')">
           <font-awesome-icon icon="cog" />
         </div>
+        <div class="taskbar-icon" @click="openApp('threeDPrinting')">
+          <font-awesome-icon icon="cube" />
+        </div>
       </div>
       <div class="taskbar-right">
         <div class="taskbar-item">{{ currentTime }}</div>
@@ -125,7 +133,7 @@
       <div class="start-menu-topbar">Start Menu</div>
       <div class="start-menu-content">
         <p>Instert text here</p>
-        <p>Commit Hash: {{ commitSummary }}</p>
+        <p>Current version: {{ commitSummary }}</p>
       </div>
     </div>
 
@@ -249,6 +257,12 @@
           </a>
         </div>
       </div>
+      <div v-if="activeApp === 'threeDPrinting'">
+        <div class="three-d-printing-window">
+          <p>Welcome to the 3D Printing app!</p>
+          <p>Here you can manage your 3D printing projects.</p>
+        </div>
+      </div>
     </AppWindow>
 
     <!-- App Window -->
@@ -311,12 +325,12 @@
 <script>
 import AppWindow from "./components/AppWindow.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog, faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog, faShareNodes, faCube } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter, faInstagram, faLinkedin, faGithub, faYoutube, faTiktok, faSpotify, faSteam, faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // Add icons to the library
-library.add(faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog, faShareNodes, faFacebook, faTwitter, faInstagram, faLinkedin, faGithub, faYoutube, faTiktok, faSpotify, faSteam, faCodepen);
+library.add(faFolder, faUser, faPalette, faEnvelope, faGamepad, faBars, faCog, faShareNodes, faFacebook, faTwitter, faInstagram, faLinkedin, faGithub, faYoutube, faTiktok, faSpotify, faSteam, faCodepen, faCube);
 
 export default {
   components: {
@@ -398,6 +412,7 @@ export default {
         miniGame: "Mini Game",
         settings: "Settings",
         socials: "Socials",
+        threeDPrinting: "3D Printing",
       };
       return titles[this.activeApp] || "No App Selected";
     },

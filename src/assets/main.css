@@ -234,12 +234,14 @@ body {
 
 /* Desktop Apps */
 .desktop {
-  display: flex;
-  flex-direction: column; /* Arrange icons vertically */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* Maximum of 7 columns per row */
   gap: 30px; /* Space between icons */
   position: absolute;
   top: 10%; /* Position near the top */
   left: 5%; /* Position near the left */
+  width: 90%; /* Adjust width to fit the grid */
+  justify-content: start; /* Align the grid to the left */
 }
 
 /* App Icon */
