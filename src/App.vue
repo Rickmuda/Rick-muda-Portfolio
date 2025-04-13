@@ -223,8 +223,8 @@
           alt="Click Me"
           class="clicker-image"
           @click="incrementScore"
-        />
-
+        >
+        </div>
         <div class="upgrades">
           <h3>Upgrades</h3>
           <div class="upgrade" v-for="(upgrade, index) in upgrades" :key="index">
