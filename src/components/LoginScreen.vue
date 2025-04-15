@@ -37,7 +37,7 @@ export default {
           clearInterval(typingInterval); // Stop typing
           this.checkLoginState(); // Automatically log in after typing
         }
-      }, 100); // Simulate typing every 100ms
+      }, 200); // Simulate typing every 100ms
     },
     checkLoginState() {
       // Simulate a successful login

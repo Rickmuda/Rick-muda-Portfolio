@@ -22,7 +22,7 @@
     <!-- App Windows -->
   <!-- About me -->
     <AppWindow v-if="activeApp === 'aboutMe'" title="About Me" @close="closeApp">
-      <AboutMe :aboutMeVideoSrc="'/src/assets/videos/templatevideo.mp4'" />
+      <AboutMe :aboutMeVideoSrc="'/src/assets/videos/portfoliovideo.mov'" />
     </AppWindow>
 
   <!-- Contact -->
@@ -61,7 +61,7 @@
       <Settings v-model:darkMode="darkMode" />
     </AppWindow>
 
-  <!-- 3D Printing -->
+     <!-- 3D print support keuzedeel portfolio -->
     <AppWindow v-if="activeApp === 'threeDPrinting'" title="3D Printing" @close="closeApp">
       Lorem Ipsum
     </AppWindow>

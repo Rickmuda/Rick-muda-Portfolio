@@ -19,18 +19,19 @@
       <div class="taskbar-icon" @click="openApp('socials')">
         <font-awesome-icon icon="share-nodes" />
       </div>
-      <div class="taskbar-icon" @click="openApp('artGallery')">
-        <font-awesome-icon icon="palette" />
-      </div>
       <div class="taskbar-icon" @click="openApp('miniGame')">
         <font-awesome-icon icon="gamepad" />
+      </div>
+      <div class="taskbar-icon" @click="openApp('artGallery')">
+        <font-awesome-icon icon="palette" />
       </div>
       <div class="taskbar-icon" @click="openApp('settings')">
         <font-awesome-icon icon="cog" />
       </div>
-      <div class="taskbar-icon" @click="openApp('threeDPrinting')">
+      <!-- 3D print support keuzedeel portfolio -->
+      <!-- <div class="taskbar-icon" @click="openApp('threeDPrinting')">
         <font-awesome-icon icon="cube" />
-      </div>
+      </div> -->
     </div>
 
     <!-- Right Box -->
@@ -43,7 +44,7 @@
     <div v-if="startMenuOpen" class="start-menu" @mouseover="keepStartMenuOpen" @mouseleave="closeStartMenu">
       <div class="start-menu-topbar">Start Menu</div>
       <div class="start-menu-content">
-        <p>Insert text here</p>
+        <p>Rick Ambergen production presents a Rick Ambergen portfolio!</p>
         <p>Current version: {{ commitSummary }}</p>
       </div>
     </div>

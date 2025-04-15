@@ -31,21 +31,21 @@
         </div>
         <div class="app-icon-text">Socials</div>
       </div>
-  
-      <!-- Art Gallery -->
-      <div class="app-icon" @click="openApp('artGallery')">
-        <div class="app-icon-image">
-          <font-awesome-icon icon="palette" class="app-icon-inner" />
-        </div>
-        <div class="app-icon-text">Art Gallery</div>
-      </div>
-  
+
       <!-- Mini Game -->
       <div class="app-icon" @click="openApp('miniGame')">
         <div class="app-icon-image">
           <font-awesome-icon icon="gamepad" class="app-icon-inner" />
         </div>
         <div class="app-icon-text">Mini Game</div>
+      </div>
+    
+      <!-- Art Gallery -->
+      <div class="app-icon" @click="openApp('artGallery')">
+        <div class="app-icon-image">
+          <font-awesome-icon icon="palette" class="app-icon-inner" />
+        </div>
+        <div class="app-icon-text">Art Gallery</div>
       </div>
   
       <!-- Settings -->
@@ -56,13 +56,13 @@
         <div class="app-icon-text">Settings</div>
       </div>
   
-      <!-- 3D Printing -->
-      <div class="app-icon" @click="openApp('threeDPrinting')">
+     <!-- 3D print support keuzedeel portfolio -->
+      <!-- <div class="app-icon" @click="openApp('threeDPrinting')">
         <div class="app-icon-image">
           <font-awesome-icon icon="cube" class="app-icon-inner" />
         </div>
         <div class="app-icon-text">3D Printing</div>
-      </div>
+      </div> -->
     </div>
   </template>
   
