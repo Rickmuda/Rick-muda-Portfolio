@@ -11,7 +11,7 @@
       <!-- Desktop -->
       <Desktop v-else :openApp="openApp" />
     </div>
-
+  <!-- Taskbar -->
     <Taskbar
       v-if="loggedIn"
       :openApp="openApp"
@@ -25,22 +25,27 @@
     <AppWindow v-if="activeApp === 'aboutMe'" title="About Me" @close="closeApp">
       <AboutMe :aboutMeVideoSrc="'/src/assets/videos/templatevideo.mp4'" />
     </AppWindow>
+
   <!-- Contact -->
     <AppWindow v-if="activeApp === 'contact'" title="Contact" @close="closeApp">
       <Contact :contactForm="contactForm" />
     </AppWindow>
+
   <!-- Projects -->
     <AppWindow v-if="activeApp === 'projects'" title="Projects" @close="closeApp">
       <Projects :projects="projects" />
     </AppWindow>
+
   <!-- Socials -->
     <AppWindow v-if="activeApp === 'socials'" title="Socials" @close="closeApp">
       <Socials />
     </AppWindow>
+
   <!-- Artgallery -->
     <AppWindow v-if="activeApp === 'artGallery'" title="Art Gallery" @close="closeApp">
       <ArtGallery :images="artGalleryImages" />
     </AppWindow>
+
   <!-- Mini Game -->
     <AppWindow v-if="activeApp === 'miniGame'" title="Mini Game" @close="closeApp">
       <MiniGame
@@ -51,14 +56,17 @@
         @purchase-upgrade="purchaseUpgrade"
       />
     </AppWindow>
+
   <!-- Settings -->
     <AppWindow v-if="activeApp === 'settings'" title="Settings" @close="closeApp">
       <Settings v-model:darkMode="darkMode" />
     </AppWindow>
+
   <!-- 3D Printing -->
     <AppWindow v-if="activeApp === 'threeDPrinting'" title="3D Printing" @close="closeApp">
       Lorem Ipsum
     </AppWindow>
+
   </div>
 </template>
 
@@ -123,7 +131,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>
