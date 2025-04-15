@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <router-view />
     <!-- Background -->
     <div class="background" :class="{ 'background-logged-in': loggedIn }">
       <!-- Login Screen -->
@@ -15,8 +16,6 @@
     <Taskbar
       v-if="loggedIn"
       :openApp="openApp"
-      :currentTime="currentTime"
-      :currentDate="currentDate"
       :commitSummary="commitSummary"
     />
 
