@@ -429,8 +429,8 @@ sorting-bar button:hover {
   position: absolute;
   bottom: 60px; /* Position above the taskbar */
   left: 10px; /* Align with the PFP in the taskbar */
-  width: 250px; /* Keep the width the same */
-  height: 60%; /* Set the height to 60% of the viewport */
+  width: 300px; /* Adjusted width for original size */
+  height: 400px; /* Adjusted height for original size */
   background-color: #9B20B7; /* Match the app icon background color */
   border: 1px solid #000000; /* Match the border color */
   border-radius: 5px;
@@ -438,7 +438,6 @@ sorting-bar button:hover {
   overflow-y: auto; /* Add scrolling if content overflows */
   display: flex;
   flex-direction: column; /* Stack top bar and content vertically */
-  border: #000 solid 1px;
   z-index: 3; /* Ensure it appears above other elements */
 }
 
