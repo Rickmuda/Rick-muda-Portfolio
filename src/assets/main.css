@@ -78,11 +78,11 @@ body {
   color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space between left and right content */
+  justify-content: space-between;
   padding: 0 10px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 1px black stroke */
-  z-index: 3; /* Ensure the taskbar is above the background and overlay */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  z-index: 3;
 }
 
 /* Taskbar Left Box */
@@ -92,31 +92,23 @@ body {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: #9B20B7; /* Same color as the center box */
-  border: 2px solid #8404a1; /* Optional: Add a border */
+  background-color: #9b20b7;
+  border: 2px solid #8404a1;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 0 10px;
 }
 
 .taskbar-left-box:hover {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color:rgb(52, 11, 62); /* Same color as the center box */
-  border: 2px solid rgb(255, 255, 255); /* Optional: Add a border */
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
-  margin: 0 10px;
+  background-color: rgb(52, 11, 62);
+  border: 2px solid rgb(255, 255, 255);
 }
 
 /* Taskbar Image */
 .taskbar-image {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover; /* Ensure the image fits within the box */
+  object-fit: cover;
   border-radius: 5px;
 }
 
@@ -141,7 +133,7 @@ body {
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.3s ease;
-  background-color: #9B20B7; /* Highlight color for active app */
+  background-color: #9b20b7;
   border-radius: 10px;
 }
 
@@ -165,8 +157,8 @@ body {
 /* Taskbar Right */
 .taskbar-right {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: flex-end; /* Align items to the right */
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .taskbar-item {
@@ -431,7 +423,7 @@ sorting-bar button:hover {
   left: 10px; /* Align with the PFP in the taskbar */
   width: 300px; /* Adjusted width for original size */
   height: 400px; /* Adjusted height for original size */
-  background-color: #9B20B7; /* Match the app icon background color */
+  background-color: #9b20b7; /* Match the app icon background color */
   border: 1px solid #000000; /* Match the border color */
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -538,32 +530,22 @@ sorting-bar button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  height: 90%; /* Full height of the parent */
-  width: 100%; /* Full width of the parent */
+  height: 100%; /* Match the height of the parent container (app-content) */
+  width: 100%; /* Match the width of the parent container (app-content) */
   position: relative;
-}
-
-/* Video Container */ 
-.video-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1; /* Take up all available space */
-  width: 100%; /* Full width of the parent */
-  height: 100%; /* Full height of the parent */
+  overflow: hidden; /* Prevent content overflow */
+  border-radius: 10px; /* Rounded corners for the controls bar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
 }
 
 /* About Me Video */
 .about-me-video {
-  width: 100%; /* Full width of the container */
-  max-width: 800px; /* Limit the maximum width */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 90%; /* Ensure it doesn't exceed the container height */
-  object-fit: contain; /* Maintain aspect ratio while fitting */
-  border: 5px solid #5b156b; /* Add a border matching the site's color scheme */
-  border-radius: 10px; /* Rounded corners for a polished look */
-  margin: 0 auto; /* Center the video horizontally */
+  width: 100%; /* Stretch to fill the width of the container */
+  height: 100%; /* Stretch to fill the height of the container */
+  object-fit: fill; /* Stretch the video to fill the container, even if it distorts */
+  border: 2px solid #000000; /* Match the border style of app-content */
+  border-radius: 10px; /* Rounded corners for the controls bar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
 }
 
 /* Video Controls */
@@ -580,13 +562,6 @@ sorting-bar button:hover {
   padding: 10px 15px; /* Add padding for a cleaner look */
   border-radius: 10px; /* Rounded corners for the controls bar */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s ease, transform 0.2s ease; /* Smooth fade-in/out and hover effect */
-}
-
-.about-me:hover .video-controls {
-  opacity: 1; /* Show controls on hover */
-  transform: translateX(-50%) scale(1.05); /* Slightly enlarge on hover */
 }
 
 /* Video Control Buttons */
@@ -1009,3 +984,40 @@ sorting-bar button:hover {
   }
 }
 
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+  color: white;
+  font-family: 'PortfolioFont', sans-serif;
+}
+
+.page-not-found h1 {
+  font-size: 100px;
+  margin-bottom: 20px;
+}
+
+.page-not-found p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.page-not-found button {
+  padding: 10px 20px;
+  background-color: #9b20b7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-not-found button:hover {
+  background-color: #7a1793;
+  transform: scale(1.05);
+}

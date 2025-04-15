@@ -1,18 +1,31 @@
 <template>
   <div class="about-me">
-    <div class="video-container">
-      <video
-        ref="aboutMeVideo"
-        class="about-me-video"
-        :src="aboutMeVideoSrc"
-        @timeupdate="updateVideoTime"
-        @ended="handleVideoEnd"
-      ></video>
-    </div>
+    <video
+      ref="aboutMeVideo"
+      class="about-me-video"
+      :src="aboutMeVideoSrc"
+      autoplay
+      loop
+      muted
+    ></video>
     <div class="video-controls">
-      <button @click="togglePlayPause">{{ isPlaying ? 'Pause' : 'Play' }}</button>
-      <input type="range" min="0" :max="videoDuration" step="0.1" v-model="videoCurrentTime" @input="seekVideo" />
-      <input type="range" min="0" max="1" step="0.1" v-model="volume" @input="adjustVolume" />
+      <button @click="togglePlayPause">{{ isPlaying ? "Pause" : "Play" }}</button>
+      <input
+        type="range"
+        min="0"
+        :max="videoDuration"
+        step="0.1"
+        v-model="videoCurrentTime"
+        @input="seekVideo"
+      />
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.1"
+        v-model="volume"
+        @input="adjustVolume"
+      />
     </div>
   </div>
 </template>
@@ -62,6 +75,15 @@ export default {
       video.pause();
       this.isPlaying = false;
     },
+  },
+  mounted() {
+    const video = this.$refs.aboutMeVideo;
+    video.addEventListener("timeupdate", this.updateVideoTime);
+    video.volume = this.volume;
+  },
+  beforeUnmount() {
+    const video = this.$refs.aboutMeVideo;
+    video.removeEventListener("timeupdate", this.updateVideoTime);
   },
 };
 </script>
