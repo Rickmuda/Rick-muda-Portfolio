@@ -37,7 +37,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%; /* Ensure it fills the entire viewport */
-    background-image: url('../assets/imggallery/room.jpg'); /* Path to your background image */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -46,6 +45,7 @@ body {
     align-items: center;
     overflow: hidden;
     z-index: 0; /* Set the background to the lowest layer */
+    background-image: url('/src/assets/img/imggallery/room.jpg');
 }
 
 .background::before {
@@ -545,7 +545,7 @@ sorting-bar button:hover {
   position: relative;
 }
 
-/* Video Container */
+/* Video Container */ 
 .video-container {
   display: flex;
   align-items: center;
@@ -976,3 +976,37 @@ sorting-bar button:hover {
   transform: scale(1.1); /* Slight zoom on hover */
   filter: brightness(1.2); /* Brighten the image on hover */
 }
+
+/* Login Screen */
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+}
+
+/* Loading Animation */
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 24px;
+  color: white;
+  font-family: 'PortfolioFont', sans-serif;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
