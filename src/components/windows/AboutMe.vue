@@ -6,7 +6,7 @@
       :src="aboutMeVideoSrc"
       autoplay
       loop
-      muted
+      :muted="isMuted"
     ></video>
     <div class="video-controls">
       <button @click="togglePlayPause">{{ isPlaying ? "Pause" : "Play" }}</button>
@@ -44,6 +44,8 @@ export default {
       videoDuration: 0,
       videoCurrentTime: 0,
       volume: 1,
+      autoplay: false,
+      isMuted: false, // Set to false to enable sound by default
     };
   },
   methods: {
@@ -74,6 +76,9 @@ export default {
       const video = this.$refs.aboutMeVideo;
       video.pause();
       this.isPlaying = false;
+    },
+    toggleMute() {
+      this.isMuted = !this.isMuted; // Toggle the muted state
     },
   },
   mounted() {
