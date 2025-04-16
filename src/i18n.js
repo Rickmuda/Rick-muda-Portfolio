@@ -79,7 +79,7 @@ const messages = {
     op: 'Enkele Pagina',
     opDescription: 'Voor het eerste project van mijn eerste jaar moest ik een one-pager website namaken met HTML en CSS.',
     goToProject: 'Ga naar Project',
-    startMenu: 'Startmenu',
+    startMenu: 'Start Menu',
     startMenuIntro: 'Rick Ambergen productie presenteert een Rick Ambergen portfolio!',
     currentVersion: 'Huidige versie',
     email: 'E-mail',
