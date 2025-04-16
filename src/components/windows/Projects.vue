@@ -49,31 +49,31 @@ export default {
       this.projects = [
         {
           title: this.$t('uwp'),
-          image: "../src/assets/img/projects/unnamed-weather-app.png",
+          image: new URL('@/assets/img/projects/unnamed-weather-app.png', import.meta.url).href,
           description: this.$t('uwpDescription'),
           link: "/404", // Link to the 404 page
         },
         {
           title: this.$t('aw'),
-          image: "/src/assets/img/projects/irritante-webpagina.png",
+          image: new URL('@/assets/img/projects/irritante-webpagina.png', import.meta.url).href,
           description: this.$t('awDescription'),
           link: "/404", // Link to the 404 page
         },
         {
           title: this.$t('wam'),
-          image: "/src/assets/img/projects/whack-a-mom.png",
+          image: new URL('@/assets/img/projects/whack-a-mom.png', import.meta.url).href,
           description: this.$t('wamDescription'),
           link: "/404", // Link to the 404 page
         },
         {
           title: this.$t('gl'),
-          image: "/src/assets/img/projects/gym-list.png",
+          image: new URL('@/assets/img/projects/gym-list.png', import.meta.url).href,
           description: this.$t('glDescription'),
           link: "/404", // Link to the 404 page
         },
         {
           title: this.$t('op'),
-          image: "/src/assets/img/projects/one-pager.png",
+          image: new URL('@/assets/img/projects/one-pager.png', import.meta.url).href,
           description: this.$t('opDescription'),
           link: "/404", // Link to the 404 page
         },

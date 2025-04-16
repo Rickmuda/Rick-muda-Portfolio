@@ -10,7 +10,8 @@ const commitSummary = execSync("git log -1 --pretty=%s").toString().trim();
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools()],
+  base: '/rick-muda-portfolio-vue.js/', // Replace with your repository name
+  plugins: [vue()],
   define: {
     __COMMIT_HASH__: JSON.stringify(commitHash), // Inject the commit hash
     __COMMIT_SUMMARY__: JSON.stringify(commitSummary), // Inject the commit summary

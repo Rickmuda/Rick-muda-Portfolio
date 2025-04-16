@@ -12,7 +12,7 @@
       <!-- Desktop -->
       <Desktop v-else :openApp="openApp" />
     </div>
-  <!-- Taskbar -->
+    <!-- Taskbar -->
     <Taskbar
       v-if="loggedIn"
       :openApp="openApp"
@@ -20,32 +20,32 @@
     />
 
     <!-- App Windows -->
-  <!-- About me -->
+    <!-- About me -->
     <AppWindow v-if="activeApp === 'aboutMe'" :title="$t('aboutMe')" @close="closeApp">
-      <AboutMe :aboutMeVideoSrc="'/src/assets/videos/portfoliovideo.mov'" />
+      <AboutMe :aboutMeVideoSrc="aboutMeVideoSrc" />
     </AppWindow>
 
-  <!-- Contact -->
+    <!-- Contact -->
     <AppWindow v-if="activeApp === 'contact'" :title="$t('contact')" @close="closeApp">
       <Contact :contactForm="contactForm" />
     </AppWindow>
 
-  <!-- Projects -->
+    <!-- Projects -->
     <AppWindow v-if="activeApp === 'projects'" :title="$t('projects')" @close="closeApp">
       <Projects :projects="projects" />
     </AppWindow>
 
-  <!-- Socials -->
+    <!-- Socials -->
     <AppWindow v-if="activeApp === 'socials'" :title="$t('socials')" @close="closeApp">
       <Socials />
     </AppWindow>
 
-  <!-- Artgallery -->
+    <!-- Artgallery -->
     <AppWindow v-if="activeApp === 'artGallery'" :title="$t('artGallery')" @close="closeApp">
       <ArtGallery :images="artGalleryImages" />
     </AppWindow>
 
-  <!-- Mini Game -->
+    <!-- Mini Game -->
     <AppWindow v-if="activeApp === 'miniGame'" :title="$t('miniGame')" @close="closeApp">
       <MiniGame
         :clickerScore="clickerScore"
@@ -56,7 +56,7 @@
       />
     </AppWindow>
 
-  <!-- Settings -->
+    <!-- Settings -->
     <AppWindow v-if="activeApp === 'settings'" :title="$t('settings')" @close="closeApp">
       <Settings
         v-model:darkMode="darkMode"
@@ -64,11 +64,10 @@
       />
     </AppWindow>
 
-     <!-- 3D print support keuzedeel portfolio -->
+    <!-- 3D print support keuzedeel portfolio -->
     <AppWindow v-if="activeApp === 'threeDPrinting'" :title="$t('threeDPrinting')" @close="closeApp">
       Lorem Ipsum
     </AppWindow>
-
   </div>
 </template>
 
@@ -114,6 +113,7 @@ export default {
       currentLanguage: "en", // Default language
       currentDate: new Date().toLocaleDateString(),
       commitSummary: __COMMIT_SUMMARY__,
+      aboutMeVideoSrc: new URL('@/assets/videos/portfoliovideo.mov', import.meta.url).href, // Fixed video URL
     };
   },
   methods: {
