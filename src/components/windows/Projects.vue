@@ -27,7 +27,7 @@
         target="_blank"
         class="project-link"
       >
-        Go to Project
+        {{ $t('goToProject') }}
       </a>
     </div>
   </div>
@@ -37,38 +37,7 @@
 export default {
   data() {
     return {
-      projects: [
-        {
-          title: "Unnamed weather app",
-          image: "../src/assets/img/projects/unnamed-weather-app.png",
-          description: "A small project I had to do for school where we had to make use of an API.",
-          link: "/404", // Link to the 404 page
-        },
-        {
-          title: "Annoying webpage",
-          image: "/src/assets/img/projects/irritante-webpagina.png",
-          description: "This was the second project of my first year where I had to work in pairs and make a webpage as annoying as possible.",
-          link: "/404", // Link to the 404 page
-        },
-        {
-          title: "Whack A Mom",
-          image: "/src/assets/img/projects/whack-a-mom.png",
-          description: "For the third project of my first year I had to make a game using HTML, CSS and JS.",
-          link: "/404", // Link to the 404 page
-        },
-        {
-          title: "Gym list",
-          image: "/src/assets/img/projects/gym-list.png",
-          description: "This project I made was for myself to keep track of my gym progress.",
-          link: "/404", // Link to the 404 page
-        },
-        {
-          title: "One page website",
-          image: "/src/assets/img/projects/one-pager.png",
-          description: "For the first of my first year I had to recreate a one-page website using HTML and CSS.",
-          link: "/404", // Link to the 404 page
-        },
-      ],
+      projects: [],
       selectedProject: null, // Track the selected project
     };
   },
@@ -76,6 +45,43 @@ export default {
     selectProject(project) {
       this.selectedProject = this.selectedProject === project ? null : project;
     },
+    initializeProjects() {
+      this.projects = [
+        {
+          title: this.$t('uwp'),
+          image: "../src/assets/img/projects/unnamed-weather-app.png",
+          description: this.$t('uwpDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('aw'),
+          image: "/src/assets/img/projects/irritante-webpagina.png",
+          description: this.$t('awDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('wam'),
+          image: "/src/assets/img/projects/whack-a-mom.png",
+          description: this.$t('wamDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('gl'),
+          image: "/src/assets/img/projects/gym-list.png",
+          description: this.$t('glDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('op'),
+          image: "/src/assets/img/projects/one-pager.png",
+          description: this.$t('opDescription'),
+          link: "/404", // Link to the 404 page
+        },
+      ];
+    },
+  },
+  created() {
+    this.initializeProjects(); // Initialize projects with translations
   },
 };
 </script>

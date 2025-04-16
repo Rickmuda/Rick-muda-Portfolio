@@ -41,18 +41,18 @@
     </div>
 
     <!-- Start Menu -->
-    <div v-if="startMenuOpen" class="start-menu" @mouseover="keepStartMenuOpen" @mouseleave="closeStartMenu">
-      <div class="start-menu-topbar">Start Menu</div>
-      <div class="start-menu-content">
-        <p>Rick Ambergen production presents a Rick Ambergen portfolio!</p>
-        <p>Current version: {{ commitSummary }}</p>
-      </div>
-    </div>
+    <StartMenu
+      v-if="startMenuOpen"
+      :commitSummary="commitSummary"
+      @mouseover="keepStartMenuOpen"
+      @mouseleave="closeStartMenu"
+    />
   </div>
 </template>
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import StartMenu from "./StartMenu.vue";
 
 export default {
   props: {
@@ -92,6 +92,7 @@ export default {
   },
   components: {
     FontAwesomeIcon,
+    StartMenu,
   },
 };
 </script>

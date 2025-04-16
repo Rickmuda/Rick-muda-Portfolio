@@ -5,35 +5,35 @@
       <form @submit.prevent="sendMessage" class="contact-form">
         <!-- Email Field -->
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">{{ $t('email') }}</label>
           <input
             type="email"
             id="email"
             v-model="contactForm.email"
-            placeholder="Enter your email"
+            :placeholder="$t('enterEmail')"
             required
           />
         </div>
 
         <!-- Full Name Field -->
         <div class="form-group">
-          <label for="fullName">Full Name</label>
+          <label for="fullName">{{ $t('fullName') }}</label>
           <input
             type="text"
             id="fullName"
             v-model="contactForm.fullName"
-            placeholder="Enter your full name"
+            :placeholder="$t('enterFullName')"
             required
           />
         </div>
 
         <!-- Message Field -->
         <div class="form-group">
-          <label for="message">Message</label>
+          <label for="message">{{ $t('message') }}</label>
           <textarea
             id="message"
             v-model="contactForm.message"
-            placeholder="Enter your message"
+            :placeholder="$t('enterMessage')"
             rows="5"
             required
           ></textarea>
@@ -43,7 +43,7 @@
 
     <!-- Right Side: Send Button -->
     <div class="contact-right">
-      <button type="submit" class="send-button" @click="sendMessage">Send e-mail</button>
+      <button type="submit" class="send-button" @click="sendMessage">{{ $t('sendEmail') }}</button>
     </div>
   </div>
 </template>
@@ -65,7 +65,7 @@ export default {
 
       // Validate the form fields
       if (!email || !fullName || !message) {
-        alert("Please fill out all fields.");
+        alert(this.$t('fillAllFields'));
         return;
       }
 
@@ -79,18 +79,18 @@ export default {
       })
         .then((response) => {
           if (response.ok) {
-            alert("Message sent successfully!");
+            alert(this.$t('messageSent'));
             // Clear the form
             this.contactForm.email = "";
             this.contactForm.fullName = "";
             this.contactForm.message = "";
           } else {
-            alert("Failed to send message. Please try again.");
+            alert(this.$t('messageFailed'));
           }
         })
         .catch((error) => {
           console.error("Error:", error);
-          alert("An error occurred. Please try again.");
+          alert(this.$t('errorOccurred'));
         });
     },
   },

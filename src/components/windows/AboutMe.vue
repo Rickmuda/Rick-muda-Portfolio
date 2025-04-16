@@ -9,7 +9,7 @@
       :muted="isMuted"
     ></video>
     <div class="video-controls">
-      <button @click="togglePlayPause">{{ isPlaying ? "Pause" : "Play" }}</button>
+      <button @click="togglePlayPause">{{ isPlaying ? $t('Pause') : $t('Play') }}</button>
       <input
         type="range"
         min="0"

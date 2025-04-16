@@ -1021,3 +1021,81 @@ sorting-bar button:hover {
   background-color: #7a1793;
   transform: scale(1.05);
 }
+
+.background {
+  background-image: url('/src/assets/img/imggallery/room.jpg');
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+}
+
+.background.dark-mode {
+  background-image: url('/src/assets/img/imggallery/roomdark.png');
+}
+
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'PortfolioFont', sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+.dark-mode-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.dark-mode-toggle .slider {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode-toggle .slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked + .slider {
+  background-color: rgb(73, 14, 86);
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.dark-mode-toggle .label-text {
+  color: white;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.label-text {
+  font-family: 'PortfolioFont', sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+.language-selection select {
+  padding: 5px;
+  margin-left: 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

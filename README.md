@@ -34,3 +34,6 @@ npm run build
 ### Keuzedeel 3D printen toevoegen
 - "Teskbar.vue and Desktop.vue" Code on-commentaar maken staat gelabeld met <!-- 3D print support keuzedeel portfolio -->
 - Er staat ook wat code in de App.vue maar dat staat nu (16.04.2025) nog zonder met commentaar.
+
+### Duitse vertaling toevoegen.
+-Spreekt voor zich maar code valt te vinden in de Settings.vue file.

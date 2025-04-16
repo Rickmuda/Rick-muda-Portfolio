@@ -2,7 +2,7 @@
   <div id="app">
     <router-view />
     <!-- Background -->
-    <div class="background" :class="{ 'background-logged-in': loggedIn }">
+    <div class="background" :class="{ 'background-logged-in': loggedIn, 'dark-mode': darkMode }">
       <!-- Login Screen -->
       <LoginScreen
         v-if="!loggedIn"
@@ -21,32 +21,32 @@
 
     <!-- App Windows -->
   <!-- About me -->
-    <AppWindow v-if="activeApp === 'aboutMe'" title="About Me" @close="closeApp">
+    <AppWindow v-if="activeApp === 'aboutMe'" :title="$t('aboutMe')" @close="closeApp">
       <AboutMe :aboutMeVideoSrc="'/src/assets/videos/portfoliovideo.mov'" />
     </AppWindow>
 
   <!-- Contact -->
-    <AppWindow v-if="activeApp === 'contact'" title="Contact" @close="closeApp">
+    <AppWindow v-if="activeApp === 'contact'" :title="$t('contact')" @close="closeApp">
       <Contact :contactForm="contactForm" />
     </AppWindow>
 
   <!-- Projects -->
-    <AppWindow v-if="activeApp === 'projects'" title="Projects" @close="closeApp">
+    <AppWindow v-if="activeApp === 'projects'" :title="$t('projects')" @close="closeApp">
       <Projects :projects="projects" />
     </AppWindow>
 
   <!-- Socials -->
-    <AppWindow v-if="activeApp === 'socials'" title="Socials" @close="closeApp">
+    <AppWindow v-if="activeApp === 'socials'" :title="$t('socials')" @close="closeApp">
       <Socials />
     </AppWindow>
 
   <!-- Artgallery -->
-    <AppWindow v-if="activeApp === 'artGallery'" title="Art Gallery" @close="closeApp">
+    <AppWindow v-if="activeApp === 'artGallery'" :title="$t('artGallery')" @close="closeApp">
       <ArtGallery :images="artGalleryImages" />
     </AppWindow>
 
   <!-- Mini Game -->
-    <AppWindow v-if="activeApp === 'miniGame'" title="Mini Game" @close="closeApp">
+    <AppWindow v-if="activeApp === 'miniGame'" :title="$t('miniGame')" @close="closeApp">
       <MiniGame
         :clickerScore="clickerScore"
         :upgrades="upgrades"
@@ -57,12 +57,15 @@
     </AppWindow>
 
   <!-- Settings -->
-    <AppWindow v-if="activeApp === 'settings'" title="Settings" @close="closeApp">
-      <Settings v-model:darkMode="darkMode" />
+    <AppWindow v-if="activeApp === 'settings'" :title="$t('settings')" @close="closeApp">
+      <Settings
+        v-model:darkMode="darkMode"
+        v-model:currentLanguage="currentLanguage"
+      />
     </AppWindow>
 
      <!-- 3D print support keuzedeel portfolio -->
-    <AppWindow v-if="activeApp === 'threeDPrinting'" title="3D Printing" @close="closeApp">
+    <AppWindow v-if="activeApp === 'threeDPrinting'" :title="$t('threeDPrinting')" @close="closeApp">
       Lorem Ipsum
     </AppWindow>
 
@@ -108,8 +111,9 @@ export default {
       loggedIn: false,
       activeApp: null,
       darkMode: false,
-      currentDate: new Date().toLocaleDateString(), // Add currentDate
-      commitSummary: __COMMIT_SUMMARY__, // Add commitSummary
+      currentLanguage: "en", // Default language
+      currentDate: new Date().toLocaleDateString(),
+      commitSummary: __COMMIT_SUMMARY__,
     };
   },
   methods: {

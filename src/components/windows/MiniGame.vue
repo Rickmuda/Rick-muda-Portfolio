@@ -1,7 +1,7 @@
 <template>
   <div class="clicker-game">
-    <h2>Click the Rick</h2>
-    <p>Score: {{ clickerScore }}</p>
+    <h2>{{ $t('clickTheRick') }}</h2>
+    <p>{{ $t('score') }}: {{ clickerScore }}</p>
     <img
       src="/src/assets/img/minigame.png"
       alt="Click Me"
@@ -9,17 +9,17 @@
       @click="incrementScore"
     />
     <div class="upgrades">
-      <h3>Upgrades</h3>
+      <h3>{{ $t('upgrades') }}</h3>
       <div class="upgrade" v-for="(upgrade, index) in upgrades" :key="index">
         <p>{{ upgrade.name }}</p>
-        <p>Cost: {{ upgrade.cost }}</p>
-        <p v-if="upgrade.multiplier">Next Multiplier: x{{ upgrade.multiplier }}</p>
-        <p v-if="upgrade.autoClick">Auto Clicks: +{{ upgrade.autoClick }}/sec</p>
+        <p>{{ $t('cost') }}: {{ upgrade.cost }}</p>
+        <p v-if="upgrade.multiplier">{{ $t('nextMultiplier') }}: x{{ upgrade.multiplier }}</p>
+        <p v-if="upgrade.autoClick">{{ $t('autoClicks') }}: +{{ upgrade.autoClick }}/{{ $t('sec') }}</p>
         <button
           :disabled="clickerScore < upgrade.cost"
           @click="purchaseUpgrade(index)"
         >
-          Buy
+          {{ $t('buy') }}
         </button>
       </div>
     </div>
@@ -32,8 +32,8 @@ export default {
     return {
       clickerScore: 0,
       upgrades: [
-        { name: "Double Clicks", cost: 10, multiplier: 2 },
-        { name: "Auto Clicker", cost: 50, autoClick: 1 },
+        { name: this.$t('doubleClicks'), cost: 10, multiplier: 2 },
+        { name: this.$t('autoClicker'), cost: 50, autoClick: 1 },
       ],
       pointsPerClick: 1,
       autoClickInterval: null,
