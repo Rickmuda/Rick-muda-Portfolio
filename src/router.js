@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
-import PageNotFound from "./components/PageNotFound.vue"; // Import the PageNotFound component
+import PageNotFound from "./components/PageNotFound.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: App, // Replace with your home component if different
+    component: App,
   },
   {
-    path: "/:pathMatch(.*)*", // Catch-all route for invalid URLs
+    path: "/:pathMatch(.*)*",
     name: "PageNotFound",
-    component: PageNotFound, // Redirect to the PageNotFound component
+    component: PageNotFound,
   },
 ];
 

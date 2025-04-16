@@ -109,10 +109,10 @@ const messages = {
     dutch: 'Nederlands',
     german: 'Duits',
   },
-  // Add more languages here
 };
 
 const i18n = createI18n({
+  legacy: false, // Use Composition API mode
   locale: 'en', // Default language
   fallbackLocale: 'en', // Fallback language
   messages,
