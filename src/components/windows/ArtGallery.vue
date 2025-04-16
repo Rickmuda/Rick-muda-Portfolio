@@ -5,13 +5,18 @@
         v-for="(image, index) in artGalleryImages"
         :key="index"
         class="gallery-item"
-        @click="openImage(image)"
+        @click="openImage(index)"
       >
         <img :src="image" alt="Art" class="gallery-image" />
       </div>
     </div>
-    <div v-if="selectedImage" class="image-modal" @click="closeImage">
-      <img :src="selectedImage" alt="Selected Art" class="modal-image" />
+    <div v-if="selectedImageIndex !== null" class="image-modal">
+      <button class="arrow left-arrow" @click="previousImage">&#9664;</button>
+      <img :src="artGalleryImages[selectedImageIndex]" alt="Selected Art" class="modal-image" />
+      <button class="arrow right-arrow" @click="nextImage">&#9654;</button>
+      <button class="close-modal" @click="closeImage">
+        <span>X</span>
+      </button>
     </div>
   </div>
 </template>
@@ -29,15 +34,26 @@ export default {
         "/src/assets/img/imggallery/pose.png",
         "/src/assets/img/imggallery/dance.gif",
       ],
-      selectedImage: null, // Track the selected image
+      selectedImageIndex: null, // Track the index of the selected image
     };
   },
   methods: {
-    openImage(image) {
-      this.selectedImage = image; // Open the modal with the selected image
+    openImage(index) {
+      this.selectedImageIndex = index; // Open the modal with the selected image index
     },
     closeImage() {
-      this.selectedImage = null; // Close the modal
+      this.selectedImageIndex = null; // Close the modal
+    },
+    nextImage() {
+      // Go to the next image, loop back to the first if at the end
+      this.selectedImageIndex =
+        (this.selectedImageIndex + 1) % this.artGalleryImages.length;
+    },
+    previousImage() {
+      // Go to the previous image, loop back to the last if at the beginning
+      this.selectedImageIndex =
+        (this.selectedImageIndex - 1 + this.artGalleryImages.length) %
+        this.artGalleryImages.length;
     },
   },
 };
