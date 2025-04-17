@@ -68,7 +68,11 @@ export default {
   },
   methods: {
     openApp(appName) {
-      if (!this.openWindows.includes(appName)) {
+      if (this.openWindows.includes(appName)) {
+        // If the window is already open, close it
+        this.closeApp(appName);
+      } else {
+        // Otherwise, open the window
         this.openWindows.push(appName); // Add the app to the open windows list
         this.windowZIndices[appName] = this.zIndexCounter++; // Assign a z-index to the new window
       }
