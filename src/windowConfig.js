@@ -18,7 +18,7 @@ export const windowConfig = {
   projects: {
     component: Projects,
     title: "projects",
-    defaultWidth: 1000,
+    defaultWidth: 1200,
     defaultHeight: 800,
     defaultX: 200,
     defaultY: 150,
@@ -51,7 +51,7 @@ export const windowConfig = {
     component: MiniGame,
     title: "miniGame",
     defaultWidth: 800,
-    defaultHeight: 600,
+    defaultHeight: 700,
     defaultX: 600,
     defaultY: 350,
   },
