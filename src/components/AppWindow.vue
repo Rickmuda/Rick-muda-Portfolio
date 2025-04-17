@@ -6,7 +6,7 @@
     :h="defaultHeight"
     :resizable="false"
     :active="true"
-    :parent="false"
+    :parent="true" 
     class="draggable-window"
     :style="{ zIndex: zIndex }"
     @mousedown="bringToFront"
