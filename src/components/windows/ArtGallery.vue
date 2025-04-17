@@ -29,7 +29,7 @@ export default {
         new URL('@/assets/img/imggallery/fnf.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/panels.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/pepe.webp', import.meta.url).href,
-        new URL('@/assets/img/imggallery/room.we', import.meta.url).href,
+        new URL('@/assets/img/imggallery/room.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/vtuber.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/pose.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/dance.gif', import.meta.url).href,
