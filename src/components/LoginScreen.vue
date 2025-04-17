@@ -1,7 +1,7 @@
 <template>
   <div class="login-screen">
     <div class="center-box">
-      <img src="/src/assets/img/pfp.png" alt="Profile Picture" class="center-image" />
+      <img src="/src/assets/img/pfp.webp" alt="Profile Picture" class="center-image" />
     </div>
     <div class="password-box">
       <form @submit.prevent="checkPasswordLength">

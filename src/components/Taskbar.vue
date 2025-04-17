@@ -2,7 +2,7 @@
   <div class="taskbar">
     <!-- Left Box -->
     <div class="taskbar-left-box" @mouseover="openStartMenu" @mouseleave="closeStartMenu">
-      <img src="/src/assets/img/pfp.png" alt="Profile Picture" class="taskbar-image" />
+      <img src="/src/assets/img/pfp.webp" alt="Profile Picture" class="taskbar-image" />
     </div>
 
     <!-- Icons -->

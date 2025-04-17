@@ -26,12 +26,12 @@ export default {
   data() {
     return {
       artGalleryImages: [
-        new URL('@/assets/img/imggallery/fnf.png', import.meta.url).href,
+        new URL('@/assets/img/imggallery/fnf.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/panels.jpg', import.meta.url).href,
-        new URL('@/assets/img/imggallery/pepe.png', import.meta.url).href,
+        new URL('@/assets/img/imggallery/pepe.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/room.jpg', import.meta.url).href,
-        new URL('@/assets/img/imggallery/vtuber.png', import.meta.url).href,
-        new URL('@/assets/img/imggallery/pose.png', import.meta.url).href,
+        new URL('@/assets/img/imggallery/vtuber.webp', import.meta.url).href,
+        new URL('@/assets/img/imggallery/pose.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/dance.gif', import.meta.url).href,
       ],
       selectedImageIndex: null, // Track the index of the selected image

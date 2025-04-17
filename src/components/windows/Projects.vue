@@ -49,31 +49,31 @@ export default {
       this.projects = [
         {
           title: this.$t('uwp'),
-          image: new URL('@/assets/img/projects/unnamed-weather-app.png', import.meta.url).href,
+          image: new URL('@/assets/img/projects/unnamed-weather-app.webp', import.meta.url).href,
           description: this.$t('uwpDescription'),
           link: "/404", // Link to the 404 page
         },
         {
           title: this.$t('aw'),
-          image: new URL('@/assets/img/projects/irritante-webpagina.png', import.meta.url).href,
+          image: new URL('@/assets/img/projects/irritante-webpagina.webp', import.meta.url).href,
           description: this.$t('awDescription'),
           link: "/404", // Link to the 404 page
         },
         {
           title: this.$t('wam'),
-          image: new URL('@/assets/img/projects/whack-a-mom.png', import.meta.url).href,
+          image: new URL('@/assets/img/projects/whack-a-mom.webp', import.meta.url).href,
           description: this.$t('wamDescription'),
           link: "/404", // Link to the 404 page
         },
         {
           title: this.$t('gl'),
-          image: new URL('@/assets/img/projects/gym-list.png', import.meta.url).href,
+          image: new URL('@/assets/img/projects/gym-list.webp', import.meta.url).href,
           description: this.$t('glDescription'),
           link: "/404", // Link to the 404 page
         },
         {
           title: this.$t('op'),
-          image: new URL('@/assets/img/projects/one-pager.png', import.meta.url).href,
+          image: new URL('@/assets/img/projects/one-pager.webp', import.meta.url).href,
           description: this.$t('opDescription'),
           link: "/404", // Link to the 404 page
         },

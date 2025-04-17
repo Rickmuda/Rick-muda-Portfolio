@@ -3,7 +3,7 @@
     <h2>{{ $t('clickTheRick') }}</h2>
     <p>{{ $t('score') }}: {{ clickerScore }}</p>
     <img
-      src="/src/assets/img/minigame.png"
+      src="/src/assets/img/minigame.webp"
       alt="Click Me"
       class="clicker-image"
       @click="incrementScore"
