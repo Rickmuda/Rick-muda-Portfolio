@@ -4,10 +4,12 @@
     :y="defaultY"
     :w="defaultWidth"
     :h="defaultHeight"
-    :resizable="false" 
+    :resizable="false"
     :active="true"
-    :parent="false" 
+    :parent="false"
     class="draggable-window"
+    :style="{ zIndex: zIndex }"
+    @mousedown="bringToFront"
   >
     <div class="app-window">
       <div class="top-bar">
@@ -49,6 +51,10 @@ export default {
       type: Number,
       default: 100,
     },
+    zIndex: {
+      type: Number,
+      required: true, // Pass the z-index from App.vue
+    },
   },
   components: {
     Vue3DraggableResizable,
@@ -56,6 +62,9 @@ export default {
   methods: {
     closeWindow() {
       this.$emit("close");
+    },
+    bringToFront() {
+      this.$emit("bringToFront"); // Emit an event to bring the window to the front
     },
   },
 };

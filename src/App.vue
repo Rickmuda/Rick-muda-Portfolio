@@ -21,7 +21,9 @@
       :defaultHeight="windowConfig[window].defaultHeight"
       :defaultX="windowConfig[window].defaultX"
       :defaultY="windowConfig[window].defaultY"
+      :zIndex="windowZIndices[window]" 
       @close="closeApp(window)"
+      @bringToFront="bringWindowToFront(window)" 
     >
       <!-- Pass props dynamically based on the window -->
       <component
@@ -55,6 +57,8 @@ export default {
       currentDate: new Date().toLocaleDateString(),
       commitSummary: __COMMIT_SUMMARY__,
       aboutMeVideoSrc: "/src/assets/videos/about-me.mp4", // Example video source
+      zIndexCounter: 10, // Initial z-index value for windows
+      windowZIndices: {}, // Track z-index for each window
     };
   },
   computed: {
@@ -66,10 +70,12 @@ export default {
     openApp(appName) {
       if (!this.openWindows.includes(appName)) {
         this.openWindows.push(appName); // Add the app to the open windows list
+        this.windowZIndices[appName] = this.zIndexCounter++; // Assign a z-index to the new window
       }
     },
     closeApp(appName) {
       this.openWindows = this.openWindows.filter((window) => window !== appName); // Remove the app from the open windows list
+      delete this.windowZIndices[appName]; // Remove its z-index tracking
     },
     checkLoginState() {
       this.loggedIn = true; // Simply set loggedIn to true when the user enters 6 characters
@@ -80,6 +86,9 @@ export default {
     setDarkModeBasedOnTime() {
       const currentHour = new Date().getHours();
       this.darkMode = currentHour >= 18 || currentHour < 6; // Enable dark mode after 6 PM and before 6 AM
+    },
+    bringWindowToFront(appName) {
+      this.windowZIndices[appName] = this.zIndexCounter++; // Update the z-index to bring the window to the front
     },
     getWindowProps(windowName) {
       // Return props specific to the window
