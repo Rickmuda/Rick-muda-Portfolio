@@ -50,7 +50,7 @@ export const windowConfig = {
   miniGame: {
     component: MiniGame,
     title: "miniGame",
-    defaultWidth: 800,
+    defaultWidth: 1000,
     defaultHeight: 700,
     defaultX: 600,
     defaultY: 150,

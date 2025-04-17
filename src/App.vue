@@ -50,12 +50,17 @@ export default {
     return {
       loggedIn: false,
       openWindows: [], // Track currently open windows
-      darkMode: false,
+      darkMode: false, // Default dark mode state
       currentLanguage: "en", // Default language
       currentDate: new Date().toLocaleDateString(),
       commitSummary: __COMMIT_SUMMARY__,
-      aboutMeVideoSrc: "src\assets\videos\portfoliovideo.mov", // Example video source
+      aboutMeVideoSrc: "/src/assets/videos/about-me.mp4", // Example video source
     };
+  },
+  computed: {
+    windowConfig() {
+      return windowConfig; // Expose the window configuration
+    },
   },
   methods: {
     openApp(appName) {
@@ -69,28 +74,34 @@ export default {
     checkLoginState() {
       this.loggedIn = true; // Simply set loggedIn to true when the user enters 6 characters
     },
-    getWindowProps(window) {
-      // Return props dynamically based on the window
-      switch (window) {
-        case "aboutMe":
-          return { aboutMeVideoSrc: this.aboutMeVideoSrc };
-        case "settings":
-          return {
-            darkMode: this.darkMode,
-            currentLanguage: this.currentLanguage,
-            "onUpdate:darkMode": (value) => (this.darkMode = value),
-            "onUpdate:currentLanguage": (value) =>
-              (this.currentLanguage = value),
-          };
-        default:
-          return {};
+    toggleDarkMode() {
+      this.darkMode = !this.darkMode; // Toggle dark mode manually
+    },
+    setDarkModeBasedOnTime() {
+      const currentHour = new Date().getHours();
+      this.darkMode = currentHour >= 18 || currentHour < 6; // Enable dark mode after 6 PM and before 6 AM
+    },
+    getWindowProps(windowName) {
+      // Return props specific to the window
+      if (windowName === "settings") {
+        return {
+          darkMode: this.darkMode,
+          currentLanguage: this.currentLanguage,
+          "onUpdate:darkMode": (value) => (this.darkMode = value),
+          "onUpdate:currentLanguage": (value) => (this.currentLanguage = value),
+        };
       }
+      return windowConfig[windowName]?.props || {};
     },
   },
-  computed: {
-    windowConfig() {
-      return windowConfig; // Expose the window configuration
-    },
+  mounted() {
+    // Set dark mode based on the current time when the app loads
+    this.setDarkModeBasedOnTime();
+
+    // Check the time every minute to update dark mode automatically
+    setInterval(() => {
+      this.setDarkModeBasedOnTime();
+    }, 60000); // Check every 60 seconds
   },
 };
 </script>

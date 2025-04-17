@@ -796,14 +796,20 @@ sorting-bar button:hover {
   height: 100%;
 }
 
+/* Socials Icons */
 .socials-icons {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px; /* Space between icons */
+  justify-content: center; /* Center the grid horizontally */
+  align-items: center; /* Center the icons vertically */
+  width: 80%; /* Adjust the width of the grid */
+  margin: 0 auto; /* Center the grid within the parent container */
 }
 
 .social-icon {
-  font-size: 100px;
-  margin: 20px;
+  font-size: 80px;
+  margin: 10px;
   color: white;
   transition: transform 0.2s ease, color 0.3s ease;
 }
@@ -840,7 +846,7 @@ sorting-bar button:hover {
 
 /* Send Button */
 .send-button {
-  padding: 15px 30px;
+  padding: 10px 20px;
   background-color: #7a1793;
   color: white;
   border: black solid 2px;
