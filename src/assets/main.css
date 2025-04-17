@@ -82,7 +82,7 @@ body {
   padding: 0 10px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  z-index: 11;
+  z-index: 1100;
 }
 
 /* Taskbar Left Box */
