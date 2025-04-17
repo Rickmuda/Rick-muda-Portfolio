@@ -33,6 +33,7 @@ export default {
         new URL('@/assets/img/imggallery/vtuber.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/pose.webp', import.meta.url).href,
         new URL('@/assets/img/imggallery/dance.gif', import.meta.url).href,
+        new URL('@/assets/img/imggallery/rickpilgrim.webp', import.meta.url).href,
       ],
       selectedImageIndex: null, // Track the index of the selected image
     };
