@@ -82,7 +82,7 @@ body {
   padding: 0 10px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  z-index: 3;
+  z-index: 11;
 }
 
 /* Taskbar Left Box */
@@ -631,11 +631,14 @@ sorting-bar button:hover {
 
 /* App Window */
 .app-window {
-  width: 90%;
-  height: 75%;
-  overflow: hidden; /* Prevent scrollbars inside the app window */
+  width: 100%;
+  height: 100%;
+  background: rgba(155, 32, 183, 1);
+  border-radius: 15px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: 3px solid black;
 }
 
 /* Art Gallery Window */
@@ -1176,4 +1179,219 @@ sorting-bar button:hover {
 
 .close-modal:hover {
   background-color: rgba(200, 0, 0, 1); /* Slightly darker red on hover */
+}
+
+.draggable-window {
+  position: absolute; /* Ensure the window can be freely moved */
+  z-index: 10; /* Ensure the window is above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+/* Main App Window */
+.app-window {
+  width: 100%;
+  height: 100%;
+  background: rgba(155, 32, 183, 1);
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+}
+
+/* Top Bar */
+.top-bar {
+  height: 56px;
+  background: rgba(217, 217, 217, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 3px solid black;
+  cursor: move; /* Indicate that the top bar is draggable */
+}
+
+/* Window Title */
+.window-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Close Button */
+.close-button {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.close-button span {
+  font-size: 18px;
+  color: black;
+}
+
+/* App Content */
+.app-content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+}
+
+/* Top Bar */
+.top-bar {
+  width: 100%;
+  height: 56px;
+  background: rgba(217, 217, 217, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: 3px solid #000; /* Bottom border for the top bar */
+}
+
+/* Title Text */
+.v3_198 {
+  font-size: 24px;
+  color: white;
+  text-align: left;
+  margin-left: 0;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-family: "Retro Gaming", sans-serif;
+}
+
+/* Close Button */
+.close-button {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Close Button Text */
+.v3_197 {
+  font-family: "Retro Gaming", sans-serif;
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+
+/* App Content */
+.app-content {
+  flex: 1; /* Take up the remaining space below the top bar */
+  padding: 20px;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  overflow-y: auto; /* Enable vertical scrolling */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #9b20b7 #f0f0f0; /* Thumb and track colors */
+}
+
+/* Custom Scrollbar for WebKit Browsers */
+.app-content::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+.app-content::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Track color */
+  border-radius: 5px; /* Rounded corners for the track */
+}
+
+.app-content::-webkit-scrollbar-thumb {
+  background: #9b20b7; /* Thumb color */
+  border-radius: 5px; /* Rounded corners for the thumb */
+  border: 2px solid #f0f0f0; /* Add padding around the thumb */
+}
+
+.app-content::-webkit-scrollbar-thumb:hover {
+  background: #7a1793; /* Darker shade on hover */
+}
+
+.scrollable-app {
+  overflow: auto; /* Allow scrollbars for the art gallery */
+}
+
+.vdr-container.active {
+  border: none !important; /* Remove the border */
+}
+
+/* Conversation Styling */
+.about-me-conversation {
+  font-family: "Courier New", Courier, monospace;
+  color: #00ff00;
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.conversation-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.speaker-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #00ff00;
+}
+
+.me-text {
+  background-color: #333;
+  color: #00ff00;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.user-text {
+  background-color: #00ff00;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+  align-self: flex-end;
+}
+
+.choices {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice-button {
+  background-color: #333;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.choice-button:hover {
+  background-color: #00ff00;
+  color: black;
 }

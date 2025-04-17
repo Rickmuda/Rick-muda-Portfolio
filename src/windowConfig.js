@@ -1,0 +1,66 @@
+import AboutMe from "./components/windows/AboutMe.vue";
+import Projects from "./components/windows/Projects.vue";
+import Contact from "./components/windows/Contact.vue";
+import Socials from "./components/windows/Socials.vue";
+import ArtGallery from "./components/windows/ArtGallery.vue";
+import MiniGame from "./components/windows/MiniGame.vue";
+import Settings from "./components/windows/Settings.vue";
+
+export const windowConfig = {
+  aboutMe: {
+    component: AboutMe,
+    title: "aboutMe",
+    defaultWidth: 900,
+    defaultHeight: 700,
+    defaultX: 100,
+    defaultY: 100,
+  },
+  projects: {
+    component: Projects,
+    title: "projects",
+    defaultWidth: 1000,
+    defaultHeight: 800,
+    defaultX: 200,
+    defaultY: 150,
+  },
+  contact: {
+    component: Contact,
+    title: "contact",
+    defaultWidth: 600,
+    defaultHeight: 500,
+    defaultX: 300,
+    defaultY: 200,
+  },
+  socials: {
+    component: Socials,
+    title: "socials",
+    defaultWidth: 800,
+    defaultHeight: 600,
+    defaultX: 400,
+    defaultY: 250,
+  },
+  artGallery: {
+    component: ArtGallery,
+    title: "artGallery",
+    defaultWidth: 1000,
+    defaultHeight: 800,
+    defaultX: 500,
+    defaultY: 300,
+  },
+  miniGame: {
+    component: MiniGame,
+    title: "miniGame",
+    defaultWidth: 800,
+    defaultHeight: 600,
+    defaultX: 600,
+    defaultY: 350,
+  },
+  settings: {
+    component: Settings,
+    title: "settings",
+    defaultWidth: 500,
+    defaultHeight: 400,
+    defaultX: 700,
+    defaultY: 400,
+  },
+};
