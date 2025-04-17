@@ -42,84 +42,54 @@ export default {
       story: {
         start: {
           text: [
-            { speaker: "me", text: "Hey there! Welcome to my portfolio." },
-            { speaker: "me2", text: "What brings you here today?" },
+            { speaker: "me", text: this.$t("aboutMeIntro") },
+            { speaker: "me2", text: this.$t("aboutMeQuestion") },
           ],
           choices: [
-            { text: "Tell me about yourself.", next: "aboutMe" },
-            { text: "Show me your projects.", next: "projects" },
-            { text: "What are your skills?", next: "skills" },
+            { text: this.$t("tellMeAboutYourself"), next: "aboutMe" },
+            { text: this.$t("showMeYourProjects"), next: "projects" },
+            { text: this.$t("whatAreYourSkills"), next: "skills" },
           ],
         },
         aboutMe: {
           text: [
-            { 
-              speaker: "me", text: "Sure! I'm what a lot of people would say a nerd." 
-            },
-            { 
-              speaker: "me", text: "I love gadgets and gizmos." 
-            },
-            { 
-              speaker: "me", text: "I also love listening to vinyls and playing video games." 
-            },
-            { 
-              speaker: "me", text: "My favorite vinyl I own has to be the original soundtrack of the movie 'Spiderman into the spider-verse'." 
-            },
-            { 
-              speaker: "me", text: "And I actually do not have one favorite game, I have two." 
-            },
-            { 
-              speaker: "me", text: "Bloodborne and The binding of isaac have a special place in my heart." 
-            },
-            {
-              speaker: "me",
-              text: "What else can I help you with?",
-            }
+            { speaker: "me", text: this.$t("aboutMeNerd") },
+            { speaker: "me", text: this.$t("aboutMeGadgets") },
+            { speaker: "me", text: this.$t("aboutMeVinyls") },
+            { speaker: "me", text: this.$t("aboutMeFavoriteVinyl") },
+            { speaker: "me", text: this.$t("aboutMeFavoriteGames") },
+            { speaker: "me", text: this.$t("aboutMeGames") },
+            { speaker: "me", text: this.$t("aboutMeHelp") },
           ],
           choices: [
-            { text: "What are your skills?", next: "skills" },
-            { text: "Show me your projects.", next: "projects" },
-            { text: "Go back.", next: "start" },
+            { text: this.$t("whatAreYourSkills"), next: "skills" },
+            { text: this.$t("showMeYourProjects"), next: "projects" },
+            { text: this.$t("goBack"), next: "start" },
           ],
         },
         projects: {
           text: [
-            { speaker: "me", text: "The projects I make in my freetime are mostly ideas I randomly get." },
-            {
-              speaker: "me2",
-              text: "If you are currious about my projects, you can check out a couple on the projects window or on my github.",
-            },
-            {
-              speaker: "me",
-              text: "What else can I help you with?",
-            },
+            { speaker: "me", text: this.$t("projectsIntro") },
+            { speaker: "me2", text: this.$t("projectsGithub") },
+            { speaker: "me", text: this.$t("projectsHelp") },
           ],
           choices: [
-            { text: "Tell me about yourself.", next: "aboutMe" },
-            { text: "What are your skills?", next: "skills" },
-            { text: "Go back.", next: "start" },
+            { text: this.$t("tellMeAboutYourself"), next: "aboutMe" },
+            { text: this.$t("whatAreYourSkills"), next: "skills" },
+            { text: this.$t("goBack"), next: "start" },
           ],
         },
         skills: {
           text: [
-            { speaker: "me", text: "I specialize in front-end web development." },
-            {
-              speaker: "me2",
-              text: "I work with all kinds of front-end languages and frameworks.",
-            },
-            {
-              speaker: "me",
-              text: "I also have experience with back-end technologies, but I prefer working with front-end so I can let my creativity shine.",
-            },
-            {
-              speaker: "me",
-              text: "What else can I help you with?",
-            }
+            { speaker: "me", text: this.$t("skillsIntro") },
+            { speaker: "me2", text: this.$t("skillsLanguages") },
+            { speaker: "me", text: this.$t("skillsBackEnd") },
+            { speaker: "me", text: this.$t("skillsHelp") },
           ],
           choices: [
-            { text: "Tell me about yourself.", next: "aboutMe" },
-            { text: "Show me your projects.", next: "projects" },
-            { text: "Go back.", next: "start" },
+            { text: this.$t("tellMeAboutYourself"), next: "aboutMe" },
+            { text: this.$t("showMeYourProjects"), next: "projects" },
+            { text: this.$t("goBack"), next: "start" },
           ],
         },
       },
