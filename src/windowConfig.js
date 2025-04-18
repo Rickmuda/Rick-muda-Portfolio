@@ -5,6 +5,7 @@ import Socials from "./components/windows/Socials.vue";
 import ArtGallery from "./components/windows/ArtGallery.vue";
 import MiniGame from "./components/windows/MiniGame.vue";
 import Settings from "./components/windows/Settings.vue";
+import OldVideo from "./components/windows/OldVideo.vue";
 
 export const windowConfig = {
   aboutMe: {
@@ -62,5 +63,13 @@ export const windowConfig = {
     defaultHeight: 400,
     defaultX: 700,
     defaultY: 400,
+  },
+  oldVideo: {
+    component: OldVideo,
+    title: "oldVideo",
+    defaultWidth: 800,
+    defaultHeight: 600,
+    defaultX: 300,
+    defaultY: 200,
   },
 };

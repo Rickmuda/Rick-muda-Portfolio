@@ -31,6 +31,11 @@
         v-bind="getWindowProps(window)"
       />
     </AppWindow>
+
+    <!-- Easter Egg Message -->
+    <div v-if="easterEggTriggered" class="easter-egg-message">
+      🎉 Konami Code Activated! 🎉
+    </div>
   </div>
 </template>
 
@@ -59,6 +64,20 @@ export default {
       aboutMeVideoSrc: "/src/assets/videos/about-me.mp4", // Example video source
       zIndexCounter: 10, // Initial z-index value for windows
       windowZIndices: {}, // Track z-index for each window
+      konamiCode: [
+        "ArrowUp",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowLeft",
+        "ArrowRight",
+        "b",
+        "a",
+      ],
+      currentInput: [],
+      easterEggTriggered: false,
     };
   },
   computed: {
@@ -106,6 +125,27 @@ export default {
       }
       return windowConfig[windowName]?.props || {};
     },
+    handleKeydown(event) {
+      this.currentInput.push(event.key);
+      if (this.currentInput.length > this.konamiCode.length) {
+        this.currentInput.shift(); // Keep the input array the same length as the Konami Code
+      }
+      if (this.currentInput.join("") === this.konamiCode.join("")) {
+        this.triggerEasterEgg();
+      }
+    },
+    triggerEasterEgg() {
+      this.easterEggTriggered = true;
+
+      // Open the "Old Video" app
+      if (!this.openWindows.includes("oldVideo")) {
+        this.openApp("oldVideo");
+      }
+
+      setTimeout(() => {
+        this.easterEggTriggered = false; // Reset after a few seconds
+      }, 5000);
+    },
   },
   mounted() {
     // Set dark mode based on the current time when the app loads
@@ -115,6 +155,13 @@ export default {
     setInterval(() => {
       this.setDarkModeBasedOnTime();
     }, 60000); // Check every 60 seconds
+
+    // Add keydown event listener for Konami Code
+    window.addEventListener("keydown", this.handleKeydown);
+  },
+  beforeUnmount() {
+    // Remove keydown event listener to avoid memory leaks
+    window.removeEventListener("keydown", this.handleKeydown);
   },
 };
 </script>
