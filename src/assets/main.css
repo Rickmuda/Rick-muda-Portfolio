@@ -347,6 +347,7 @@ sorting-bar button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding: 10px;
   font-size: 100%;
   background-color: #f9f9f9;
@@ -363,11 +364,11 @@ sorting-bar button:hover {
 }
 
 .project-card img {
-  width: 100%;
+  width: 80%;
   height: auto;
   max-height: 150px;
   object-fit: contain;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   border: 2px solid #282828;
 }
 
@@ -1448,4 +1449,70 @@ sorting-bar button:hover {
   width: 100vw; /* Full width of the viewport */
   height: 100vh; /* Full height of the viewport */
   overflow: hidden; /* Prevent content from overflowing */
+}
+
+.easter-egg-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: center;
+  z-index: 1000;
+  animation: fadeInOut 5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.old-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+video {
+  max-width: 100%;
+  max-height: 100%;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+
+/* Video Player Styling */
+.old-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.old-video h2 {
+  font-size: 24px;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  margin-bottom: 20px;
+}
+
+.old-video video {
+  max-width: 90%;
+  max-height: 80%;
+  border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgba(155, 32, 183, 0.8); /* Match the site's color scheme */
 }

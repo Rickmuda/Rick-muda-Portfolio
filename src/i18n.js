@@ -2,7 +2,7 @@ import { createI18n } from 'vue-i18n';
 
 const messages = {
   en: {
-    welcome: 'Welcome!',
+    // App names
     aboutMe: 'About Me',
     contact: 'Contact',
     projects: 'Projects',
@@ -11,32 +11,35 @@ const messages = {
     miniGame: 'Mini Game',
     settings: 'Settings',
     threeDPrinting: '3D Printing',
-        // About Me Section
-        aboutMeIntro: "Hey there! Welcome to my portfolio.",
-        aboutMeQuestion: "What can I help you with?",
-        aboutMeNerd: "Sure! I'm what many people would call a nerd.",
-        aboutMeGadgets: "I love gadgets and tech.",
-        aboutMeVinyls: "I enjoy listening to vinyl records and playing video games.",
-        aboutMeFavoriteVinyl: "My favorite vinyl is the original soundtrack of the movie 'Spiderman into the Spider-Verse'.",
-        aboutMeFavoriteGames: "I don't have one favorite game, but two.",
-        aboutMeGames: "Bloodborne and The Binding of Isaac hold a special place in my heart.",
-        aboutMeHelp: "What else can I help you with?",
-    
-        projectsIntro: "The projects I create in my free time are usually ideas that come to me spontaneously.",
-        projectsGithub: "If you're curious about my projects, you can check out a few in the projects window or on my GitHub.",
-        projectsHelp: "What else can I help you with?",
-    
-        skillsIntro: "I specialize in front-end web development.",
-        skillsLanguages: "I work with all kinds of front-end languages and frameworks.",
-        skillsBackEnd: "I also have experience with back-end technologies, but I prefer working with front-end so I can let my creativity shine.",
-        skillsHelp: "What else can I help you with?",
-    
-        // Choices
-        tellMeAboutYourself: "Tell me about yourself.",
-        showMeYourProjects: "Show me your projects.",
-        whatAreYourSkills: "What are your skills?",
-        goBack: "Go back.",
+
+    // About me
+    aboutMeIntro: "Hey there! Welcome to my portfolio.",
+    aboutMeQuestion: "What can I help you with?",
+    aboutMeNerd: "Sure! I'm what many people would call a nerd.",
+    aboutMeGadgets: "I love gadgets and tech.",
+    aboutMeVinyls: "I enjoy listening to vinyl records and playing video games.",
+    aboutMeFavoriteVinyl: "My favorite vinyl is the original soundtrack of the movie 'Spiderman into the Spider-Verse'.",
+    aboutMeFavoriteGames: "I don't have one favorite game, but two.",
+    aboutMeGames: "Bloodborne and The Binding of Isaac hold a special place in my heart.",
+    aboutMeHelp: "What else can I help you with?",
+    projectsIntro: "The projects I create in my free time are usually ideas that come to me spontaneously.",
+    projectsGithub: "If you're curious about my projects, you can check out a few in the projects window or on my GitHub.",
+    projectsHelp: "What else can I help you with?",   
+    skillsIntro: "I specialize in front-end web development.",
+    skillsLanguages: "I work with all kinds of front-end languages and frameworks.",
+    skillsBackEnd: "I also have experience with back-end technologies, but I prefer working with front-end so I can let my creativity shine.",
+    skillsHelp: "What else can I help you with?",
+    tellMeAboutYourself: "Tell me about yourself.",
+    showMeYourProjects: "Show me your projects.",
+    whatAreYourSkills: "What are your skills?",
+    goBack: "Go back.",
+
+    // Settings
     language: 'Language',
+    enableDarkMode: 'Enable Dark Mode',
+    selectLanguage: 'Select Language',
+
+    // Projects
     uwp: 'Unnamed Weather App',
     uwpDescription: 'A small project I had to do for school where we had to make use of an API.',
     aw: 'Annoying Webpage',
@@ -47,10 +50,28 @@ const messages = {
     glDescription: 'This project I made was for myself to keep track of my gym progress.',
     op: 'One Pager',
     opDescription: 'For the first project of my first year, I had to recreate a one-page website using HTML and CSS.',
+    eq: 'English Quiz',
+    eqDescription: 'A project where I created an English quiz application.',
+    sp: 'Snackbar Podcast',
+    spDescription: 'A podcast made for Dutch lessons.',
+    sf: 'Spiderverse Forum',
+    sfDescription: 'A forum website inspired by the Spiderverse movie.',
+    tdl: 'To-Do List',
+    tdlDescription: 'A simple to-do list application to manage tasks.',
+    ul: 'Undertale Laravel',
+    ulDescription: 'A Laravel-based project inspired by the game Undertale.',
+    us: 'Undertale Sudoku',
+    usDescription: 'A Sudoku game with an Undertale theme.',
+    ws: 'Webshop',
+    wsDescription: 'An e-commerce website project.',
     goToProject: 'Go to Project',
+
+    // Start menu
     startMenu: 'Start Menu',
     startMenuIntro: 'Rick Ambergen production presents a Rick Ambergen portfolio!',
     currentVersion: 'Current version',
+
+    // Contact
     email: 'Email',
     fullName: 'Full Name',
     message: 'Message',
@@ -62,6 +83,8 @@ const messages = {
     messageSent: 'Message sent successfully!',
     messageFailed: 'Failed to send message. Please try again.',
     errorOccurred: 'An error occurred. Please try again.',
+
+    // Mini game
     clickTheRick: 'Click the Rick',
     score: 'Score',
     upgrades: 'Upgrades',
@@ -72,14 +95,18 @@ const messages = {
     buy: 'Buy',
     doubleClicks: 'Double Clicks',
     autoClicker: 'Auto Clicker',
-    enableDarkMode: 'Enable Dark Mode',
-    selectLanguage: 'Select Language',
+
+    // Languages
     english: 'English',
     dutch: 'Dutch',
     german: 'German',
+
+    // Easter egg
+    oldVideo: 'Old Video',
   },
+
   nl: {
-    welcome: 'Welkom!',
+    // App names
     aboutMe: 'Over Mij',
     contact: 'Contact',
     projects: 'Projecten',
@@ -88,8 +115,35 @@ const messages = {
     miniGame: 'Mini Spel',
     settings: 'Instellingen',
     threeDPrinting: '3D Printen',
-    
+
+    // About me 
+    aboutMeIntro: "Hey daar! Welkom op mijn portfolio.",
+    aboutMeQuestion: "Waarmee kan ik je helpen?",
+    aboutMeNerd: "Zeker! Ik ben wat veel mensen een nerd zouden noemen.",
+    aboutMeGadgets: "Ik hou van gadgets en snufjes.",
+    aboutMeVinyls: "Ik luister graag naar vinylplaten en speel videogames.",
+    aboutMeFavoriteVinyl: "Mijn favoriete vinyl is de originele soundtrack van de film 'Spiderman into the Spider-Verse'.",
+    aboutMeFavoriteGames: "Ik heb niet één favoriete game, maar twee.",
+    aboutMeGames: "Bloodborne en The Binding of Isaac hebben een speciale plek in mijn hart.",
+    aboutMeHelp: "Waarmee kan ik je verder helpen?",
+    projectsIntro: "De projecten die ik in mijn vrije tijd maak, zijn meestal ideeën die ik spontaan krijg.",
+    projectsGithub: "Als je nieuwsgierig bent naar mijn projecten, kun je er een paar bekijken in het projectvenster of op mijn GitHub.",
+    projectsHelp: "Waarmee kan ik je verder helpen?",
+    skillsIntro: "Ik ben gespecialiseerd in front-end webontwikkeling.",
+    skillsLanguages: "Ik werk met allerlei front-end talen en frameworks.",
+    skillsBackEnd: "Ik heb ook ervaring met back-end technologieën, maar ik werk liever met front-end zodat ik mijn creativiteit kan laten zien.",
+    skillsHelp: "Waarmee kan ik je verder helpen?",
+    tellMeAboutYourself: "Vertel me over jezelf.",
+    showMeYourProjects: "Laat me je projecten zien.",
+    whatAreYourSkills: "Wat zijn je vaardigheden?",
+    goBack: "Ga terug.",
+
+    // Settings
+    enableDarkMode: 'Schakel Donkere Modus In',
+    selectLanguage: 'Selecteer Taal',
     language: 'Taal',
+
+    // Projects
     uwp: 'Onbenoemde Weer App',
     uwpDescription: 'Een klein project dat ik moest doen voor school waarbij we gebruik moesten maken van een API.',
     aw: 'Vervelende Webpagina',
@@ -100,10 +154,28 @@ const messages = {
     glDescription: 'Dit project heb ik gemaakt om mijn sportschoolvoortgang bij te houden.',
     op: 'Enkele Pagina',
     opDescription: 'Voor het eerste project van mijn eerste jaar moest ik een one-pager website namaken met HTML en CSS.',
+    eq: 'Engelse Quiz',
+    eqDescription: 'Een project waarin ik een Engelse quiz-applicatie heb gemaakt.',
+    sp: 'Snackbar Podcast',
+    spDescription: 'Een podcast voor Nederlands.',
+    sf: 'Spiderverse Forum',
+    sfDescription: 'Een forumwebsite geïnspireerd door de Spiderverse-film.',
+    tdl: 'Takenlijst',
+    tdlDescription: 'Een eenvoudige takenlijst-applicatie om taken te beheren.',
+    ul: 'Undertale Laravel',
+    ulDescription: 'Een Laravel-project geïnspireerd door de game Undertale.',
+    us: 'Undertale Sudoku',
+    usDescription: 'Een Sudoku-spel met een Undertale-thema.',
+    ws: 'Webwinkel',
+    wsDescription: 'Een e-commerce websiteproject.',
     goToProject: 'Ga naar Project',
+
+    // Start menu
     startMenu: 'Start Menu',
     startMenuIntro: 'Rick Ambergen productie presenteert een Rick Ambergen portfolio!',
     currentVersion: 'Huidige versie',
+
+    // Contact
     email: 'E-mail',
     fullName: 'Volledige Naam',
     message: 'Bericht',
@@ -115,6 +187,8 @@ const messages = {
     messageSent: 'Bericht succesvol verzonden!',
     messageFailed: 'Bericht verzenden mislukt. Probeer het opnieuw.',
     errorOccurred: 'Er is een fout opgetreden. Probeer het opnieuw.',
+
+    // Mini game
     clickTheRick: 'Klik de Rick',
     score: 'Score',
     upgrades: 'Upgrades',
@@ -125,37 +199,15 @@ const messages = {
     buy: 'Kopen',
     doubleClicks: 'Dubbele Klikken',
     autoClicker: 'Automatisch Klikken',
-    enableDarkMode: 'Schakel Donkere Modus In',
-    selectLanguage: 'Selecteer Taal',
+
+    // Languages
     english: 'Engels',
     dutch: 'Nederlands',
     german: 'Duits',
 
-    // About Me Section
-    aboutMeIntro: "Hey daar! Welkom op mijn portfolio.",
-    aboutMeQuestion: "Waarmee kan ik je helpen?",
-    aboutMeNerd: "Zeker! Ik ben wat veel mensen een nerd zouden noemen.",
-    aboutMeGadgets: "Ik hou van gadgets en snufjes.",
-    aboutMeVinyls: "Ik luister graag naar vinylplaten en speel videogames.",
-    aboutMeFavoriteVinyl: "Mijn favoriete vinyl is de originele soundtrack van de film 'Spiderman into the Spider-Verse'.",
-    aboutMeFavoriteGames: "Ik heb niet één favoriete game, maar twee.",
-    aboutMeGames: "Bloodborne en The Binding of Isaac hebben een speciale plek in mijn hart.",
-    aboutMeHelp: "Waarmee kan ik je verder helpen?",
 
-    projectsIntro: "De projecten die ik in mijn vrije tijd maak, zijn meestal ideeën die ik spontaan krijg.",
-    projectsGithub: "Als je nieuwsgierig bent naar mijn projecten, kun je er een paar bekijken in het projectvenster of op mijn GitHub.",
-    projectsHelp: "Waarmee kan ik je verder helpen?",
-
-    skillsIntro: "Ik ben gespecialiseerd in front-end webontwikkeling.",
-    skillsLanguages: "Ik werk met allerlei front-end talen en frameworks.",
-    skillsBackEnd: "Ik heb ook ervaring met back-end technologieën, maar ik werk liever met front-end zodat ik mijn creativiteit kan laten zien.",
-    skillsHelp: "Waarmee kan ik je verder helpen?",
-
-    // Choices
-    tellMeAboutYourself: "Vertel me over jezelf.",
-    showMeYourProjects: "Laat me je projecten zien.",
-    whatAreYourSkills: "Wat zijn je vaardigheden?",
-    goBack: "Ga terug.",
+    // Easter egg
+    oldVideo: 'Oude Video',
   },
 };
 

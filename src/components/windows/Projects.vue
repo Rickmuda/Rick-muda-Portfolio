@@ -22,13 +22,13 @@
       <img :src="selectedProject.image" alt="Selected Project Image" />
       <h3>{{ selectedProject.title }}</h3>
       <p>{{ selectedProject.description }}</p>
-      <a
+      <!-- <a
         :href="selectedProject.link"
         target="_blank"
         class="project-link"
       >
         {{ $t('goToProject') }}
-      </a>
+      </a> -->
     </div>
   </div>
 </template>
@@ -75,6 +75,46 @@ export default {
           title: this.$t('op'),
           image: new URL('@/assets/img/projects/one-pager.webp', import.meta.url).href,
           description: this.$t('opDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('eq'),
+          image: new URL('@/assets/img/projects/english-quiz.webp', import.meta.url).href,
+          description: this.$t('eqDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('sp'),
+          image: new URL('@/assets/img/projects/snackbar-podcast.webp', import.meta.url).href,
+          description: this.$t('spDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('sf'),
+          image: new URL('@/assets/img/projects/spiderverse-forum.webp', import.meta.url).href,
+          description: this.$t('sfDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('tdl'),
+          image: new URL('@/assets/img/projects/todolist.webp', import.meta.url).href,
+          description: this.$t('tdlDescription'),
+          link: "/404", // Link to the 404 page
+        },
+        {
+          title: this.$t('ul'),
+          image: new URL('@/assets/img/projects/undertale-laravel.webp', import.meta.url).href,
+          description: this.$t('ulDescription'),
+          link: "/404", // Link to the 404 page
+        },        {
+          title: this.$t('us'),
+          image: new URL('@/assets/img/projects/undertale-sudoku.webp', import.meta.url).href,
+          description: this.$t('usDescription'),
+          link: "/404", // Link to the 404 page
+        },        {
+          title: this.$t('ws'),
+          image: new URL('@/assets/img/projects/webshop.webp', import.meta.url).href,
+          description: this.$t('wsDescription'),
           link: "/404", // Link to the 404 page
         },
       ];
