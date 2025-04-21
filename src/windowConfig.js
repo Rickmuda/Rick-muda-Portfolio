@@ -22,7 +22,7 @@ export const windowConfig = {
     defaultWidth: 1200,
     defaultHeight: 800,
     defaultX: 200,
-    defaultY: 100,
+    defaultY: 20,
   },
   contact: {
     component: Contact,
@@ -46,7 +46,7 @@ export const windowConfig = {
     defaultWidth: 1000,
     defaultHeight: 800,
     defaultX: 500,
-    defaultY: 100,
+    defaultY: 20,
   },
   miniGame: {
     component: MiniGame,
@@ -54,7 +54,7 @@ export const windowConfig = {
     defaultWidth: 1000,
     defaultHeight: 700,
     defaultX: 600,
-    defaultY: 150,
+    defaultY: 100,
   },
   settings: {
     component: Settings,
