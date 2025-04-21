@@ -63,6 +63,14 @@
       </div>
       <div class="app-icon-text">{{ $t('threeDPrinting') }}</div>
     </div> -->
+
+    <!-- Easter egg -->
+    <div class="app-icon" v-for="app in easterEggApps" :key="app" @click="openApp(app)">
+      <div class="app-icon-image">
+        <font-awesome-icon icon="star" class="app-icon-inner" /> <!-- Use star icon -->
+      </div>
+      <div class="app-icon-text">Easter Egg</div> <!-- Display "Easter Egg" -->
+    </div>
   </div>
 </template>
 
@@ -73,6 +81,10 @@ export default {
   props: {
     openApp: {
       type: Function,
+      required: true,
+    },
+    easterEggApps: {
+      type: Array,
       required: true,
     },
   },

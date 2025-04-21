@@ -7,7 +7,7 @@
       <LoginScreen v-if="!loggedIn" @login="checkLoginState" />
 
       <!-- Desktop -->
-      <Desktop v-else :openApp="openApp" />
+      <Desktop v-else :openApp="openApp" :easterEggApps="easterEggApps" />
     </div>
     <!-- Taskbar -->
     <Taskbar
@@ -15,6 +15,8 @@
       :openApp="openApp"
       :commitSummary="commitSummary"
       :commitDescription="commitDescription"
+      :easterEggApps="easterEggApps"
+      :easterEggTriggered="easterEggTriggered" 
     />
 
     <!-- Dynamic App Windows -->
@@ -36,11 +38,6 @@
         v-bind="getWindowProps(window)"
       />
     </AppWindow>
-
-    <!-- Easter Egg Message -->
-    <div v-if="easterEggTriggered" class="easter-egg-message">
-      🎉 Konami Code Activated! 🎉
-    </div>
   </div>
 </template>
 
@@ -67,7 +64,6 @@ export default {
       currentDate: new Date().toLocaleDateString(),
       commitSummary: __COMMIT_SUMMARY__, // Injected by Vite
       commitDescription: __COMMIT_DESCRIPTION__, // Use the actual commit description
-      aboutMeVideoSrc: "/src/assets/videos/about-me.mp4", // Example video source
       zIndexCounter: 10, // Initial z-index value for windows
       windowZIndices: {}, // Track z-index for each window
       konamiCode: [
@@ -84,6 +80,8 @@ export default {
       ],
       currentInput: [],
       easterEggTriggered: false,
+      keydownListenerAdded: false, // Track if the keydown listener has been added
+      easterEggApps: [], // Track apps added by the easter egg
     };
   },
   computed: {
@@ -93,17 +91,22 @@ export default {
   },
   methods: {
     openApp(appName) {
+      console.log(`openApp called for: ${appName}`); // Debugging log
+
+      // Check if the window is already open
       if (this.openWindows.includes(appName)) {
-        // If the window is already open, close it
-        this.closeApp(appName);
-      } else {
-        // Otherwise, open the window
-        this.openWindows.push(appName); // Add the app to the open windows list
-        this.windowZIndices[appName] = this.zIndexCounter++; // Assign a z-index to the new window
+        console.log(`The window "${appName}" is already open. Closing it.`); // Debugging log
+        this.closeApp(appName); // Close the window if it's already open
+        return;
       }
+
+      // Otherwise, open the window
+      this.openWindows.push(appName);
+      this.windowZIndices[appName] = this.zIndexCounter++; // Assign a z-index to the new window
     },
     closeApp(appName) {
-      this.openWindows = this.openWindows.filter((window) => window !== appName); // Remove the app from the open windows list
+      // Remove the app from the open windows list
+      this.openWindows = this.openWindows.filter((window) => window !== appName);
       delete this.windowZIndices[appName]; // Remove its z-index tracking
     },
     checkLoginState() {
@@ -132,6 +135,9 @@ export default {
       return windowConfig[windowName]?.props || {};
     },
     handleKeydown(event) {
+      // Debounce logic to prevent rapid triggering
+      if (this.easterEggTriggered) return;
+
       this.currentInput.push(event.key);
       if (this.currentInput.length > this.konamiCode.length) {
         this.currentInput.shift(); // Keep the input array the same length as the Konami Code
@@ -141,16 +147,17 @@ export default {
       }
     },
     triggerEasterEgg() {
-      this.easterEggTriggered = true;
-
-      // Open the "Old Video" app
-      if (!this.openWindows.includes("oldVideo")) {
-        this.openApp("oldVideo");
+      if (this.easterEggTriggered) {
+        return; // Prevent multiple triggers
       }
 
-      setTimeout(() => {
-        this.easterEggTriggered = false; // Reset after a few seconds
-      }, 5000);
+      this.easterEggTriggered = true; // Set the flag to true
+      console.log("Easter Egg Triggered!"); // Log to console for debugging
+
+      // Add the "Old Video" app to the easter egg apps list if not already added
+      if (!this.easterEggApps.includes("oldVideo")) {
+        this.easterEggApps.push("oldVideo");
+      }
     },
   },
   mounted() {
@@ -160,14 +167,22 @@ export default {
     // Check the time every minute to update dark mode automatically
     setInterval(() => {
       this.setDarkModeBasedOnTime();
-    }, 60000); // Check every 60 seconds
+    }, 43200); // Check every 12 hours
 
     // Add keydown event listener for Konami Code
-    window.addEventListener("keydown", this.handleKeydown);
+    if (!this.keydownListenerAdded) {
+      console.log("Adding keydown listener"); // Debugging log
+      window.addEventListener("keydown", this.handleKeydown);
+      this.keydownListenerAdded = true; // Track that the listener has been added
+    }
   },
   beforeUnmount() {
     // Remove keydown event listener to avoid memory leaks
-    window.removeEventListener("keydown", this.handleKeydown);
+    if (this.keydownListenerAdded) {
+      console.log("Removing keydown listener"); // Debugging log
+      window.removeEventListener("keydown", this.handleKeydown);
+      this.keydownListenerAdded = false; // Track that the listener has been removed
+    }
   },
 };
 </script>

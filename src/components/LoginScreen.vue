@@ -5,11 +5,19 @@
     </div>
     <div class="password-box">
       <form @submit.prevent="checkPasswordLength">
+        <!-- Hidden username field for accessibility -->
+        <input
+          type="text"
+          name="username"
+          autocomplete="username"
+          style="display: none;"
+        />
         <input
           type="password"
           v-model="passwordInput"
           class="password-input"
           placeholder="Enter 6 random keys"
+          autocomplete="new-password"
           readonly
         />
       </form>
@@ -35,11 +43,11 @@ export default {
           index++;
         } else {
           clearInterval(typingInterval); // Stop typing
-          this.checkLoginState(); // Automatically log in after typing
+          this.checkPasswordLength(); // Automatically log in after typing
         }
-      }, 200); // Simulate typing every 100ms
+      }, 200); // Simulate typing every 200ms
     },
-    checkLoginState() {
+    checkPasswordLength() {
       // Simulate a successful login
       this.$emit("login"); // Emit the login event to the parent component
     },

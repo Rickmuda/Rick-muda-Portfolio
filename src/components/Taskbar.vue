@@ -10,7 +10,7 @@
       <div class="taskbar-icon" @click="openApp('aboutMe')">
         <font-awesome-icon icon="user" />
       </div>
-      <div class="taskbar-icon" @click="openApp('projects')">
+<div class="taskbar-icon" @click="openApp('projects')">
         <font-awesome-icon icon="folder" />
       </div>
       <div class="taskbar-icon" @click="openApp('contact')">
@@ -27,6 +27,10 @@
       </div>
       <div class="taskbar-icon" @click="openApp('settings')">
         <font-awesome-icon icon="cog" />
+      </div>
+
+      <div v-for="app in easterEggApps" :key="app" class="taskbar-icon" @click="openApp(app)" title="Easter Egg">
+        <font-awesome-icon icon="star" />
       </div>
     </div>
 
@@ -63,7 +67,15 @@ export default {
     },
     commitDescription: {
       type: String,
-      required: true, // Add commitDescription as a required prop
+      required: true,
+    },
+    easterEggTriggered: {
+      type: Boolean,
+      required: true,
+    },
+    easterEggApps: {
+      type: Array,
+      required: true,
     },
   },
   data() {

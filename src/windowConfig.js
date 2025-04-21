@@ -66,7 +66,7 @@ export const windowConfig = {
   },
   oldVideo: {
     component: OldVideo,
-    title: "oldVideo",
+    title: "Easter Egg",
     defaultWidth: 800,
     defaultHeight: 600,
     defaultX: 300,
