@@ -10,7 +10,11 @@
         <img :src="image" alt="Art" class="gallery-image" />
       </div>
     </div>
-    <div v-if="selectedImageIndex !== null" class="image-modal">
+    <div
+      v-if="selectedImageIndex !== null"
+      class="image-modal"
+      @click.self="closeImage" 
+    >
       <button class="arrow left-arrow" @click="previousImage">&#9664;</button>
       <img :src="artGalleryImages[selectedImageIndex]" alt="Selected Art" class="modal-image" />
       <button class="arrow right-arrow" @click="nextImage">&#9654;</button>
