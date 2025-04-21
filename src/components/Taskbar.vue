@@ -28,10 +28,6 @@
       <div class="taskbar-icon" @click="openApp('settings')">
         <font-awesome-icon icon="cog" />
       </div>
-      <!-- 3D print support keuzedeel portfolio -->
-      <!-- <div class="taskbar-icon" @click="openApp('threeDPrinting')">
-        <font-awesome-icon icon="cube" />
-      </div> -->
     </div>
 
     <!-- Right Box -->
@@ -44,6 +40,7 @@
     <StartMenu
       v-if="startMenuOpen"
       :commitSummary="commitSummary"
+      :commitDescription="commitDescription"
       @mouseover="keepStartMenuOpen"
       @mouseleave="closeStartMenu"
     />
@@ -63,6 +60,10 @@ export default {
     commitSummary: {
       type: String,
       required: true,
+    },
+    commitDescription: {
+      type: String,
+      required: true, // Add commitDescription as a required prop
     },
   },
   data() {

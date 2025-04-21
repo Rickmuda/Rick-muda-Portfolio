@@ -4,6 +4,7 @@
     <div class="start-menu-content">
       <p>{{ $t('startMenuIntro') }}</p>
       <p>{{ $t('currentVersion') }}: {{ commitSummary }}</p>
+      <p>{{ commitDescription }}</p>
     </div>
   </div>
 </template>
@@ -15,6 +16,10 @@ export default {
       type: String,
       required: true,
     },
+    commitDescription: {
+      type: String,
+      required: true,
+    }
   },
 };
 </script>

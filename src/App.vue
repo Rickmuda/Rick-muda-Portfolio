@@ -10,7 +10,12 @@
       <Desktop v-else :openApp="openApp" />
     </div>
     <!-- Taskbar -->
-    <Taskbar v-if="loggedIn" :openApp="openApp" :commitSummary="commitSummary" />
+    <Taskbar
+      v-if="loggedIn"
+      :openApp="openApp"
+      :commitSummary="commitSummary"
+      :commitDescription="commitDescription"
+    />
 
     <!-- Dynamic App Windows -->
     <AppWindow
@@ -60,7 +65,8 @@ export default {
       darkMode: false, // Default dark mode state
       currentLanguage: "en", // Default language
       currentDate: new Date().toLocaleDateString(),
-      commitSummary: __COMMIT_SUMMARY__,
+      commitSummary: __COMMIT_SUMMARY__, // Injected by Vite
+      commitDescription: __COMMIT_DESCRIPTION__, // Use the actual commit description
       aboutMeVideoSrc: "/src/assets/videos/about-me.mp4", // Example video source
       zIndexCounter: 10, // Initial z-index value for windows
       windowZIndices: {}, // Track z-index for each window
