@@ -10,11 +10,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // Import specific icons
-import { faUser, faFolder, faEnvelope, faShareNodes, faGamepad, faPalette, faCog, faCube, faStar } from "@fortawesome/free-solid-svg-icons"; // Add faStar
+import { faUser, faFolder, faEnvelope, faShareNodes, faGamepad, faPalette, faCog, faCube, faEgg } from "@fortawesome/free-solid-svg-icons"; // Add faStar
 import { faTwitter, faInstagram, faLinkedin, faGithub, faYoutube, faTiktok, faSpotify, faSteam, faCodepen } from "@fortawesome/free-brands-svg-icons";
 
 // Add icons to the library
-library.add(faUser, faFolder, faEnvelope, faShareNodes, faGamepad, faPalette, faCog, faCube, faStar); // Add faStar here
+library.add(faUser, faFolder, faEnvelope, faShareNodes, faGamepad, faPalette, faCog, faCube, faEgg); // Add faStar here
 library.add(faTwitter, faInstagram, faLinkedin, faGithub, faYoutube, faTiktok, faSpotify, faSteam, faCodepen);
 
 const app = createApp(App);

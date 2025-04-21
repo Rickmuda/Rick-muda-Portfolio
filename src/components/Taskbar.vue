@@ -30,7 +30,7 @@
       </div>
 
       <div v-for="app in easterEggApps" :key="app" class="taskbar-icon" @click="openApp(app)" title="Easter Egg">
-        <font-awesome-icon icon="star" />
+        <font-awesome-icon icon="egg" />
       </div>
     </div>
 
