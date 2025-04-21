@@ -245,8 +245,9 @@ body {
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-.app-icon:hover .app-icon-image {
+.app-icon-image:hover  {
   transform: scale(1.1); /* Add hover effect to the icon */
+  background-color: rgb(72, 14, 85);
 }
 
 .app-icon-image {
@@ -271,11 +272,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-.app-icon:hover .app-icon-image {
-  background-color: rgb(72, 14, 85); /* Darker shade on hover */
-}
-
+  
 .app-icon-text {
   margin-top: 10px; /* Space between the icon and the text */
   font-size: 14px; /* Text size */
