@@ -272,7 +272,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-  
+
 .app-icon-text {
   margin-top: 10px; /* Space between the icon and the text */
   font-size: 14px; /* Text size */
@@ -1430,7 +1430,7 @@ sorting-bar button:hover {
   font-family: 'PortfolioFont', sans-serif;
   color: white;
   background-color: rgba(155, 32, 183, 1); /* Match the site's primary color */
-  border: 2px solid black; /* Consistent border style */
+  border: 1px solid black; /* Consistent border style */
   outline: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
