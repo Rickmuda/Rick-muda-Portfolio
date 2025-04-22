@@ -7,20 +7,20 @@ import mongoose from "mongoose";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS configuration
+// CORS configuration with specific options
 const corsOptions = {
-  origin:
-    process.env.NODE_ENV === "production"
-      ? [process.env.FRONTEND_URL || "https://mudaiscarry.github.io"] // Add your deployed frontend URL
-      : ["http://localhost:5173", "http://127.0.0.1:5173"], // Development URLs
+  origin: ['https://mudaiscarry.github.io', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-  optionsSuccessStatus: 200,
+  optionsSuccessStatus: 200
 };
 
+// Apply CORS middleware with options
+app.use(cors(corsOptions));
+
 // MongoDB Atlas connection with more detailed options
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://rickambergen25:ColuMpWJlJMBR0hn@portfolioguestbook.qn2unt1.mongodb.net/guestbook";
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://rickambergen25:ColuMpWJlJMBR0hn@portfolioguestbook.qn2unt1.mongodb.net/guestbook';
 
 // More detailed connection options
 const mongooseOptions = {
@@ -48,12 +48,8 @@ mongoose
     if (err.name === "MongooseServerSelectionError") {
       console.log("\nPossible solutions:");
       console.log("1. Add your IP address to MongoDB Atlas IP whitelist");
-      console.log(
-        "2. Check if your MongoDB Atlas username and password are correct"
-      );
-      console.log(
-        "3. Ensure your MongoDB Atlas cluster is running and accessible"
-      );
+      console.log("2. Check if your MongoDB Atlas username and password are correct");
+      console.log("3. Ensure your MongoDB Atlas cluster is running and accessible");
     }
   });
 
@@ -66,17 +62,19 @@ const guestbookSchema = new mongoose.Schema({
 
 const GuestbookEntry = mongoose.model("GuestbookEntry", guestbookSchema);
 
+// Enable pre-flight requests for all routes
+app.options('*', cors(corsOptions));
+
 // Middleware
-app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Health check endpoint
-app.get("/health", (req, res) => {
-  res.status(200).json({ status: "OK", timestamp: new Date() });
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', timestamp: new Date() });
 });
 
-// Guestbook Routes
-app.post("/guestbook", async (req, res) => {
+// Guestbook Routes with explicit CORS headers
+app.post("/guestbook", cors(corsOptions), async (req, res) => {
   try {
     const { name, message } = req.body;
     const entry = new GuestbookEntry({ name, message });
@@ -88,7 +86,7 @@ app.post("/guestbook", async (req, res) => {
   }
 });
 
-app.get("/guestbook", async (req, res) => {
+app.get("/guestbook", cors(corsOptions), async (req, res) => {
   try {
     const entries = await GuestbookEntry.find().sort({ date: -1 });
     res.json(entries);
@@ -143,11 +141,11 @@ app.post("/send-email", async (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ error: "Something broke!" });
+  res.status(500).json({ error: 'Something broke!' });
 });
 
 // Start the Server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
