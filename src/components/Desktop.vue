@@ -48,6 +48,14 @@
       <div class="app-icon-text">{{ $t('artGallery') }}</div>
     </div>
 
+    <!-- Guestbook -->
+    <div class="app-icon" @click="openApp('guestbook')">
+      <div class="app-icon-image">
+        <font-awesome-icon icon="book" class="app-icon-inner" />
+      </div>
+      <div class="app-icon-text">{{ $t('guestbook') }}</div>
+    </div>
+
     <!-- Settings -->
     <div class="app-icon" @click="openApp('settings')">
       <div class="app-icon-image">

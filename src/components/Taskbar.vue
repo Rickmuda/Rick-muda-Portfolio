@@ -25,6 +25,9 @@
       <div class="taskbar-icon" @click="openApp('artGallery')">
         <font-awesome-icon icon="palette" />
       </div>
+      <div class="taskbar-icon" @click="openApp('guestbook')">
+        <font-awesome-icon icon="book" />
+      </div>
       <div class="taskbar-icon" @click="openApp('settings')">
         <font-awesome-icon icon="cog" />
       </div>

@@ -11,6 +11,7 @@ const messages = {
     miniGame: "Mini Game",
     settings: "Settings",
     threeDPrinting: "3D Printing",
+    guestbook: "Guestbook",
 
     // About me
     aboutMeIntro: "Hey there! Welcome to my portfolio.",
@@ -117,6 +118,14 @@ const messages = {
     // Easter egg
     oldVideo: "Old Video",
     easterEgg: "Easter Egg",
+
+    // Guestbook
+    signGuestbook: "Sign Guestbook",
+    guestbookName: "Your Name",
+    guestbookMessage: "Your Message",
+    guestbookSubmit: "Submit",
+    guestbookSuccess: "Thank you for signing the guestbook!",
+    guestbookError: "Error submitting your message. Please try again.",
   },
 
   nl: {
@@ -129,6 +138,7 @@ const messages = {
     miniGame: "Mini Spel",
     settings: "Instellingen",
     threeDPrinting: "3D Printen",
+    guestbook: "Gastenboek",
 
     // About me
     aboutMeIntro: "Hey daar! Welkom op mijn portfolio.",
@@ -234,6 +244,15 @@ const messages = {
     // Easter egg
     oldVideo: "Oude Video",
     easterEgg: "Easter Egg",
+
+    // Guestbook
+    signGuestbook: "Gastenboek Tekenen",
+    guestbookName: "Jouw Naam",
+    guestbookMessage: "Jouw Bericht",
+    guestbookSubmit: "Versturen",
+    guestbookSuccess: "Bedankt voor het tekenen van het gastenboek!",
+    guestbookError:
+      "Fout bij het versturen van je bericht. Probeer het opnieuw.",
   },
 };
 

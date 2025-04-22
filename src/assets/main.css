@@ -1511,5 +1511,96 @@ video {
   border: 3px solid black;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  background-color: rgba(155, 32, 183, 0.8); /* Match the site's color scheme */
+  background-color: rgba(155, 32, 183, 0.8);
+}
+
+.guestbook-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'PortfolioFont', sans-serif;
+}
+
+.error-message {
+  background: rgba(255, 0, 0, 0.1);
+  border: 2px solid #ff0000;
+  color: #ff0000;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-family: 'PortfolioFont', sans-serif;
+}
+
+.loading, .no-entries {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.guestbook-form {
+  display: flex;
+  flex-direction: column;
+  font-family: 'PortfolioFont', sans-serif;
+  gap: 10px;
+}
+
+.guestbook-input, .guestbook-textarea {
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: rgba(217, 217, 217, 1);
+  font-size: 16px;
+  font-family: 'PortfolioFont', sans-serif;
+}
+
+.guestbook-textarea {
+  height: 80px;
+  resize: none;
+}
+
+.guestbook-submit {
+  padding: 10px;
+  background: rgba(217, 217, 217, 1);
+  border: 2px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: 'PortfolioFont', sans-serif;
+}
+
+.guestbook-submit:hover {
+  background: rgba(200, 200, 200, 1);
+}
+
+.guestbook-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.guestbook-entries {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.guestbook-entry {
+  background: rgba(217, 217, 217, 0.8);
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.entry-date {
+  color: #666;
 }

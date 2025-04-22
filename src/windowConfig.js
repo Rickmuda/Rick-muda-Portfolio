@@ -6,6 +6,7 @@ import ArtGallery from "./components/windows/ArtGallery.vue";
 import MiniGame from "./components/windows/MiniGame.vue";
 import Settings from "./components/windows/Settings.vue";
 import OldVideo from "./components/windows/OldVideo.vue";
+import Guestbook from "./components/windows/Guestbook.vue";
 
 export const windowConfig = {
   aboutMe: {
@@ -63,6 +64,14 @@ export const windowConfig = {
     defaultHeight: 400,
     defaultX: 700,
     defaultY: 400,
+  },
+  guestbook: {
+    component: Guestbook,
+    title: "guestbook",
+    defaultWidth: 800,
+    defaultHeight: 750,
+    defaultX: 150,
+    defaultY: 50,
   },
   oldVideo: {
     component: OldVideo,
