@@ -9,7 +9,7 @@ const commitSummary = execSync("git log -1 --pretty=%s").toString().trim();
 const commitDescription = execSync("git log -1 --pretty=%b").toString().trim(); // Get the commit description
 
 export default defineConfig({
-  base: "/rick-muda-portfolio-vue.js/", // Replace with your repository name
+  base: '/',
   plugins: [vue()],
   define: {
     __COMMIT_HASH__: JSON.stringify(commitHash), // Inject the commit hash
