@@ -22,7 +22,7 @@ jobs:
       - name: 📤 Deploy via FTP
         uses: samkirkland/ftp-deploy-action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
+          server: web1.ping64.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
