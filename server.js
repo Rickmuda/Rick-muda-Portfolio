@@ -19,15 +19,20 @@ process.on("unhandledRejection", (err) => {
 
 // CORS configuration with specific options
 const corsOptions = {
-  origin: ["https://mudaiscarry.github.io", "http://localhost:5173"],
+  origin: [
+    "https://mudaiscarry.github.io", 
+    "http://localhost:5173", 
+    "https://www.rickmuda.nl" // Add your frontend domain here
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
+  credentials: true, // Allow cookies and credentials
   optionsSuccessStatus: 200,
 };
 
-// Apply CORS middleware with options
+// Apply CORS middleware globally
 app.use(cors(corsOptions));
+app.use(cors());
 
 // MySQL connection setup
 const db = await mysql.createConnection({
@@ -151,3 +156,5 @@ const server = app
   .on("error", (err) => {
     console.error("Server failed to start:", err);
   });
+
+app.use(cors(corsOptions));
