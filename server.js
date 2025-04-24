@@ -36,10 +36,11 @@ app.use(cors());
 
 // MySQL connection setup
 const db = await mysql.createConnection({
-  host: "localhost", // Replace with your MySQL host
-  user: "rickmuda_portfolioguestbook", // Replace with your MySQL username
-  password: "kN85phW2SqkENEGKD57Q", // Replace with your MySQL password
-  database: "rickmuda_portfolioguestbook", // Replace with your MySQL database name
+  host: process.env.DATABASE_URL.split('@')[1].split(':')[0], // Extract host from DATABASE_URL
+  user: process.env.DATABASE_URL.split('//')[1].split(':')[0], // Extract username
+  password: process.env.DATABASE_URL.split(':')[2].split('@')[0], // Extract password
+  database: process.env.DATABASE_URL.split('/')[1], // Extract database name
+  port: process.env.DATABASE_URL.split(':')[2].split('/')[0], // Extract port
 });
 
 console.log("Successfully connected to MySQL database");

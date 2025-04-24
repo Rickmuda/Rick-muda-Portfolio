@@ -13,10 +13,10 @@
     <div class="guestbook-entries">
       <div v-if="isLoading" class="loading">Loading entries...</div>
       <div v-else-if="entries.length === 0" class="no-entries">No entries yet. Be the first to sign!</div>
-      <div v-else v-for="entry in entries" :key="entry._id" class="guestbook-entry">
+      <div v-else v-for="entry in entries" :key="entry.id" class="guestbook-entry">
         <div class="entry-header">
           <strong>{{ entry.name }}</strong>
-          <span class="entry-date">{{ new Date(entry.date).toLocaleDateString() }}</span>
+          <span class="entry-date">{{ formatDate(entry.date) }}</span>
         </div>
         <p>{{ entry.message }}</p>
       </div>
@@ -27,34 +27,32 @@
 <script>
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-
 export default {
   name: 'Guestbook',
   props: {
     entries: {
       type: Array,
-      required: true
+      required: true,
     },
     isLoading: {
       type: Boolean,
-      required: true
+      required: true,
     },
     error: {
       type: String,
-      default: null
+      default: null,
     },
     onEntryAdded: {
       type: Function,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       name: '',
       message: '',
       localError: null,
-      isSubmitting: false
+      isSubmitting: false,
     };
   },
   methods: {
@@ -63,14 +61,15 @@ export default {
         this.localError = 'Please fill in both name and message.';
         return;
       }
-      
+
       this.localError = null;
       this.isSubmitting = true;
-      
+
       try {
-        await axios.post(`${API_URL}/guestbook`, {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        await axios.post(`${apiUrl}/guestbook`, {
           name: this.name,
-          message: this.message
+          message: this.message,
         });
         this.name = '';
         this.message = '';
@@ -81,8 +80,11 @@ export default {
       } finally {
         this.isSubmitting = false;
       }
-    }
-  }
+    },
+    formatDate(date) {
+      return new Date(date).toLocaleDateString();
+    },
+  },
 };
 </script>
 
