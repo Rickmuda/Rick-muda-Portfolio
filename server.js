@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import mongoose from "mongoose";
+import mysql from "mysql2/promise";
 import axios from "axios";
 
 const app = express();
@@ -29,55 +29,15 @@ const corsOptions = {
 // Apply CORS middleware with options
 app.use(cors(corsOptions));
 
-// MongoDB Atlas connection with more detailed options
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://rickambergen25:ColuMpWJlJMBR0hn@portfolioguestbook.qn2unt1.mongodb.net/guestbook";
-
-// More detailed connection options
-const mongooseOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000,
-  retryWrites: true,
-  w: "majority",
-};
-
-// Connect with more detailed error handling
-mongoose
-  .connect(MONGODB_URI, mongooseOptions)
-  .then(() => {
-    console.log("Successfully connected to MongoDB Atlas");
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error details:", {
-      message: err.message,
-      code: err.code,
-      name: err.name,
-      stack: err.stack,
-    });
-
-    if (err.name === "MongooseServerSelectionError") {
-      console.log("\nPossible solutions:");
-      console.log("1. Add your IP address to MongoDB Atlas IP whitelist");
-      console.log(
-        "2. Check if your MongoDB Atlas username and password are correct"
-      );
-      console.log(
-        "3. Ensure your MongoDB Atlas cluster is running and accessible"
-      );
-    }
-    // Don't exit the process, let it continue running
-  });
-
-// Guestbook Schema
-const guestbookSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  message: { type: String, required: true },
-  date: { type: Date, default: Date.now },
+// MySQL connection setup
+const db = await mysql.createConnection({
+  host: "localhost", // Replace with your MySQL host
+  user: "rickmuda_portfolioguestbook", // Replace with your MySQL username
+  password: "kN85phW2SqkENEGKD57Q", // Replace with your MySQL password
+  database: "rickmuda_portfolioguestbook", // Replace with your MySQL database name
 });
 
-const GuestbookEntry = mongoose.model("GuestbookEntry", guestbookSchema);
+console.log("Successfully connected to MySQL database");
 
 // Enable pre-flight requests for all routes
 app.options("*", cors(corsOptions));
@@ -90,16 +50,20 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK", timestamp: new Date() });
 });
 
-// Guestbook Routes with explicit CORS headers and better error handling
+// Guestbook Routes with MySQL
 app.post("/guestbook", cors(corsOptions), async (req, res) => {
   try {
     const { name, message } = req.body;
     if (!name || !message) {
       return res.status(400).json({ error: "Name and message are required" });
     }
-    const entry = new GuestbookEntry({ name, message });
-    await entry.save();
-    res.status(201).json(entry);
+
+    const [result] = await db.execute(
+      "INSERT INTO guestbook (name, message, date) VALUES (?, ?, NOW())",
+      [name, message]
+    );
+
+    res.status(201).json({ id: result.insertId, name, message, date: new Date() });
   } catch (error) {
     console.error("Error creating entry:", error);
     res.status(500).json({ error: "Error creating guestbook entry" });
@@ -108,7 +72,7 @@ app.post("/guestbook", cors(corsOptions), async (req, res) => {
 
 app.get("/guestbook", cors(corsOptions), async (req, res) => {
   try {
-    const entries = await GuestbookEntry.find().sort({ date: -1 });
+    const [entries] = await db.execute("SELECT * FROM guestbook ORDER BY date DESC");
     res.json(entries);
   } catch (error) {
     console.error("Error fetching entries:", error);

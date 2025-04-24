@@ -16,7 +16,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory('/rick-muda-portfolio-vue.js/'), // Replace <repository-name> with your GitHub repo name
+  history: createWebHistory('/'), // Replace <repository-name> with your GitHub repo name
   routes,
 });
 
