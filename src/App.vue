@@ -58,30 +58,22 @@ export default {
   data() {
     return {
       loggedIn: false,
-      openWindows: [], // Track currently open windows
-      darkMode: false, // Default dark mode state
-      currentLanguage: "en", // Default language
+      openWindows: [],
+      darkMode: false,
+      currentLanguage: "en",
       currentDate: new Date().toLocaleDateString(),
-      commitSummary: __COMMIT_SUMMARY__, // Injected by Vite
-      commitDescription: __COMMIT_DESCRIPTION__, // Use the actual commit description
-      zIndexCounter: 10, // Initial z-index value for windows
-      windowZIndices: {}, // Track z-index for each window
-      konamiCode: [
-        "ArrowUp",
-        "ArrowUp",
-        "ArrowDown",
-        "ArrowDown",
-        "ArrowLeft",
-        "ArrowRight",
-        "ArrowLeft",
-        "ArrowRight",
-        "b",
-        "a",
-      ],
+      commitSummary: __COMMIT_SUMMARY__,
+      commitDescription: __COMMIT_DESCRIPTION__,
+      zIndexCounter: 10,
+      windowZIndices: {},
+      konamiCode: ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"],
       currentInput: [],
       easterEggTriggered: false,
-      keydownListenerAdded: false, // Track if the keydown listener has been added
-      easterEggApps: [], // Track apps added by the easter egg
+      keydownListenerAdded: false,
+      easterEggApps: [],
+      guestbookEntries: [], // New state for guestbook entries
+      guestbookLoading: true, // Track loading state
+      guestbookError: null // Track any errors
     };
   },
   computed: {
@@ -132,6 +124,14 @@ export default {
           "onUpdate:currentLanguage": (value) => (this.currentLanguage = value),
         };
       }
+      if (windowName === "guestbook") {
+        return {
+          entries: this.guestbookEntries,
+          isLoading: this.guestbookLoading,
+          error: this.guestbookError,
+          onEntryAdded: this.fetchGuestbookEntries // Refresh entries when a new one is added
+        };
+      }
       return windowConfig[windowName]?.props || {};
     },
     handleKeydown(event) {
@@ -159,8 +159,21 @@ export default {
         this.easterEggApps.push("oldVideo");
       }
     },
+    async fetchGuestbookEntries() {
+      try {
+        const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${baseUrl}/guestbook`);
+        if (!response.ok) throw new Error('Failed to fetch entries');
+        this.guestbookEntries = await response.json();
+      } catch (error) {
+        console.error('Error fetching guestbook entries:', error);
+        this.guestbookError = error.message;
+      } finally {
+        this.guestbookLoading = false;
+      }
+    },
   },
-  mounted() {
+  async mounted() {
     // Set dark mode based on the current time when the app loads
     this.setDarkModeBasedOnTime();
 
@@ -175,6 +188,9 @@ export default {
       window.addEventListener("keydown", this.handleKeydown);
       this.keydownListenerAdded = true; // Track that the listener has been added
     }
+
+    // Fetch guestbook entries when app mounts
+    await this.fetchGuestbookEntries();
   },
   beforeUnmount() {
     // Remove keydown event listener to avoid memory leaks

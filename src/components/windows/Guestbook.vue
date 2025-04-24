@@ -1,7 +1,7 @@
 <template>
   <div class="guestbook-container">
-    <div v-if="error" class="error-message">
-      {{ error }}
+    <div v-if="error || localError" class="error-message">
+      {{ error || localError }}
     </div>
     <div class="guestbook-form">
       <input v-model="name" :placeholder="$t('guestbookName')" class="guestbook-input" />
@@ -31,37 +31,40 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 export default {
   name: 'Guestbook',
+  props: {
+    entries: {
+      type: Array,
+      required: true
+    },
+    isLoading: {
+      type: Boolean,
+      required: true
+    },
+    error: {
+      type: String,
+      default: null
+    },
+    onEntryAdded: {
+      type: Function,
+      required: true
+    }
+  },
   data() {
     return {
       name: '',
       message: '',
-      entries: [],
-      error: null,
-      isLoading: true,
+      localError: null,
       isSubmitting: false
     };
   },
   methods: {
-    async fetchEntries() {
-      this.error = null;
-      this.isLoading = true;
-      try {
-        const response = await axios.get(`${API_URL}/guestbook`);
-        this.entries = response.data;
-      } catch (error) {
-        console.error('Error fetching guestbook entries:', error);
-        this.error = 'Unable to load guestbook entries. Please try again later.';
-      } finally {
-        this.isLoading = false;
-      }
-    },
     async submitEntry() {
       if (!this.name || !this.message) {
-        this.error = 'Please fill in both name and message.';
+        this.localError = 'Please fill in both name and message.';
         return;
       }
       
-      this.error = null;
+      this.localError = null;
       this.isSubmitting = true;
       
       try {
@@ -71,17 +74,14 @@ export default {
         });
         this.name = '';
         this.message = '';
-        await this.fetchEntries();
+        await this.onEntryAdded(); // Call the parent's refresh method
       } catch (error) {
         console.error('Error submitting entry:', error);
-        this.error = 'Failed to submit your message. Please try again.';
+        this.localError = 'Failed to submit your message. Please try again.';
       } finally {
         this.isSubmitting = false;
       }
     }
-  },
-  mounted() {
-    this.fetchEntries();
   }
 };
 </script>
