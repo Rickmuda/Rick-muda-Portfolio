@@ -37,3 +37,4 @@ npm run build
 
 ### Duitse vertaling toevoegen.
 -Spreekt voor zich maar code valt te vinden in de Settings.vue file.
+
