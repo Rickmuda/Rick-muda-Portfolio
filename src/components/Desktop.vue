@@ -79,6 +79,14 @@
       </div>
       <div class="app-icon-text">Easter Egg</div> <!-- Display "Easter Egg" -->
     </div>
+
+    <!-- Certificates -->
+    <div class="app-icon" @click="openApp('certificates')">
+      <div class="app-icon-image">
+        <font-awesome-icon icon="certificate" class="app-icon-inner" />
+      </div>
+    <div class="app-icon-text">{{ $t('certificates') }}</div>
+    </div>
   </div>
 </template>
 

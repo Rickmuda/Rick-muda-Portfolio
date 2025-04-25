@@ -701,8 +701,6 @@ sorting-bar button:hover {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid #000000; /* Border around the image */
 }
 
 /* Image Modal */
@@ -1603,4 +1601,219 @@ video {
 
 .entry-date {
   color: #666;
+}
+/* Add to your existing certificates styles in main.css */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certificate-slide {
+  text-align: center;
+}
+
+.certificate-slide img {
+  max-width: 90%;
+  height: auto;
+  border: 3px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.certificate-slide img:hover {
+  transform: scale(1.05);
+}
+
+.certificate-info {
+  margin-top: 20px;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(155, 32, 183, 0.8);
+  color: white;
+  border: 2px solid #000;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.nav-btn:hover {
+  background: rgba(155, 32, 183, 1);
+}
+
+.nav-dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background: rgba(155, 32, 183, 1);
+}
+
+.dot:hover {
+  background: rgba(155, 32, 183, 0.8);
+}
+
+/* Add to your main.css */
+.certificates-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.certificate-item {
+  background-color: rgba(217, 217, 217, 1);
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-align: center;
+  height: fit-content;
+}
+
+.certificate-image {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 5px;
+  border: 2px solid #000;
+}
+
+.certificate-text {
+  margin-top: 10px;
+  height: auto;
+}
+
+.certificate-text h3 {
+  margin: 5px 0;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.certificate-text p {
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  margin: 0;
+}
+
+.certificate-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.certificate-modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+.certificate-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid #000;
+  color: black;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 11;
+}
+
+.certificate-arrow:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.certificate-left-arrow {
+  left: 10px;
+}
+
+.certificate-right-arrow {
+  right: 10px;
+}
+
+.certificate-close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 11;
+}
+
+.certificate-close-modal span {
+  color: black;
+  font-size: 24px;
+  text-align: center;
+}
+
+.certificate-close-modal:hover {
+  background-color: rgba(200, 0, 0, 1);
 }

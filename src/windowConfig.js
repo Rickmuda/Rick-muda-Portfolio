@@ -7,6 +7,7 @@ import MiniGame from "./components/windows/MiniGame.vue";
 import Settings from "./components/windows/Settings.vue";
 import OldVideo from "./components/windows/OldVideo.vue";
 import Guestbook from "./components/windows/Guestbook.vue";
+import Certificates from "./components/windows/Certificates.vue";
 
 export const windowConfig = {
   aboutMe: {
@@ -70,6 +71,14 @@ export const windowConfig = {
     title: "guestbook",
     defaultWidth: 800,
     defaultHeight: 750,
+    defaultX: 150,
+    defaultY: 50,
+  },
+  certificates: {
+    component: Certificates,
+    title: "certificates",
+    defaultWidth: 1000,
+    defaultHeight: 800,
     defaultX: 150,
     defaultY: 50,
   },

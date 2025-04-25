@@ -12,6 +12,7 @@ const messages = {
     settings: "Settings",
     threeDPrinting: "3D Printing",
     guestbook: "Guestbook",
+    certificates: "Certificates",
 
     // About me
     aboutMeIntro: "Hey there! Welcome to my portfolio.",
@@ -139,7 +140,7 @@ const messages = {
     settings: "Instellingen",
     threeDPrinting: "3D Printen",
     guestbook: "Gastenboek",
-
+    certificates: "Certificaten",
     // About me
     aboutMeIntro: "Hey daar! Welkom op mijn portfolio.",
     aboutMeQuestion: "Waarmee kan ik je helpen?",

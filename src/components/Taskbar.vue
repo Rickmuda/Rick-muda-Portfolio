@@ -7,31 +7,53 @@
 
     <!-- Icons -->
     <div class="taskbar-icons">
+
+      <!-- About me -->
       <div class="taskbar-icon" @click="openApp('aboutMe')">
         <font-awesome-icon icon="user" />
       </div>
-<div class="taskbar-icon" @click="openApp('projects')">
+
+      <!-- Projects -->
+      <div class="taskbar-icon" @click="openApp('projects')">
         <font-awesome-icon icon="folder" />
       </div>
+
+      <!-- Contact -->
       <div class="taskbar-icon" @click="openApp('contact')">
         <font-awesome-icon icon="envelope" />
       </div>
+
+      <!-- Socials -->
       <div class="taskbar-icon" @click="openApp('socials')">
         <font-awesome-icon icon="share-nodes" />
       </div>
+
+      <!-- Mini Game -->
       <div class="taskbar-icon" @click="openApp('miniGame')">
         <font-awesome-icon icon="gamepad" />
       </div>
+
+      <!-- Art Gallery -->
       <div class="taskbar-icon" @click="openApp('artGallery')">
         <font-awesome-icon icon="palette" />
       </div>
+
+      <!-- Guestbook -->
       <div class="taskbar-icon" @click="openApp('guestbook')">
         <font-awesome-icon icon="book" />
       </div>
+
+      <!-- Settings -->
       <div class="taskbar-icon" @click="openApp('settings')">
         <font-awesome-icon icon="cog" />
       </div>
 
+      <!-- Certificates -->
+      <div class="taskbar-icon" @click="openApp('certificates')">
+        <font-awesome-icon icon="certificate" />
+      </div> 
+
+      <!-- Easter Egg Icon -->
       <div v-for="app in easterEggApps" :key="app" class="taskbar-icon" @click="openApp(app)" title="Easter Egg">
         <font-awesome-icon icon="egg" />
       </div>
