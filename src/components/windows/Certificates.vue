@@ -3,14 +3,14 @@
     <div v-if="selectedIndex !== null" 
          class="certificate-modal" 
          @click.self="closeCertificate">
-      <button class="certificate-arrow certificate-left-arrow" @click="prevSlide">&#9664;</button>
+      <button class="arrow left-arrow" @click="prevSlide">&#9664;</button>
       <img 
         :src="certificates[selectedIndex].image" 
         :alt="certificates[selectedIndex].title"
         class="certificate-modal-image"
       />
-      <button class="certificate-arrow certificate-right-arrow" @click="nextSlide">&#9654;</button>
-      <button class="certificate-close-modal" @click="closeCertificate">
+      <button class="arrow right-arrow" @click="nextSlide">&#9654;</button>
+      <button class="close-modal" @click="closeCertificate">
         <span>X</span>
       </button>
     </div>

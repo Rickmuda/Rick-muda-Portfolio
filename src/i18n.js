@@ -127,6 +127,12 @@ const messages = {
     guestbookSubmit: "Submit",
     guestbookSuccess: "Thank you for signing the guestbook!",
     guestbookError: "Error submitting your message. Please try again.",
+
+    // Under development
+    underDevelopment: "Under Development",
+    underDevelopmentMessage:
+      "This feature is currently under development. Please check back later!",
+    close: "Close",
   },
 
   nl: {

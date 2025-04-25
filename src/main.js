@@ -22,6 +22,7 @@ import {
   faEgg,
   faBook,
   faCertificate,
+  faWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -47,7 +48,8 @@ library.add(
   faCube,
   faEgg,
   faBook,
-  faCertificate
+  faCertificate,
+  faWrench
 );
 library.add(faTwitter, faInstagram, faLinkedin, faGithub, faYoutube, faTiktok, faSpotify, faSteam, faCodepen);
 

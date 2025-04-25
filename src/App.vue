@@ -38,6 +38,11 @@
         v-bind="getWindowProps(window)"
       />
     </AppWindow>
+
+    <UnderDevelopment 
+      v-if="showUnderDevelopment" 
+      @close="closeUnderDevelopment" 
+    />
   </div>
 </template>
 
@@ -46,6 +51,7 @@ import LoginScreen from "./components/LoginScreen.vue";
 import Desktop from "./components/Desktop.vue";
 import Taskbar from "./components/Taskbar.vue";
 import AppWindow from "./components/AppWindow.vue";
+import UnderDevelopment from "./components/UnderDevelopment.vue";
 import { windowConfig } from "./windowConfig";
 
 export default {
@@ -54,6 +60,7 @@ export default {
     Desktop,
     Taskbar,
     AppWindow,
+    UnderDevelopment,
   },
   data() {
     return {
@@ -73,7 +80,13 @@ export default {
       easterEggApps: [],
       guestbookEntries: [], // New state for guestbook entries
       guestbookLoading: true, // Track loading state
-      guestbookError: null // Track any errors
+      guestbookError: null, // Track any errors
+      showUnderDevelopment: false,
+      unfinishedApps: [
+        'threeDPrinting',
+        'guestbook',
+        'contact'
+      ],
     };
   },
   computed: {
@@ -83,6 +96,10 @@ export default {
   },
   methods: {
     openApp(appName) {
+      if (this.unfinishedApps.includes(appName)) {
+        this.showUnderDevelopment = true;
+        return;
+      }
       console.log(`openApp called for: ${appName}`); // Debugging log
 
       // Check if the window is already open
@@ -171,6 +188,9 @@ export default {
       } finally {
         this.guestbookLoading = false;
       }
+    },
+    closeUnderDevelopment() {
+      this.showUnderDevelopment = false;
     },
   },
   async mounted() {
