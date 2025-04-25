@@ -19,28 +19,23 @@ process.on("unhandledRejection", (err) => {
 
 // CORS configuration with specific options
 const corsOptions = {
-  origin: [
-    "https://mudaiscarry.github.io", 
-    "http://localhost:5173", 
-    "https://www.rickmuda.nl" // Add your frontend domain here
-  ],
+  origin: process.env.ALLOWED_ORIGINS.split(","),
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true, // Allow cookies and credentials
+  credentials: true,
   optionsSuccessStatus: 200,
 };
 
-// Apply CORS middleware globally
+// Apply CORS middleware
 app.use(cors(corsOptions));
-app.use(cors());
 
 // MySQL connection setup
 const db = await mysql.createConnection({
-  host: process.env.DATABASE_URL.split('@')[1].split(':')[0], // Extract host from DATABASE_URL
-  user: process.env.DATABASE_URL.split('//')[1].split(':')[0], // Extract username
-  password: process.env.DATABASE_URL.split(':')[2].split('@')[0], // Extract password
-  database: process.env.DATABASE_URL.split('/')[1], // Extract database name
-  port: process.env.DATABASE_URL.split(':')[2].split('/')[0], // Extract port
+  host: process.env.DATABASE_URL.split("@")[1].split(":")[0],
+  user: process.env.DATABASE_URL.split("//")[1].split(":")[0],
+  password: process.env.DATABASE_URL.split(":")[2].split("@")[0],
+  database: process.env.DATABASE_URL.split("/")[1],
+  port: process.env.DATABASE_URL.split(":")[2].split("/")[0],
 });
 
 console.log("Successfully connected to MySQL database");
@@ -137,18 +132,7 @@ app.post("/send-email", cors(corsOptions), async (req, res) => {
       .json({ error: "Email, full name, and message are required" });
   }
 
-  // Mailgun API configuration
-  const mailgunDomain = process.env.MAILGUN_DOMAIN;
-  const mailgunApiKey = process.env.MAILGUN_API_KEY;
-
-  if (!mailgunDomain || !mailgunApiKey) {
-    console.error("Missing Mailgun configuration");
-    return res
-      .status(500)
-      .json({ error: "Email service not properly configured" });
-  }
-
-  const mailgunUrl = `https://api.mailgun.net/v3/${mailgunDomain}/messages`;
+  const mailgunUrl = `https://api.mailgun.net/v3/${process.env.MAILGUN_DOMAIN}/messages`;
 
   const formData = new URLSearchParams();
   formData.append("from", `${fullName} <${email}>`);
@@ -163,7 +147,7 @@ app.post("/send-email", cors(corsOptions), async (req, res) => {
     const response = await axios.post(mailgunUrl, formData, {
       auth: {
         username: "api",
-        password: mailgunApiKey,
+        password: process.env.MAILGUN_API_KEY,
       },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -198,5 +182,3 @@ const server = app
   .on("error", (err) => {
     console.error("Server failed to start:", err);
   });
-
-app.use(cors(corsOptions));
