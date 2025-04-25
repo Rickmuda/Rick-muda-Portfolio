@@ -77,8 +77,8 @@ export const windowConfig = {
   certificates: {
     component: Certificates,
     title: "certificates",
-    defaultWidth: 1000,
-    defaultHeight: 800,
+    defaultWidth: 1100,
+    defaultHeight: 600,
     defaultX: 150,
     defaultY: 50,
   },

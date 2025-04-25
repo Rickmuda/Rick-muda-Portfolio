@@ -1703,11 +1703,12 @@ video {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
-  gap: 50px; /* Increased from 20px to 50px */
-  padding: 40px; /* Increased padding as well for better overall spacing */
+  grid-template-columns: repeat(3, 300px); /* Force exactly 3 columns of 300px each */
+  gap: 50px;
+  padding: 40px;
   justify-content: center;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .certificate-item {
