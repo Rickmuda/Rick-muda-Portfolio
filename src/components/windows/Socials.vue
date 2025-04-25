@@ -7,10 +7,10 @@
       <a href="https://www.instagram.com/rick_muda/" target="_blank" class="social-icon">
         <font-awesome-icon :icon="['fab', 'instagram']" />
       </a>
-      <a href="https://www.linkedin.com/in/rick-ambergen-30b73a29a/" target="_blank" class="social-icon">
+      <a href="www.linkedin.com/in/rick-ambergen" target="_blank" class="social-icon">
         <font-awesome-icon :icon="['fab', 'linkedin']" />
       </a>
-      <a href="https://github.com/MudaIsCarry" target="_blank" class="social-icon">
+      <a href="https://github.com/rickmuda" target="_blank" class="social-icon">
         <font-awesome-icon :icon="['fab', 'github']" />
       </a>
       <a href="https://www.youtube.com/channel/UCHSimkVEkXs0Xp1U4nInA0w" target="_blank" class="social-icon">
