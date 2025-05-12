@@ -7,7 +7,7 @@
       <a href="https://www.instagram.com/rick_muda/" target="_blank" class="social-icon">
         <font-awesome-icon :icon="['fab', 'instagram']" />
       </a>
-      <a href="www.linkedin.com/in/rick-ambergen" target="_blank" class="social-icon">
+      <a href="https://www.linkedin.com/in/rick-ambergen-30b73a29a/" target="_blank" class="social-icon">
         <font-awesome-icon :icon="['fab', 'linkedin']" />
       </a>
       <a href="https://github.com/rickmuda" target="_blank" class="social-icon">
@@ -22,7 +22,7 @@
       <a href="https://open.spotify.com/user/rick_rickerd_rickman" target="_blank" class="social-icon">
         <font-awesome-icon :icon="['fab', 'spotify']" />
       </a>
-      <a href="https://steamcommunity.com/id/Mudaiscarry/" target="_blank" class="social-icon">
+      <a href="https://steamcommunity.com/id/rick_muda/" target="_blank" class="social-icon">
         <font-awesome-icon :icon="['fab', 'steam']" />
       </a>
       <a href="https://codepen.io/mudaiscarry" target="_blank" class="social-icon">
