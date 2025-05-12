@@ -85,7 +85,6 @@ export default {
       unfinishedApps: [
         'threeDPrinting',
         'guestbook',
-        'contact'
       ],
     };
   },
