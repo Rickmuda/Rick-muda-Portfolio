@@ -22,13 +22,13 @@
       <img :src="selectedProject.image" alt="Selected Project Image" />
       <h3>{{ selectedProject.title }}</h3>
       <p>{{ selectedProject.description }}</p>
-      <!-- <a
+      <a
         :href="selectedProject.link"
         target="_blank"
         class="project-link"
       >
         {{ $t('goToProject') }}
-      </a> -->
+      </a>
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       projects: [],
-      selectedProject: null, // Track the selected project
+      selectedProject: null,
     };
   },
   methods: {
@@ -51,77 +51,85 @@ export default {
           title: this.$t('uwp'),
           image: new URL('@/assets/img/projects/unnamed-weather-app.webp', import.meta.url).href,
           description: this.$t('uwpDescription'),
-          link: "/404", // Link to the 404 page
+          link: "https://github.com/rickmuda/unnamed-weather-app"
         },
         {
           title: this.$t('aw'),
           image: new URL('@/assets/img/projects/irritante-webpagina.webp', import.meta.url).href,
           description: this.$t('awDescription'),
-          link: "/404", // Link to the 404 page
+          link: "https://github.com/Rickmuda/Irritating-webpage"
         },
         {
           title: this.$t('wam'),
           image: new URL('@/assets/img/projects/whack-a-mom.webp', import.meta.url).href,
           description: this.$t('wamDescription'),
-          link: "/404", // Link to the 404 page
+          link: "https://github.com/Rickmuda/WhackAMom-JS-game"
         },
         {
           title: this.$t('gl'),
           image: new URL('@/assets/img/projects/gym-list.webp', import.meta.url).href,
           description: this.$t('glDescription'),
-          link: "/404", // Link to the 404 page
+          link: "https://github.com/Rickmuda/Gym-to-do-list"
         },
         {
           title: this.$t('op'),
           image: new URL('@/assets/img/projects/one-pager.webp', import.meta.url).href,
           description: this.$t('opDescription'),
-          link: "/404", // Link to the 404 page
+          link: "https://github.com/Rickmuda/One-page-website"
         },
         {
           title: this.$t('eq'),
           image: new URL('@/assets/img/projects/english-quiz.webp', import.meta.url).href,
           description: this.$t('eqDescription'),
-          link: "/404", // Link to the 404 page
+          link: "https://github.com/Rickmuda/English-quiz"
         },
         {
           title: this.$t('sp'),
           image: new URL('@/assets/img/projects/snackbar-podcast.webp', import.meta.url).href,
           description: this.$t('spDescription'),
-          link: "/404", // Link to the 404 page
+          link: "https://www.youtube.com/watch?v=-JeNEwwF-Ms"
         },
+        // {
+        //   title: this.$t('tdl'),
+        //   image: new URL('@/assets/img/projects/todolist.webp', import.meta.url).href,
+        //   description: this.$t('tdlDescription'),
+        //   link: "https://github.com/Rickmuda/To-do-list-API"
+        // },
         {
-          title: this.$t('sf'),
-          image: new URL('@/assets/img/projects/spiderverse-forum.webp', import.meta.url).href,
-          description: this.$t('sfDescription'),
-          link: "/404", // Link to the 404 page
-        },
-        {
-          title: this.$t('tdl'),
-          image: new URL('@/assets/img/projects/todolist.webp', import.meta.url).href,
-          description: this.$t('tdlDescription'),
-          link: "/404", // Link to the 404 page
-        },
-        {
-          title: this.$t('ul'),
-          image: new URL('@/assets/img/projects/undertale-laravel.webp', import.meta.url).href,
-          description: this.$t('ulDescription'),
-          link: "/404", // Link to the 404 page
-        },        {
           title: this.$t('us'),
           image: new URL('@/assets/img/projects/undertale-sudoku.webp', import.meta.url).href,
           description: this.$t('usDescription'),
-          link: "/404", // Link to the 404 page
-        },        {
-          title: this.$t('ws'),
-          image: new URL('@/assets/img/projects/webshop.webp', import.meta.url).href,
-          description: this.$t('wsDescription'),
-          link: "/404", // Link to the 404 page
+          link: "https://github.com/Rickmuda/Undertale-sudoku"
+        },
+        {
+          title: this.$t('lvt'),
+          image: new URL('@/assets/img/projects/longvideotheater.webp', import.meta.url).href,
+          description: this.$t('lvtDescription'),
+          link: "https://github.com/Rickmuda/Longvideotheather2"
+        },
+        {
+          title: this.$t('dnm'),
+          image: new URL('@/assets/img/projects/dungeon and music.webp', import.meta.url).href,
+          description: this.$t('dnmDescription'),
+          link: "https://github.com/Rickmuda/Dungeons-and-music"
+        },
+        {
+          title: this.$t('syp'),
+          image: new URL('@/assets/img/projects/secondyearportfolio.webp', import.meta.url).href,
+          description: this.$t('sypDescription'),
+          link: "https://github.com/Rickmuda/Second-year-portfolio"
+        },
+        {
+          title: this.$t('fyp'),
+          image: new URL('@/assets/img/projects/firstyearportfolio.webp', import.meta.url).href,
+          description: this.$t('fypDescription'),
+          link: "https://github.com/Rickmuda/First-portfolio"
         },
       ];
     },
   },
   created() {
-    this.initializeProjects(); // Initialize projects with translations
+    this.initializeProjects();
   },
 };
 </script>
