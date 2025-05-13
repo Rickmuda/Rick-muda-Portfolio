@@ -78,6 +78,15 @@ const messages = {
     usDescription: "A Sudoku game with an Undertale theme.",
     ws: "Webshop",
     wsDescription: "An e-commerce website project.",
+    dnm: "Dungeons and Music",
+    dnmDescription: "A project I made in a day to learn more about Vue.js.",
+    lvt: "Long Video Theater",
+    lvtDescription:
+      "A project made with Remix and prisma, this was a great way to learn more about these frameworks.",
+    syp: "Second year portfolio",
+    sypDescription: "The portfolio I made for my second year at school.",
+    fyp: "First year portfolio",
+    fypDescription: "My first portfolio I made for my first year at school.",
     goToProject: "Go to Project",
 
     // Start menu
@@ -127,12 +136,9 @@ const messages = {
     guestbookSubmit: "Submit",
     guestbookSuccess: "Thank you for signing the guestbook!",
     guestbookError: "Error submitting your message. Please try again.",
-
-    // Under development
-    underDevelopment: "Under Development",
-    underDevelopmentMessage:
-      "This feature is currently under development. Please check back later!",
-    close: "Close",
+    guestbookInfo:
+      "Welcome to my guestbook! Leave a message for future visitors.",
+    noEntries: "No entries yet. Be the first to sign!",
   },
 
   nl: {
@@ -210,6 +216,18 @@ const messages = {
     usDescription: "Een Sudoku-spel met een Undertale-thema.",
     ws: "Webwinkel",
     wsDescription: "Een e-commerce websiteproject.",
+    dnm: "Kerkers en Muziek",
+    dnmDescription:
+      "Een project dat ik in een dag heb gemaakt om meer te leren over Vue.js.",
+    lvt: "Lang video theater",
+    lvtDescription:
+      "Een project gemaakt met Remix en prima om meer te leren over deze frameworks.",
+    syp: "2e jaar portfolio",
+    sypDescription:
+      "Het portfolio dat ik heb gemaakt voor mijn tweede jaar op school.",
+    fyp: "1e jaar portfolio",
+    fypDescription:
+      "Mijn allereerste portfolio dat ik heb gemaakt voor mijn eerste jaar op school.",
     goToProject: "Ga naar Project",
 
     // Start menu
@@ -260,6 +278,9 @@ const messages = {
     guestbookSuccess: "Bedankt voor het tekenen van het gastenboek!",
     guestbookError:
       "Fout bij het versturen van je bericht. Probeer het opnieuw.",
+    guestbookInfo:
+      "Welkom bij mijn gastenboek! Laat een bericht achter voor toekomstige bezoekers.",
+    noEntries: "Nog geen berichten. Wees de eerste om te tekenen!",
   },
 };
 

@@ -1,19 +1,43 @@
 <template>
   <div class="guestbook-container">
-    <div v-if="error || localError" class="error-message">
-      {{ error || localError }}
+    <!-- Info Message -->
+    <div class="info-message">
+      <p>{{ $t('guestbookInfo') || 'Welcome to my guestbook! Leave a message for future visitors.' }}</p>
     </div>
+
+    <!-- Guestbook Form -->
     <div class="guestbook-form">
-      <input v-model="name" :placeholder="$t('guestbookName')" class="guestbook-input" />
-      <textarea v-model="message" :placeholder="$t('guestbookMessage')" class="guestbook-textarea"></textarea>
-      <button @click="submitEntry" class="guestbook-submit" :disabled="isSubmitting">
-        {{ isSubmitting ? 'Submitting...' : $t('signGuestbook') }}
+      <h3>{{ $t('signGuestbook') || 'Sign Guestbook' }}</h3>
+      <input 
+        v-model="name" 
+        :placeholder="$t('guestbookName') || 'Your Name'" 
+        class="guestbook-input" 
+      />
+      <textarea 
+        v-model="message" 
+        :placeholder="$t('guestbookMessage') || 'Your Message'" 
+        class="guestbook-textarea"
+      ></textarea>
+      <button 
+        @click="submitEntry" 
+        class="guestbook-submit" 
+        :disabled="isSubmitting || !name || !message"
+      >
+        {{ isSubmitting ? 'Submitting...' : $t('guestbookSubmit') || 'Submit' }}
       </button>
     </div>
+
+    <!-- Success Message -->
+    <div v-if="showSuccess" class="success-message">
+      {{ $t('guestbookSuccess') || 'Thank you for signing the guestbook!' }}
+    </div>
+
+    <!-- Guestbook Entries -->
     <div class="guestbook-entries">
-      <div v-if="isLoading" class="loading">Loading entries...</div>
-      <div v-else-if="entries.length === 0" class="no-entries">No entries yet. Be the first to sign!</div>
-      <div v-else v-for="entry in entries" :key="entry.id" class="guestbook-entry">
+      <div v-if="entries.length === 0" class="no-entries">
+        {{ $t('noEntries') || 'No entries yet. Be the first to sign!' }}
+      </div>
+      <div v-for="(entry, index) in entries" :key="index" class="guestbook-entry">
         <div class="entry-header">
           <strong>{{ entry.name }}</strong>
           <span class="entry-date">{{ formatDate(entry.date) }}</span>
@@ -25,69 +49,74 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   name: 'Guestbook',
-  props: {
-    entries: {
-      type: Array,
-      required: true,
-    },
-    isLoading: {
-      type: Boolean,
-      required: true,
-    },
-    error: {
-      type: String,
-      default: null,
-    },
-    onEntryAdded: {
-      type: Function,
-      required: true,
-    },
-  },
   data() {
     return {
       name: '',
       message: '',
-      localError: null,
       isSubmitting: false,
+      entries: [],
+      showSuccess: false
     };
   },
   methods: {
-    async submitEntry() {
+    submitEntry() {
+      // Validate input
       if (!this.name || !this.message) {
-        this.localError = 'Please fill in both name and message.';
         return;
       }
 
-      this.localError = null;
       this.isSubmitting = true;
 
-      try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        await axios.post(`${apiUrl}/guestbook`, {
-          name: this.name,
-          message: this.message,
-        });
-        this.name = '';
-        this.message = '';
-        await this.onEntryAdded(); // Call the parent's refresh method
-      } catch (error) {
-        console.error('Error submitting entry:', error);
-        this.localError = 'Failed to submit your message. Please try again.';
-      } finally {
-        this.isSubmitting = false;
-      }
+      // Create new entry
+      const newEntry = {
+        name: this.name,
+        message: this.message,
+        date: new Date().toISOString()
+      };
+
+      // Add to entries
+      this.entries.unshift(newEntry);  // Add to beginning of array
+      
+      // Save to localStorage
+      this.saveEntries();
+
+      // Clear form
+      this.name = '';
+      this.message = '';
+      this.isSubmitting = false;
+      
+      // Show success message
+      this.showSuccess = true;
+      setTimeout(() => {
+        this.showSuccess = false;
+      }, 3000);
     },
-    formatDate(date) {
-      return new Date(date).toLocaleDateString();
+
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
     },
+    
+    saveEntries() {
+      localStorage.setItem('guestbookEntries', JSON.stringify(this.entries));
+    },
+    
+    loadEntries() {
+      const saved = localStorage.getItem('guestbookEntries');
+      this.entries = saved ? JSON.parse(saved) : [];
+    }
   },
+  mounted() {
+    // Load entries from localStorage
+    this.loadEntries();
+  }
 };
 </script>
-
-<style scoped>
-
-</style>

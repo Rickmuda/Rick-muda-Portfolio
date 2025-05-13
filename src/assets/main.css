@@ -1460,8 +1460,8 @@ sorting-bar button:hover {
   font-size: 14px;
   font-family: 'PortfolioFont', sans-serif;
   color: white;
-  background-color: rgba(155, 32, 183, 1); /* Match the site's primary color */
-  border: 1px solid black; /* Consistent border style */
+  background-color: rgb(76, 18, 90); /* Match the site's primary color */
+  border: 3px solid black; /* Consistent border style */
   outline: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -1477,30 +1477,6 @@ sorting-bar button:hover {
   width: 100vw; /* Full width of the viewport */
   height: 100vh; /* Full height of the viewport */
   overflow: hidden; /* Prevent content from overflowing */
-}
-
-.easter-egg-message {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 18px;
-  text-align: center;
-  z-index: 1000;
-  animation: fadeInOut 5s ease-in-out;
-}
-
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
 }
 
 .old-video {
@@ -1546,69 +1522,27 @@ video {
 }
 
 .guestbook-container {
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  font-family: 'PortfolioFont', sans-serif;
-}
-
-.error-message {
-  background: rgba(255, 0, 0, 0.1);
-  border: 2px solid #ff0000;
-  color: #ff0000;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  font-family: 'PortfolioFont', sans-serif;
-}
-
-.loading, .no-entries {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-  font-style: italic;
+  height: 100%;
+  overflow: hidden;
 }
 
 .guestbook-form {
+  background: rgba(155, 32, 183, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid black;
   display: flex;
   flex-direction: column;
-  font-family: 'PortfolioFont', sans-serif;
   gap: 10px;
 }
 
-.guestbook-input, .guestbook-textarea {
-  padding: 8px;
-  border: 2px solid black;
-  border-radius: 5px;
-  background: rgba(217, 217, 217, 1);
-  font-size: 16px;
-  font-family: 'PortfolioFont', sans-serif;
-}
-
-.guestbook-textarea {
-  height: 80px;
-  resize: none;
-}
-
-.guestbook-submit {
-  padding: 10px;
-  background: rgba(217, 217, 217, 1);
-  border: 2px solid black;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  font-family: 'PortfolioFont', sans-serif;
-}
-
-.guestbook-submit:hover {
-  background: rgba(200, 200, 200, 1);
-}
-
-.guestbook-submit:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+.guestbook-form h3 {
+  margin: 0 0 10px 0;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .guestbook-entries {
@@ -1617,23 +1551,42 @@ video {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding-right: 10px;
+}
+
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.no-entries {
+  text-align: center;
+  color: white;
+  padding: 20px;
+  font-style: italic;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.guestbook-submit {
+  background-color: rgba(217, 217, 217, 0.8);
+  transition: background-color 0.2s;
+}
+
+.guestbook-submit:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .guestbook-entry {
-  background: rgba(217, 217, 217, 0.8);
-  padding: 15px;
-  border-radius: 5px;
-  border: 2px solid black;
+  animation: fadeIn 0.5s;
 }
 
-.entry-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.entry-date {
-  color: #666;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 /* Add to your existing certificates styles in main.css */
 .slideshow-container {
@@ -1908,3 +1861,4 @@ video {
 .mail-icon {
   font-size: 24px;
 }
+

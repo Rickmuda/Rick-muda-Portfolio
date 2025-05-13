@@ -84,7 +84,6 @@ export default {
       showUnderDevelopment: false,
       unfinishedApps: [
         'threeDPrinting',
-        'guestbook',
       ],
     };
   },
@@ -177,12 +176,22 @@ export default {
     },
     async fetchGuestbookEntries() {
       try {
-        const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const response = await fetch(`${baseUrl}/guestbook`);
-        if (!response.ok) throw new Error('Failed to fetch entries');
-        this.guestbookEntries = await response.json();
+        // Check if we should try to fetch from API (you can set this env var when you have a backend)
+        const baseUrl = import.meta.env.VITE_API_URL;
+        if (baseUrl) {
+          const response = await fetch(`${baseUrl}/guestbook`);
+          if (!response.ok) throw new Error('Failed to fetch entries');
+          this.guestbookEntries = await response.json();
+        } else {
+          // When no API is available, use localStorage entries
+          const saved = localStorage.getItem('guestbookEntries');
+          this.guestbookEntries = saved ? JSON.parse(saved) : [];
+        }
       } catch (error) {
         console.error('Error fetching guestbook entries:', error);
+        // Fallback to localStorage if API fails
+        const saved = localStorage.getItem('guestbookEntries');
+        this.guestbookEntries = saved ? JSON.parse(saved) : [];
         this.guestbookError = error.message;
       } finally {
         this.guestbookLoading = false;
