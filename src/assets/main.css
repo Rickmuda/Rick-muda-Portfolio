@@ -1552,6 +1552,7 @@ video {
   flex-direction: column;
   gap: 15px;
   padding-right: 10px;
+    font-family: 'PortfolioFont', sans-serif;
 }
 
 .loading-animation {
@@ -1563,6 +1564,13 @@ video {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.guestbook-input {
+  font-family: 'PortfolioFont', sans-serif;
+}
+.guestbook-textarea{
+    font-family: 'PortfolioFont', sans-serif;
+}
+
 .no-entries {
   text-align: center;
   color: white;
@@ -1572,6 +1580,7 @@ video {
 }
 
 .guestbook-submit {
+  font-family: 'PortfolioFont', sans-serif;
   background-color: rgba(217, 217, 217, 0.8);
   transition: background-color 0.2s;
 }

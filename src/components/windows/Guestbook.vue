@@ -7,7 +7,6 @@
 
     <!-- Guestbook Form -->
     <div class="guestbook-form">
-      <h3>{{ $t('signGuestbook') || 'Sign Guestbook' }}</h3>
       <input 
         v-model="name" 
         :placeholder="$t('guestbookName') || 'Your Name'" 
