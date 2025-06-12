@@ -1,0 +1,334 @@
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  /* Mobile Login Screen Styles */
+  .slide-container {
+    width: 300px;
+    position: absolute;
+    top: calc(40% + 180px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .slide-track {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(145deg, #9b20b7, #7a1793);
+    border: 3px solid #8404a1;
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(155, 32, 183, 0.3);
+  }
+
+  .slide-track:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(155, 32, 183, 0.4);
+  }
+
+  .slide-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #8404a1, #b824d9, #9b20b7);
+    border-radius: 27px;
+    transition: width 0.1s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  }
+
+  .slide-handle {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border: 3px solid #8404a1;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.1s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+
+  .slide-handle::before {
+    content: '>';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #8404a1;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /* Hide Taskbar on Mobile */
+  .taskbar {
+    display: none !important;
+  }
+
+  /* Hide desktop-only apps on mobile */
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Mobile Desktop Icons - FULL SCREEN CONTAINER */
+  .desktop {
+    position: fixed; /* Take up entire screen */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns */
+    grid-template-rows: repeat(4, auto); /* 4 rows */
+    gap: 40px; /* Larger gap for better spacing */
+    justify-content: center; /* Center the grid horizontally */
+    align-content: center; /* Center the grid vertically */
+    justify-items: center; /* Center items within grid cells */
+    align-items: center; /* Center items vertically within cells */
+    padding: 30px; /* Add padding around the grid */
+    z-index: 1; /* Ensure it's above background but below windows */
+  }
+
+  /* Position specific mobile apps in 2x4 grid */
+  .desktop .app-icon:nth-child(1) { grid-column: 1; grid-row: 1; } /* About Me */
+  .desktop .app-icon:nth-child(2) { grid-column: 2; grid-row: 1; } /* Projects */
+  .desktop .app-icon:nth-child(3) { grid-column: 1; grid-row: 2; } /* Art Gallery */
+  .desktop .app-icon:nth-child(4) { grid-column: 2; grid-row: 2; } /* Certificates */
+  .desktop .app-icon:nth-child(5) { grid-column: 1; grid-row: 3; } /* Socials */
+  .desktop .app-icon:nth-child(6) { grid-column: 2; grid-row: 3; } /* Settings */
+
+  .app-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .app-icon-image {
+    width: 70px; /* Good size for touch */
+    height: 70px;
+    font-size: 30px;
+    border-radius: 15px;
+    transition: transform 0.2s ease;
+    background-color: #9B20B7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .app-icon-image:active {
+    transform: scale(0.95);
+  }
+
+  .app-icon-inner {
+    font-size: 28px;
+    color: white;
+  }
+
+  .app-icon-text {
+    font-size: 12px;
+    margin-top: 8px;
+    text-align: center;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: bold;
+    max-width: 75px;
+    word-wrap: break-word;
+    line-height: 1.2;
+  }
+
+  /* Mobile App Windows - Smaller, centered, and non-draggable */
+  .draggable-window {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90vw !important; /* 90% of viewport width */
+    max-width: 400px !important; /* Maximum width of 400px */
+    height: 80vh !important; /* 80% of viewport height */
+    max-height: 600px !important; /* Maximum height of 600px */
+    z-index: 1000 !important;
+  }
+
+  /* Disable draggable functionality on mobile */
+  .vue3-draggable-resizable {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .app-window {
+    border-radius: 15px; /* Keep rounded corners */
+    border: 3px solid black;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Add shadow for depth */
+  }
+
+  .top-bar {
+    height: 50px; /* Slightly smaller top bar */
+    border-radius: 12px 12px 0 0; /* Rounded top corners only */
+    padding: 0 15px;
+    background: rgba(217, 217, 217, 1);
+    border-bottom: 3px solid #000;
+  }
+
+  .window-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .close-button {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 0, 0, 1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .close-button span {
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+  }
+
+  .app-content {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    color: white;
+  }
+
+  /* Mobile-specific content adjustments */
+  .projects-window {
+    flex-direction: column;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .project-details {
+    width: 100%;
+    border-left: none;
+    border-top: 2px solid #000;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .socials-icons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .social-icon {
+    font-size: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(155, 32, 183, 0.2);
+  }
+
+  .about-me-container {
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .speaker-image {
+    width: 150px;
+  }
+
+  .dialogue-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .choices {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .choice-button {
+    padding: 10px 15px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+
+  .settings {
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .language-selection {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .language-selection select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .certificate-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .certificate-item {
+    padding: 15px;
+  }
+
+  .certificate-image {
+    height: 120px;
+  }
+
+  /* Remove Start Menu on Mobile */
+  .start-menu {
+    display: none !important;
+  }
+
+  /* Touch improvements */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input, textarea {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+}
+
+/* Desktop styles remain unchanged */
+@media (min-width: 769px) {
+  .desktop-only {
+    display: flex !important;
+  }
+}

@@ -1,3 +1,5 @@
+@import './mobile.css';
+
 /* Ensure the screen fits on every screen without scrollbars */
 html, body {
   margin: 0;
@@ -224,19 +226,21 @@ body {
     opacity: 0.8;
 }
 
-/* Desktop Apps */
-.desktop {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Maximum of 7 columns per row */
-  gap: 30px; /* Space between icons */
-  position: absolute;
-  top: 10%; /* Position near the top */
-  left: 5%; /* Position near the left */
-  width: 90%; /* Adjust width to fit the grid */
-  justify-content: start; /* Align the grid to the left */
+/* Desktop Apps - DESKTOP ONLY STYLES */
+@media (min-width: 769px) {
+  .desktop {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Maximum of 7 columns per row */
+    gap: 30px; /* Space between icons */
+    position: absolute;
+    top: 10%; /* Position near the top */
+    left: 5%; /* Position near the left */
+    width: 90%; /* Adjust width to fit the grid */
+    justify-content: start; /* Align the grid to the left */
+  }
 }
 
-/* App Icon */
+/* App Icon - Base styles for all devices */
 .app-icon {
   display: flex;
   flex-direction: column; /* Stack icon and text vertically */
@@ -245,7 +249,7 @@ body {
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-.app-icon-image:hover  {
+.app-icon-image:hover {
   transform: scale(1.1); /* Add hover effect to the icon */
   background-color: rgb(72, 14, 85);
 }

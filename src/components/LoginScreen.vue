@@ -3,7 +3,17 @@
     <div class="center-box">
       <img src="/src/assets/img/pfp.webp" alt="Profile Picture" class="center-image" />
     </div>
-    <div class="password-box">
+    
+    <!-- Mobile Slide Login -->
+    <div v-if="isMobile" class="slide-container">
+      <div class="slide-track" @click="startSliding" @touchstart="startSliding">
+        <div class="slide-bar" :style="{ width: slideProgress + '%' }"></div>
+        <div class="slide-handle" :style="{ left: slideProgress + '%' }"></div>
+      </div>
+    </div>
+    
+    <!-- Desktop Password Login -->
+    <div v-else class="password-box">
       <form @submit.prevent="checkPasswordLength">
         <!-- Hidden username field for accessibility -->
         <input
@@ -30,9 +40,35 @@ export default {
   data() {
     return {
       passwordInput: "", // Manage passwordInput locally
+      isMobile: false,
+      slideProgress: 0,
+      isSliding: false
     };
   },
   methods: {
+    detectMobile() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      this.isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent) || 
+                     window.innerWidth <= 768;
+    },
+    startSliding() {
+      if (this.isSliding) return;
+      
+      this.isSliding = true;
+      
+      const slideInterval = setInterval(() => {
+        this.slideProgress += 5; // Increased from 3 to 5 for faster animation
+        
+        if (this.slideProgress >= 100) {
+          clearInterval(slideInterval);
+          this.slideProgress = 100;
+          
+          setTimeout(() => {
+            this.$emit("login");
+          }, 200); // Reduced delay from 500ms to 200ms
+        }
+      }, 20); // Reduced from 30ms to 20ms for smoother, faster animation
+    },
     simulateTyping() {
       const keys = ["a", "b", "c", "d", "e", "f"]; // Simulated keys
       let index = 0;
@@ -53,7 +89,22 @@ export default {
     },
   },
   mounted() {
-    this.simulateTyping(); // Start simulating typing when the component is mounted
+    this.detectMobile();
+    
+    if (!this.isMobile) {
+      this.simulateTyping(); // Start simulating typing when the component is mounted
+    } else {
+      // Auto-start sliding after a delay on mobile
+      setTimeout(() => {
+        this.startSliding();
+      }, 1000); // Reduced delay from 1500ms to 1000ms
+    }
+    
+    // Listen for resize events to re-detect mobile
+    window.addEventListener('resize', this.detectMobile);
   },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.detectMobile);
+  }
 };
 </script>
