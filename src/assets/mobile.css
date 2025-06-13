@@ -191,7 +191,7 @@
   .app-window {
     border-radius: 15px; /* Keep rounded corners */
     border: 3px solid black;
-    height: 90% !important; /* Adjust height for mobile */
+    height: 70% !important; /* Adjust height for mobile */
     width: 90% !important; /* Adjust width for mobile */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Add shadow for depth */
     overflow: auto !important;
