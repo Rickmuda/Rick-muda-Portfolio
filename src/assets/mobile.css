@@ -166,30 +166,41 @@
 
   /* Mobile App Windows - Smaller, centered, and non-draggable */
   .draggable-window {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: 90vw !important; /* 90% of viewport width */
-    max-width: 400px !important; /* Maximum width of 400px */
-    height: 80vh !important; /* 80% of viewport height */
-    max-height: 600px !important; /* Maximum height of 600px */
-    z-index: 1000 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
   }
 
-  /* Disable draggable functionality on mobile */
+  /* Completely disable draggable window for mobile */
   .vue3-draggable-resizable {
     position: static !important;
     width: 100% !important;
     height: 100% !important;
+    transform: none !important;
+    overflow: hidden !important;
   }
 
   .app-window {
     border-radius: 15px; /* Keep rounded corners */
     border: 3px solid black;
-    height: 100%;
-    width: 100%;
+    height: 90% !important; /* Adjust height for mobile */
+    width: 90% !important; /* Adjust width for mobile */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Add shadow for depth */
+    overflow: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important; /* Change from relative to absolute */
+    top: 50% !important; /* Position at 50% from the top */
+    left: 50% !important; /* Position at 50% from the left */
+    transform: translate(-50%, -50%) !important; /* Center the element */
   }
 
   .top-bar {
@@ -225,9 +236,12 @@
   }
 
   .app-content {
-    flex: 1;
+    flex: 1 !important;
     padding: 10px;
-    overflow-y: auto;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    position: relative !important;
+    z-index: 1 !important;
     color: white;
   }
 
@@ -319,6 +333,21 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Ensure art gallery is scrollable on mobile */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
+    height: 100%;
+    max-height: calc(100% - 20px); /* Account for padding */
   }
 
   .project-details {
@@ -328,12 +357,6 @@
     padding: 10px;
     max-height: 200px;
     overflow-y: auto;
-  }
-
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 10px;
   }
 
   .socials-icons {
@@ -600,6 +623,12 @@
     color: white;
     font-weight: bold;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+
+  /* Override any hidden overflow that might be preventing scrolling */
+  .projects-window, .art-gallery {
+    overflow-y: visible;
+    height: 100%;
   }
 }
 

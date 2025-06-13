@@ -83,7 +83,7 @@ const messages = {
     lvt: "Long Video Theater",
     lvtDescription:
       "A project made with Remix and prisma, this was a great way to learn more about these frameworks.",
-    syp: "Second year portfolio",
+    syp: "2nd year portfolio",
     sypDescription: "The portfolio I made for my second year at school.",
     fyp: "First year portfolio",
     fypDescription: "My first portfolio I made for my first year at school.",
