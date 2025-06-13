@@ -112,11 +112,6 @@ export default {
   cursor: pointer;
 }
 
-.close-button span {
-  font-size: 18px;
-  color: black;
-}
-
 .app-content {
   flex: 1;
   overflow: auto;

@@ -24,12 +24,12 @@
       <div class="app-icon-text">{{ $t('artGallery') }}</div>
     </div>
 
-    <!-- Certificates (4th) -->
-    <div class="app-icon" @click="openApp('certificates')">
+    <!-- Contact (4th) - Replaced Certificates -->
+    <div class="app-icon" @click="openApp('contact')">
       <div class="app-icon-image">
-        <font-awesome-icon icon="certificate" class="app-icon-inner" />
+        <font-awesome-icon icon="envelope" class="app-icon-inner" />
       </div>
-      <div class="app-icon-text">{{ $t('certificates') }}</div>
+      <div class="app-icon-text">{{ $t('contact') }}</div>
     </div>
 
     <!-- Socials (5th) -->
@@ -49,13 +49,6 @@
     </div>
 
     <!-- Desktop-only apps (hidden on mobile) -->
-    <div class="desktop-only app-icon" @click="openApp('contact')">
-      <div class="app-icon-image">
-        <font-awesome-icon icon="envelope" class="app-icon-inner" />
-      </div>
-      <div class="app-icon-text">{{ $t('contact') }}</div>
-    </div>
-
     <div class="desktop-only app-icon" @click="openApp('miniGame')">
       <div class="app-icon-image">
         <font-awesome-icon icon="gamepad" class="app-icon-inner" />

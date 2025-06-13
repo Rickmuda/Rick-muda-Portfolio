@@ -1,24 +1,21 @@
 <template>
   <div class="projects-window">
     <!-- Projects Grid -->
-    <div
-      class="projects-grid"
-      :class="{ 'grid-expanded': selectedProject }"
-    >
+    <div class="projects-grid" :class="{ 'grid-expanded': selectedProject && !isMobile }">
       <div
         v-for="(project, index) in projects"
         :key="index"
         class="project-card"
-        :class="{ selected: selectedProject === project }"
-        @click="selectProject(project)"
+        :class="{ selected: selectedProject === project && !isMobile }"
+        @click="handleProjectClick(project)"
       >
         <img :src="project.image" alt="Project Image" />
         <p>{{ project.title }}</p>
       </div>
     </div>
 
-    <!-- Project Details -->
-    <div v-if="selectedProject" class="project-details">
+    <!-- Project Details for Desktop -->
+    <div v-if="selectedProject && !isMobile" class="project-details">
       <img :src="selectedProject.image" alt="Selected Project Image" />
       <h3>{{ selectedProject.title }}</h3>
       <p>{{ selectedProject.description }}</p>
@@ -30,6 +27,27 @@
         {{ $t('goToProject') }}
       </a>
     </div>
+
+    <!-- Modal for Mobile -->
+    <teleport to="body">
+      <div v-if="showModal" class="projects-modal" @click.self="closeModal">
+        <div class="project-modal-content">
+          <img :src="selectedProject.image" alt="Selected Project" class="project-modal-image" />
+          <h3 class="project-modal-title">{{ selectedProject.title }}</h3>
+          <p class="project-modal-description">{{ selectedProject.description }}</p>
+          <a
+            :href="selectedProject.link"
+            target="_blank"
+            class="project-modal-link"
+          >
+            {{ $t('goToProject') }}
+          </a>
+        </div>
+        <button class="project-modal-close" @click="closeModal">
+          <span>X</span>
+        </button>
+      </div>
+    </teleport>
   </div>
 </template>
 
@@ -39,11 +57,30 @@ export default {
     return {
       projects: [],
       selectedProject: null,
+      showModal: false,
+      isMobile: false
     };
   },
   methods: {
+    handleProjectClick(project) {
+      this.selectedProject = project;
+      // Show modal only on mobile
+      if (this.isMobile) {
+        this.showModal = true;
+      }
+    },
+    closeModal() {
+      this.showModal = false;
+    },
     selectProject(project) {
-      this.selectedProject = this.selectedProject === project ? null : project;
+      if (!this.isMobile) {
+        this.selectedProject = this.selectedProject === project ? null : project;
+      } else {
+        this.handleProjectClick(project);
+      }
+    },
+    checkMobile() {
+      this.isMobile = window.innerWidth <= 768;
     },
     initializeProjects() {
       this.projects = [
@@ -126,10 +163,15 @@ export default {
           link: "https://github.com/Rickmuda/First-portfolio"
         },
       ];
-    },
+    }
   },
   created() {
     this.initializeProjects();
+    this.checkMobile();
+    window.addEventListener('resize', this.checkMobile);
   },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.checkMobile);
+  }
 };
 </script>

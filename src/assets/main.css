@@ -1,5 +1,3 @@
-@import './mobile.css';
-
 /* Ensure the screen fits on every screen without scrollbars */
 html, body {
   margin: 0;
@@ -800,7 +798,8 @@ sorting-bar button:hover {
 /* Socials Icons */
 .socials-icons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-template-columns: repeat(3, 1fr); /* Change from 4 to 3 columns */
+  grid-template-rows: repeat(3, 1fr); /* Add explicit rows for a 3x3 grid */
   gap: 20px; /* Space between icons */
   justify-content: center; /* Center the grid horizontally */
   align-items: center; /* Center the icons vertically */
@@ -819,7 +818,7 @@ sorting-bar button:hover {
 }
 
 .social-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   color: #2d0a35;
 }
 
@@ -850,7 +849,7 @@ sorting-bar button:hover {
 }
 
 .contact-window .social-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.0);
   color: #2d0a35;
 }
 
@@ -1282,8 +1281,10 @@ sorting-bar button:hover {
 }
 
 .close-button span {
-  font-size: 18px;
-  color: black;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 /* App Content */
@@ -1318,18 +1319,6 @@ sorting-bar button:hover {
   margin-left: 0;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   font-family: "Retro Gaming", sans-serif;
-}
-
-/* Close Button */
-.close-button {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 0, 0, 1);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 }
 
 /* Close Button Text */
