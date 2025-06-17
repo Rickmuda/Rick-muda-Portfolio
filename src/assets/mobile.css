@@ -638,3 +638,36 @@
     display: flex !important;
   }
 }
+
+/* Error Page Mobile Styles */
+@media (max-width: 768px) {
+  .error-poster {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .error-content {
+    padding: 1.5rem;
+  }
+
+  .poster-image {
+    padding: 0.5rem;
+  }
+
+  .error-content h1 {
+    font-size: 3rem;
+  }
+
+  .error-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .error-content p {
+    font-size: 1rem;
+  }
+
+  .error-button {
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+  }
+}

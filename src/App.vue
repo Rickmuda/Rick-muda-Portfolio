@@ -1,48 +1,54 @@
 <template>
   <div id="app">
-    <router-view />
-    <!-- Background -->
-    <div class="background" :class="{ 'background-logged-in': loggedIn, 'dark-mode': darkMode }">
-      <!-- Login Screen -->
-      <LoginScreen v-if="!loggedIn" @login="checkLoginState" />
+    <!-- Router View for Error Pages -->
+    <router-view v-if="$route.name === 'NotFound'" />
 
-      <!-- Desktop -->
-      <Desktop v-else :openApp="openApp" :easterEggApps="easterEggApps" />
-    </div>
-    <!-- Taskbar -->
-    <Taskbar
-      v-if="loggedIn"
-      :openApp="openApp"
-      :commitSummary="commitSummary"
-      :commitDescription="commitDescription"
-      :easterEggApps="easterEggApps"
-      :easterEggTriggered="easterEggTriggered" 
-    />
+    <!-- Main App Content -->
+    <template v-else>
+      <!-- Background -->
+      <div class="background" :class="{ 'background-logged-in': loggedIn, 'dark-mode': darkMode }">
+        <!-- Login Screen -->
+        <LoginScreen v-if="!loggedIn" @login="checkLoginState" />
 
-    <!-- Dynamic App Windows -->
-    <AppWindow
-      v-for="(window, index) in openWindows"
-      :key="index"
-      :title="$t(windowConfig[window].title)"
-      :defaultWidth="windowConfig[window].defaultWidth"
-      :defaultHeight="windowConfig[window].defaultHeight"
-      :defaultX="windowConfig[window].defaultX"
-      :defaultY="windowConfig[window].defaultY"
-      :zIndex="windowZIndices[window]" 
-      @close="closeApp(window)"
-      @bringToFront="bringWindowToFront(window)" 
-    >
-      <!-- Pass props dynamically based on the window -->
-      <component
-        :is="windowConfig[window].component"
-        v-bind="getWindowProps(window)"
+        <!-- Desktop -->
+        <Desktop v-else :openApp="openApp" :easterEggApps="easterEggApps" />
+      </div>
+
+      <!-- Taskbar -->
+      <Taskbar
+        v-if="loggedIn"
+        :openApp="openApp"
+        :commitSummary="commitSummary"
+        :commitDescription="commitDescription"
+        :easterEggApps="easterEggApps"
+        :easterEggTriggered="easterEggTriggered" 
       />
-    </AppWindow>
 
-    <UnderDevelopment 
-      v-if="showUnderDevelopment" 
-      @close="closeUnderDevelopment" 
-    />
+      <!-- Dynamic App Windows -->
+      <AppWindow
+        v-for="window in openWindows"
+        :key="window"
+        :title="$t(windowConfig[window].title)"
+        :defaultWidth="windowConfig[window].defaultWidth"
+        :defaultHeight="windowConfig[window].defaultHeight"
+        :defaultX="windowConfig[window].defaultX"
+        :defaultY="windowConfig[window].defaultY"
+        :zIndex="windowZIndices[window]" 
+        @close="closeApp(window)"
+        @bringToFront="bringWindowToFront(window)" 
+      >
+        <component
+          :is="windowConfig[window].component"
+          v-bind="getWindowProps(window)"
+        />
+      </AppWindow>
+
+      <!-- Under Development Modal -->
+      <UnderDevelopment 
+        v-if="showUnderDevelopment" 
+        @close="closeUnderDevelopment" 
+      />
+    </template>
   </div>
 </template>
 
@@ -55,6 +61,7 @@ import UnderDevelopment from "./components/UnderDevelopment.vue";
 import { windowConfig } from "./windowConfig";
 
 export default {
+  name: 'App',
   components: {
     LoginScreen,
     Desktop,
@@ -78,18 +85,16 @@ export default {
       easterEggTriggered: false,
       keydownListenerAdded: false,
       easterEggApps: [],
-      guestbookEntries: [], // New state for guestbook entries
-      guestbookLoading: true, // Track loading state
-      guestbookError: null, // Track any errors
+      guestbookEntries: [],
+      guestbookLoading: true,
+      guestbookError: null,
       showUnderDevelopment: false,
-      unfinishedApps: [
-        'threeDPrinting',
-      ],
+      unfinishedApps: ['threeDPrinting'],
     };
   },
   computed: {
     windowConfig() {
-      return windowConfig; // Expose the window configuration
+      return windowConfig;
     },
   },
   methods: {
@@ -98,39 +103,33 @@ export default {
         this.showUnderDevelopment = true;
         return;
       }
-      console.log(`openApp called for: ${appName}`); // Debugging log
 
-      // Check if the window is already open
       if (this.openWindows.includes(appName)) {
-        console.log(`The window "${appName}" is already open. Closing it.`); // Debugging log
-        this.closeApp(appName); // Close the window if it's already open
+        this.closeApp(appName);
         return;
       }
 
-      // Otherwise, open the window
       this.openWindows.push(appName);
-      this.windowZIndices[appName] = this.zIndexCounter++; // Assign a z-index to the new window
+      this.windowZIndices[appName] = this.zIndexCounter++;
     },
     closeApp(appName) {
-      // Remove the app from the open windows list
-      this.openWindows = this.openWindows.filter((window) => window !== appName);
-      delete this.windowZIndices[appName]; // Remove its z-index tracking
+      this.openWindows = this.openWindows.filter(window => window !== appName);
+      delete this.windowZIndices[appName];
     },
     checkLoginState() {
-      this.loggedIn = true; // Simply set loggedIn to true when the user enters 6 characters
+      this.loggedIn = true;
     },
     toggleDarkMode() {
-      this.darkMode = !this.darkMode; // Toggle dark mode manually
+      this.darkMode = !this.darkMode;
     },
     setDarkModeBasedOnTime() {
       const currentHour = new Date().getHours();
-      this.darkMode = currentHour >= 18 || currentHour < 6; // Enable dark mode after 6 PM and before 6 AM
+      this.darkMode = currentHour >= 18 || currentHour < 6;
     },
     bringWindowToFront(appName) {
-      this.windowZIndices[appName] = this.zIndexCounter++; // Update the z-index to bring the window to the front
+      this.windowZIndices[appName] = this.zIndexCounter++;
     },
     getWindowProps(windowName) {
-      // Return props specific to the window
       if (windowName === "settings") {
         return {
           darkMode: this.darkMode,
@@ -144,52 +143,43 @@ export default {
           entries: this.guestbookEntries,
           isLoading: this.guestbookLoading,
           error: this.guestbookError,
-          onEntryAdded: this.fetchGuestbookEntries // Refresh entries when a new one is added
+          onEntryAdded: this.fetchGuestbookEntries
         };
       }
       return windowConfig[windowName]?.props || {};
     },
     handleKeydown(event) {
-      // Debounce logic to prevent rapid triggering
       if (this.easterEggTriggered) return;
 
       this.currentInput.push(event.key);
       if (this.currentInput.length > this.konamiCode.length) {
-        this.currentInput.shift(); // Keep the input array the same length as the Konami Code
+        this.currentInput.shift();
       }
       if (this.currentInput.join("") === this.konamiCode.join("")) {
         this.triggerEasterEgg();
       }
     },
     triggerEasterEgg() {
-      if (this.easterEggTriggered) {
-        return; // Prevent multiple triggers
-      }
+      if (this.easterEggTriggered) return;
 
-      this.easterEggTriggered = true; // Set the flag to true
-      console.log("Easter Egg Triggered!"); // Log to console for debugging
-
-      // Add the "Old Video" app to the easter egg apps list if not already added
+      this.easterEggTriggered = true;
       if (!this.easterEggApps.includes("oldVideo")) {
         this.easterEggApps.push("oldVideo");
       }
     },
     async fetchGuestbookEntries() {
       try {
-        // Check if we should try to fetch from API (you can set this env var when you have a backend)
         const baseUrl = import.meta.env.VITE_API_URL;
         if (baseUrl) {
           const response = await fetch(`${baseUrl}/guestbook`);
           if (!response.ok) throw new Error('Failed to fetch entries');
           this.guestbookEntries = await response.json();
         } else {
-          // When no API is available, use localStorage entries
           const saved = localStorage.getItem('guestbookEntries');
           this.guestbookEntries = saved ? JSON.parse(saved) : [];
         }
       } catch (error) {
         console.error('Error fetching guestbook entries:', error);
-        // Fallback to localStorage if API fails
         const saved = localStorage.getItem('guestbookEntries');
         this.guestbookEntries = saved ? JSON.parse(saved) : [];
         this.guestbookError = error.message;
@@ -202,30 +192,23 @@ export default {
     },
   },
   async mounted() {
-    // Set dark mode based on the current time when the app loads
     this.setDarkModeBasedOnTime();
 
-    // Check the time every minute to update dark mode automatically
     setInterval(() => {
       this.setDarkModeBasedOnTime();
-    }, 43200); // Check every 12 hours
+    }, 43200000);
 
-    // Add keydown event listener for Konami Code
     if (!this.keydownListenerAdded) {
-      console.log("Adding keydown listener"); // Debugging log
       window.addEventListener("keydown", this.handleKeydown);
-      this.keydownListenerAdded = true; // Track that the listener has been added
+      this.keydownListenerAdded = true;
     }
 
-    // Fetch guestbook entries when app mounts
     await this.fetchGuestbookEntries();
   },
   beforeUnmount() {
-    // Remove keydown event listener to avoid memory leaks
     if (this.keydownListenerAdded) {
-      console.log("Removing keydown listener"); // Debugging log
       window.removeEventListener("keydown", this.handleKeydown);
-      this.keydownListenerAdded = false; // Track that the listener has been removed
+      this.keydownListenerAdded = false;
     }
   },
 };
